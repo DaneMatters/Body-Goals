@@ -13,7 +13,7 @@
     {
       "binding": "DB",
       "database_name": "body_goals_db",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "3c0b6675-a8ad-48da-a9ac-247c987ec8ee",
       "migrations_dir": "drizzle"
     }
   ]
