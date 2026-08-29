@@ -2,6 +2,16 @@
 
 A standalone installable PWA rebuilt around the requested workout flow.
 
+## Home: Now/Next schedule
+The Home tab is a live daily queue, not a summary. It shows the single next
+undone thing on your day — workout, Insanity, or anything you add (meals,
+water, etc.) via EDIT SCHEDULE — bold and up top with a due-now/overdue
+countdown, and everything still coming up beneath it, sized larger the
+closer its time gets. Tapping the primary action (start the workout, log
+Insanity, or mark a scheduled item done) clears it and the next item takes
+over the bold slot. Refreshes automatically every 30 seconds while you're
+on the tab.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - 6:00–6:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
