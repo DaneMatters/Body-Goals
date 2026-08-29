@@ -3,7 +3,7 @@
 A standalone installable PWA rebuilt around the requested workout flow.
 
 ## Main workout features
-- Mon–Fri workouts prebuilt and automatically selected by weekday
+- Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - 6:00–6:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
