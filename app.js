@@ -144,5 +144,24 @@ function showHistory(id){const w=state.workouts.find(x=>x.id===id);if(!w)return;
 function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`body-goals-data-${isoDate(nowDate())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);Object.keys(state).forEach(k=>delete state[k]);Object.assign(state,defaults(),d);save();toast('Data imported.');render()}catch{toast('That file is not valid app data.')}};r.readAsText(f)}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));let swRefreshed=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(swRefreshed)return;swRefreshed=true;location.reload()})}
+const PAGE_ORDER=['home','workouts','food','progress','more'];
+(function initSwipe(){
+  const app=document.getElementById('app');
+  let startX=null,startY=null,blocked=false;
+  app.addEventListener('touchstart',e=>{
+    if(ui.session||e.touches.length!==1){startX=null;return}
+    blocked=!!e.target.closest('.tabs, input, select, textarea, .modal');
+    startX=e.touches[0].clientX;startY=e.touches[0].clientY;
+  },{passive:true});
+  app.addEventListener('touchend',e=>{
+    if(startX==null||ui.session||blocked){startX=null;return}
+    const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;
+    startX=null;
+    if(Math.abs(dx)<60||Math.abs(dx)<Math.abs(dy)*1.5)return;
+    const idx=PAGE_ORDER.indexOf(ui.page);
+    if(dx<0&&idx<PAGE_ORDER.length-1){ui.page=PAGE_ORDER[idx+1];render()}
+    else if(dx>0&&idx>0){ui.page=PAGE_ORDER[idx-1];render()}
+  },{passive:true});
+})();
 render();
 })();
