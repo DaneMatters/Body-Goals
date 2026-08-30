@@ -9,12 +9,12 @@ const PHASE_REPS=[4,3,2];
 const PHASE_PCT=[0.70,0.80,0.90];
 const DEFAULT_PROGRAM={
   1:{name:'Chest',time:'11:00 AM',exercises:[
-    {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:0,step:5,rest:150},
+    {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:145,step:5,rest:150},
     {name:'Flat Dumbbell Bench Press',history:['Flat Dumbbell Bench Press'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Incline Dumbbell Fly',history:['Incline Dumbbell Fly'],sets:3,min:8,max:10,step:5,rest:75}
   ]},
   2:{name:'Legs',time:'11:00 AM',exercises:[
-    {name:'Barbell Back Squat',history:['Barbell Squat'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:0,step:10,rest:150},
+    {name:'Barbell Back Squat',history:['Barbell Squat'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:155,step:10,rest:150},
     {name:'Leg Press',history:['Leg Press'],sets:5,min:10,max:10,step:10,rest:90},
     {name:'Leg Extension',history:['Leg Extension'],sets:3,min:8,max:8,step:5,rest:75}
   ]},
@@ -34,7 +34,7 @@ const DEFAULT_PROGRAM={
     {name:'Incline Dumbbell Triceps Extension',history:['Dumbbell Incline Tricep Extension'],sets:4,min:8,max:12,step:5,rest:75}
   ]},
   5:{name:'Back',time:'11:00 AM',exercises:[
-    {name:'Barbell Deadlift',history:['Barbell Deadlift','Deadlift'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:0,step:10,rest:180},
+    {name:'Barbell Deadlift',history:['Barbell Deadlift','Deadlift'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:190,step:10,rest:180},
     {name:'One-Arm Dumbbell Row',history:['Dumbbell Row'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Wide-Grip Lat Pulldown',history:['Lat Pulldown'],sets:3,min:8,max:8,step:5,rest:75}
   ]}
@@ -42,7 +42,7 @@ const DEFAULT_PROGRAM={
 const DAYN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const WEEK_ORDER=[1,2,3,4,5,6,0];
 const SCHEDULE_VERSION=2;
-const PROGRAM_VERSION=1;
+const PROGRAM_VERSION=2;
 const DEFAULT_SCHEDULE=[
   {name:'Wake up',time:'05:00',type:'other'},
   {name:'Water — Bottle #1 (500 mL)',time:'05:00',type:'water'},

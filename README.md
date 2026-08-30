@@ -38,6 +38,9 @@ lift's 1RM from the Workouts tab (EDIT PROGRAM) to get an actual target
 weight and phase countdown; accessory exercises for every day keep fixed
 sets/reps and are unaffected by phasing. No cardio progression is bundled
 with this program — Insanity is logged separately as its own schedule item.
+Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
+from recent bundled FitNotes history rather than a fresh max-effort test —
+adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
