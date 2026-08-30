@@ -12,6 +12,14 @@ Insanity, or mark a scheduled item done) clears it and the next item takes
 over the bold slot. Refreshes automatically every 30 seconds while you're
 on the tab.
 
+## Patterns
+A card on the Progress tab breaks your logged water and calories into six
+time-of-day buckets (Early AM through Night), averaged across every day
+you've logged anything, with a bar per bucket so a dip — say, an afternoon
+you consistently undereat or underdrink — is visible at a glance instead of
+buried in daily totals. Shows "Based on N days logged" so the sample size
+is always honest; needs no setup beyond logging food and water normally.
+
 ## Water logging
 Real amounts, not just a checkbox. Marking a "Water" schedule item done on
 Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
