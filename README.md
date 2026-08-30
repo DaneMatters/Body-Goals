@@ -27,6 +27,18 @@ its own Water card for logging outside the schedule — quick +250 mL/+500
 mL/+1 L buttons plus a custom amount — with a running total against the
 3.5 L daily baseline shown there and as a metric tile on Home.
 
+## 12-week Power Bodybuilding program
+The default Mon–Fri split (Chest/Legs/Shoulders/Arms/Back) runs a 12-week
+%1RM-based progression on the three main lifts — Incline Barbell Bench
+Press, Barbell Back Squat, Barbell Deadlift. Sets stay fixed at 5; only
+reps and load intensity change every 4-week phase: Weeks 1–4 are 5×4 @
+70% 1RM, Weeks 5–8 are 5×3 @ 80%, Weeks 9–12 are 5×2 @ 90%, based on the
+program start date recorded the first time this version loads. Enter each
+lift's 1RM from the Workouts tab (EDIT PROGRAM) to get an actual target
+weight and phase countdown; accessory exercises for every day keep fixed
+sets/reps and are unaffected by phasing. No cardio progression is bundled
+with this program — Insanity is logged separately as its own schedule item.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - 11:00–11:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
