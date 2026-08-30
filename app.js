@@ -77,8 +77,8 @@ const DAILY_RULES=[
   'Carbs are especially important around both workouts',
   'Muscle growth, strength and recovery are the priority'
 ];
-const FAVORITE_CATEGORIES=['Breakfast','Lunch','Dinner','Snack'];
-const FAVORITE_ICONS=['🍳','🥓','🧇','🥞','🍞','🥪','🍗','🥩','🍔','🌮','🍜','🍝','🍕','🥗','🍚','🍲','🥙','🍎','🥤','🍫'];
+const FAVORITE_CATEGORIES=['Breakfast','Lunch','Dinner','Snack','Shake'];
+const FAVORITE_ICONS=['🍳','🥓','🧇','🥞','🍞','🥪','🍗','🥩','🍔','🌮','🍜','🍝','🍕','🥗','🍚','🍲','🥙','🍎','🥤','🥛','🍫'];
 const state=load();
 if((state.scheduleVersion||0)<SCHEDULE_VERSION){state.schedule=deep(DEFAULT_SCHEDULE).map(s=>({...s,id:uid()}));state.scheduleVersion=SCHEDULE_VERSION;save()}
 if((state.programVersion||0)<PROGRAM_VERSION){state.program=deep(DEFAULT_PROGRAM);state.programVersion=PROGRAM_VERSION;state.settings.programStartDate=state.settings.programStartDate||isoDate(nowDate());save()}
