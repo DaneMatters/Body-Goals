@@ -20,6 +20,16 @@ you consistently undereat or underdrink — is visible at a glance instead of
 buried in daily totals. Shows "Based on N days logged" so the sample size
 is always honest; needs no setup beyond logging food and water normally.
 
+## Favorite meals
+For meals you eat close to the same way every time, the Food tab has a
+one-tap "Favorites" grid grouped by Breakfast/Lunch/Dinner/Snack — tap a
+tile and it logs instantly with that meal's saved calories/protein, no
+retyping. Variants (a lighter version, an extra egg) are just their own
+separate tiles rather than an adjustable modifier, so logging stays a
+single tap either way. EDIT FAVORITES lets you add one (name it, pick from
+a small preset emoji list, set its calories/protein) or delete one; manual
+entry below the grid still works for anything that isn't a go-to.
+
 ## Water logging
 Real amounts, not just a checkbox. Marking a "Water" schedule item done on
 Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
