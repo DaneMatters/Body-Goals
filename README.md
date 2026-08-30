@@ -12,9 +12,16 @@ Insanity, or mark a scheduled item done) clears it and the next item takes
 over the bold slot. Refreshes automatically every 30 seconds while you're
 on the tab.
 
+## Water logging
+Real amounts, not just a checkbox. Marking a "Water" schedule item done on
+Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
+its own Water card for logging outside the schedule — quick +250 mL/+500
+mL/+1 L buttons plus a custom amount — with a running total against the
+3.5 L daily baseline shown there and as a metric tile on Home.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
-- 6:00–6:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
+- 11:00–11:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
 - Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises
