@@ -22,7 +22,7 @@ is always honest; needs no setup beyond logging food and water normally.
 
 ## Favorite meals
 For meals you eat close to the same way every time, the Food tab has a
-one-tap "Favorites" grid grouped by Breakfast/Lunch/Dinner/Snack — tap a
+one-tap "Favorites" grid grouped by Breakfast/Lunch/Dinner/Snack/Shake — tap a
 tile and it logs instantly with that meal's saved calories/protein, no
 retyping. Variants (a lighter version, an extra egg) are just their own
 separate tiles rather than an adjustable modifier, so logging stays a
