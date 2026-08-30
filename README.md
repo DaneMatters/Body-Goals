@@ -2,6 +2,13 @@
 
 A standalone installable PWA rebuilt around the requested workout flow.
 
+## Stays where you left it
+The app remembers which tab you're on (Home/Workouts/Food/Progress/More)
+and restores it on the next load — a refresh, a service worker update, or
+reopening the installed app won't dump you back on Home. If you refresh
+mid-workout, it also drops you straight back into that in-progress
+session instead of the tab you'd otherwise land on.
+
 ## Home: Now/Next schedule
 The Home tab is a live daily queue, not a summary. It shows the single next
 undone thing on your day — workout, Insanity, or anything you add (meals,
