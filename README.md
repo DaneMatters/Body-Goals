@@ -19,6 +19,20 @@ Insanity, or mark a scheduled item done) clears it and the next item takes
 over the bold slot. Refreshes automatically every 30 seconds while you're
 on the tab.
 
+## Training charts and history
+Three cards on the Progress tab, inspired by FitNotes' analysis view but
+scoped down to what's actually useful day to day:
+- **Training Volume** — a line chart of total lb×reps volume per day,
+  combining your own logged workouts with the bundled historical data, with
+  1m/3m/6m/1y/all range toggles.
+- **Exercise Progress** — pick any exercise you've ever logged (from either
+  source) and see its estimated 1RM (Epley formula) plotted over time, with
+  the current estimate shown big above the chart.
+- **History** — pick any date and see everything logged that day in one
+  place: workouts, Insanity, bundled historical exercises, food, water, and
+  bodyweight. This is how you look back at a specific past day (e.g. a
+  session logged from old FitNotes data) without it being buried in a filter.
+
 ## Patterns
 A card on the Progress tab breaks your logged water and calories into six
 time-of-day buckets (Early AM through Night), averaged across every day
