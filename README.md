@@ -60,8 +60,9 @@ Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
 its own Water card for logging outside the schedule — quick +250 mL/+500
 mL/+1 L buttons plus a custom amount — with a running total against the
 3.5 L daily baseline shown there and as a metric tile on Home. Every
-water entry has a delete (✕) button on the Food tab and in History if
-one gets logged by mistake. Tapping MARK DONE (or a schedule item's
+water entry, and every food entry in Today's Entries, has a delete (✕)
+button on the Food tab and in History if one gets logged by mistake
+(e.g. a duplicate). Tapping MARK DONE (or a schedule item's
 mini checkmark) flashes it green to confirm the tap registered, and
 marking something done is a real toggle — the History day view (see
 below) lists everything checked off that day with an Undo button, so an
