@@ -19,6 +19,17 @@ Insanity, or mark a scheduled item done) clears it and the next item takes
 over the bold slot. Refreshes automatically every 30 seconds while you're
 on the tab.
 
+The whole day is anchored to whatever you mark done first (the earliest
+item on your schedule — "Wake up" by default). Before that's marked, the
+day shows at its normal scheduled times. The moment you mark it, the app
+compares when you actually did it to when it was scheduled for, and shifts
+every remaining item that day — food, water, the workout, Insanity, all of
+it — by that same gap, so the spacing between things stays intact even if
+the whole day starts late or early. A small "shifted +Xh Xm" badge next to
+UP NOW shows when this is active. It resets to normal every new day, and
+undoing that first item's completion (Progress → History → Undo) reverts
+today back to the unshifted times too.
+
 ## Training charts and history
 Three cards on the Progress tab, inspired by FitNotes' analysis view but
 scoped down to what's actually useful day to day:
