@@ -99,7 +99,11 @@ adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 - 11:00–11:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
-- Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises
+- Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises.
+  The warm-up/RIR-RPE/delete row per set is collapsed behind a small "⋯" by
+  default so a normal set is just one compact line — tap it to expand.
+  A collapsed set still shows a small WARM or RIR/RPE tag next to its number
+  if either is set, so nothing's hidden silently
 - One-tap set completion + automatic rest timer that floats fixed on screen
   (not just sticky within the top of the page) so it stays visible while
   you scroll down to whichever set you're actually working on
