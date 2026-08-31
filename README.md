@@ -96,6 +96,11 @@ adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
+- Each training day has its own accent color (a small dot next to it in
+  the Workouts tab list) that carries through into that day's session
+  screen — the header, progress bar, and FINISH button all pick it up —
+  so Chest, Legs, Shoulders, Arms, and Back each feel visually distinct
+  instead of the whole app running on one color
 - 11:00–11:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
