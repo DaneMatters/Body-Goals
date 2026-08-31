@@ -32,6 +32,9 @@ scoped down to what's actually useful day to day:
   place: workouts, Insanity, bundled historical exercises, food, water, and
   bodyweight. This is how you look back at a specific past day (e.g. a
   session logged from old FitNotes data) without it being buried in a filter.
+  A "Completed" section also lists every schedule item checked off that day
+  with an Undo button, and water entries there have a delete button too —
+  the fix for an accidental tap on Home.
 
 ## Patterns
 A card on the Progress tab breaks your logged water and calories into six
@@ -56,7 +59,13 @@ Real amounts, not just a checkbox. Marking a "Water" schedule item done on
 Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
 its own Water card for logging outside the schedule — quick +250 mL/+500
 mL/+1 L buttons plus a custom amount — with a running total against the
-3.5 L daily baseline shown there and as a metric tile on Home.
+3.5 L daily baseline shown there and as a metric tile on Home. Every
+water entry has a delete (✕) button on the Food tab and in History if
+one gets logged by mistake. Tapping MARK DONE (or a schedule item's
+mini checkmark) flashes it green to confirm the tap registered, and
+marking something done is a real toggle — the History day view (see
+below) lists everything checked off that day with an Undo button, so an
+accidental tap is always fixable, not just hidden.
 
 ## 12-week Power Bodybuilding program
 The default Mon–Fri split (Chest/Legs/Shoulders/Arms/Back) runs a 12-week
