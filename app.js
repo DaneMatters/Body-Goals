@@ -47,13 +47,18 @@ const SCHEDULE_VERSION=2;
 const PROGRAM_VERSION=2;
 const STRETCH_VIDEO_VERSION=2;
 const PROGRAM_COLOR_VERSION=1;
-const INSANITY_BACKFILL_VERSION=1;
+const INSANITY_BACKFILL_VERSION=2;
 const INSANITY_START='2026-08-17';
 const INSANITY_WEEKS=[
-  ['Fit Test','Plyometric Cardio Circuit','Cardio Power & Resistance','Pure Cardio & Cardio Abs','Cardio Recovery','Pure Cardio & Cardio Abs'],
+  ['Fit Test','Plyometric Cardio Circuit','Cardio Power & Resistance','Cardio Recovery','Pure Cardio','Plyometric Cardio Circuit'],
   ['Cardio Power & Resistance','Pure Cardio','Plyometric Cardio Circuit','Cardio Recovery','Cardio Power & Resistance','Pure Cardio & Cardio Abs'],
   ['Fit Test','Plyometric Cardio Circuit','Pure Cardio & Cardio Abs','Cardio Recovery','Cardio Power & Resistance','Plyometric Cardio Circuit'],
-  ['Pure Cardio & Cardio Abs','Cardio Power & Resistance','Plyometric Cardio Circuit','Cardio Recovery','Pure Cardio & Cardio Abs','Plyometric Cardio Circuit']
+  ['Pure Cardio & Cardio Abs','Cardio Power & Resistance','Plyometric Cardio Circuit','Cardio Recovery','Pure Cardio & Cardio Abs','Plyometric Cardio Circuit'],
+  ['Core Cardio & Balance','Core Cardio & Balance','Core Cardio & Balance','Core Cardio & Balance','Core Cardio & Balance','Core Cardio & Balance'],
+  ['Fit Test','Max Interval Plyo','Max Cardio Conditioning','Max Recovery','Max Interval Circuit','Max Interval Plyo'],
+  ['Max Cardio Conditioning','Max Interval Circuit','Max Interval Plyo','Max Recovery','Max Cardio Conditioning & Cardio Abs','Core Cardio & Balance'],
+  ['Fit Test','Max Interval Plyo','Max Cardio Conditioning & Cardio Abs','Max Recovery','Max Interval Circuit','Core Cardio & Balance'],
+  ['Max Interval Plyo','Max Cardio Conditioning & Cardio Abs','Max Interval Circuit','Core Cardio & Balance','Max Interval Plyo','Max Cardio Conditioning & Cardio Abs']
 ];
 function insanityDueFor(d){const dow=d.getDay();if(dow===0||dow===6)return null;const start=new Date(INSANITY_START+'T00:00:00');const diffDays=Math.round((new Date(isoDate(d)+'T00:00:00')-start)/86400000);if(diffDays<0)return null;const weekIdx=Math.floor(diffDays/7);const week=INSANITY_WEEKS[weekIdx];if(!week)return null;const weekday=dow-1;const cascade=week[0]==='Fit Test';const slotIdx=cascade?weekday+1:weekday;return week[slotIdx]||null}
 const DEFAULT_SCHEDULE=[
@@ -100,7 +105,7 @@ if((state.programColorVersion||0)<PROGRAM_COLOR_VERSION){Object.keys(state.progr
 if((state.insanityBackfillVersion||0)<INSANITY_BACKFILL_VERSION){
   const backfill=[
     ['2026-08-17','19:30','Plyometric Cardio Circuit'],
-    ['2026-08-21','19:30','Pure Cardio & Cardio Abs'],
+    ['2026-08-21','19:30','Plyometric Cardio Circuit'],
     ['2026-08-24','19:30','Cardio Power & Resistance'],
     ['2026-08-25','19:30','Pure Cardio'],
     ['2026-08-26','19:30','Plyometric Cardio Circuit'],
@@ -109,6 +114,8 @@ if((state.insanityBackfillVersion||0)<INSANITY_BACKFILL_VERSION){
   ];
   state.insanity=state.insanity||[];
   backfill.forEach(([date,time,name])=>{if(!state.insanity.some(x=>x.date===date))state.insanity.push({id:uid(),date,endTs:new Date(`${date}T${time}:00`).getTime(),name,duration:'completed'})});
+  const wrongAug21=state.insanity.find(x=>x.date==='2026-08-21'&&x.name==='Pure Cardio & Cardio Abs');
+  if(wrongAug21)wrongAug21.name='Plyometric Cardio Circuit';
   state.insanityBackfillVersion=INSANITY_BACKFILL_VERSION;save();
 }
 function lastPage(){try{const p=localStorage.getItem(PAGE_KEY);return PAGE_ORDER.includes(p)?p:'home'}catch{return 'home'}}

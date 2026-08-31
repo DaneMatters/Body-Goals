@@ -108,6 +108,11 @@ with the real dates/workouts already done, at 7:30 PM each, via a
 one-time additive migration that never overwrites a real logged entry
 if one already exists for that date.
 
+The bundled calendar covers the full 63-day program — Month 1 (Weeks
+1–4), Recovery Week, and all of Month 2 (Weeks 5–9) — transcribed
+directly from the official day-by-day calendar, with the Fit-Test-skip/
+cascade rule applying automatically to every Fit Test week throughout.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
