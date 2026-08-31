@@ -94,6 +94,20 @@ Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
 adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 
+## Insanity calendar
+The "7:30 PM Insanity" line (Home and Workouts) shows the actual named
+workout due that day — e.g. "Plyometric Cardio Circuit" — computed from
+the real Insanity calendar and a recorded start date, not just a generic
+"planned" placeholder. It also encodes this household's actual pattern:
+Fit Test days are skipped, cascading the rest of that week's workouts
+forward by one slot (Monday does Tuesday's workout, ..., Friday does
+Saturday's), since Saturday itself is never trained. Tapping LOG records
+that day's specific workout name, visible later in Progress → History.
+The first two weeks (before this feature existed) were backfilled once
+with the real dates/workouts already done, at 7:30 PM each, via a
+one-time additive migration that never overwrites a real logged entry
+if one already exists for that date.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
