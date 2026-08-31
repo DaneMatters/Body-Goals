@@ -101,8 +101,12 @@ the real Insanity calendar and a recorded start date, not just a generic
 "planned" placeholder. It also encodes this household's actual pattern:
 Fit Test days are skipped, cascading the rest of that week's workouts
 forward by one slot (Monday does Tuesday's workout, ..., Friday does
-Saturday's), since Saturday itself is never trained. Tapping LOG records
-that day's specific workout name, visible later in Progress → History.
+Saturday's), since Saturday itself is never trained. The LOG button is
+blue/primary so it's easy to spot. Tapping it records that day's
+specific workout name, visible later in Progress → History — an
+accidental tap is fixable via the Undo button that replaces LOG once
+logged (Workouts tab), or a delete (✕) button on any Insanity entry in
+History or the Workouts tab's Workout History list.
 The first two weeks (before this feature existed) were backfilled once
 with the real dates/workouts already done, at 7:30 PM each, via a
 one-time additive migration that never overwrites a real logged entry
