@@ -88,7 +88,12 @@ adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
 - Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises
-- One-tap set completion + automatic rest timer
+- One-tap set completion + automatic rest timer that floats fixed on screen
+  (not just sticky within the top of the page) so it stays visible while
+  you scroll down to whichever set you're actually working on
+- Optional cool-down stretch video per training day, linked at the very end
+  of the session after the last exercise — set per day from EDIT PROGRAM
+  ("Cool-down stretch video URL")
 - Autosave and Resume Workout
 - Workout timer and completion progress
 - Real FitNotes history bundled for previous-performance comparisons, blended
