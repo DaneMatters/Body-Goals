@@ -304,4 +304,5 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
   },{passive:true});
 })();
 render();
+fetch('fitnotes-history.json').then(r=>r.json()).then(data=>{window.FITNOTES_HISTORY=data;render()}).catch(()=>{});
 })();

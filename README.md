@@ -147,7 +147,9 @@ cascade rule applying automatically to every Fit Test week throughout.
 - Workout timer and completion progress
 - Real FitNotes history bundled for previous-performance comparisons, blended
   with your own in-app logged sessions so "last performance," suggestions,
-  and PR flags stay current instead of freezing at the bundled data
+  and PR flags stay current instead of freezing at the bundled data. Loads
+  as JSON in the background after the app first renders, so this ~450 KB
+  dataset never delays getting to the Home screen
 - Load/rep PR flags on newly completed work sets
 - Exercise notes and workout history
 - No post-workout review form
