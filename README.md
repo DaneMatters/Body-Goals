@@ -91,9 +91,11 @@ adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 - One-tap set completion + automatic rest timer that floats fixed on screen
   (not just sticky within the top of the page) so it stays visible while
   you scroll down to whichever set you're actually working on
-- Optional cool-down stretch video per training day, linked at the very end
-  of the session after the last exercise — set per day from EDIT PROGRAM
-  ("Cool-down stretch video URL")
+- Optional cool-down stretch video(s) per training day (Anabolic Aliens'
+  static stretching series, one per day — Arms gets both a biceps and a
+  triceps link since it trains both), linked at the very end of the session
+  after the last exercise. Add, relabel, or remove any day's videos from
+  EDIT PROGRAM ("+ Add Stretch Video")
 - Autosave and Resume Workout
 - Workout timer and completion progress
 - Real FitNotes history bundled for previous-performance comparisons, blended
