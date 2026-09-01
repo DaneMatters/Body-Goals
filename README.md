@@ -79,6 +79,13 @@ marking something done is a real toggle — the History day view (see
 below) lists everything checked off that day with an Undo button, so an
 accidental tap is always fixable, not just hidden.
 
+This stays in sync in both directions: logging water or food from the Food
+tab (the quick-add buttons, custom amount, manual entry, or a Favorites tap)
+automatically checks off the next not-yet-done Water or meal item on Home's
+schedule too, timestamped to when you actually logged it — not whenever you
+happen to next open Home. No more mismatch between when you actually ate or
+drank and when the to-do list says you did.
+
 ## 12-week Power Bodybuilding program
 The default Mon–Fri split (Chest/Legs/Shoulders/Arms/Back) runs a 12-week
 %1RM-based progression on the three main lifts — Incline Barbell Bench
