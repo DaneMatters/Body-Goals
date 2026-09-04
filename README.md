@@ -131,7 +131,7 @@ cascade rule applying automatically to every Fit Test week throughout.
   screen — the header, progress bar, and FINISH button all pick it up —
   so Chest, Legs, Shoulders, Arms, and Back each feel visually distinct
   instead of the whole app running on one color
-- 11:00–11:45 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
+- 7:30–8:15 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
 - Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises.
