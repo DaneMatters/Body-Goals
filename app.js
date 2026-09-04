@@ -11,24 +11,24 @@ const PHASE_REPS=[4,3,2];
 const PHASE_PCT=[0.70,0.80,0.90];
 // Day/feature accent colors must never be a red — red is reserved for danger (.btn.danger, .mini-toggle.danger) and the rest-timer banner.
 const DEFAULT_PROGRAM={
-  1:{name:'Chest',time:'11:00 AM',color:'#4aa3ff',stretchVideos:[{label:'Chest',url:'https://youtu.be/aR-u_PRGZkY?si=VurvAhNY3MIZAzu2'}],exercises:[
+  1:{name:'Chest',time:'7:30 AM',color:'#4aa3ff',stretchVideos:[{label:'Chest',url:'https://youtu.be/aR-u_PRGZkY?si=VurvAhNY3MIZAzu2'}],exercises:[
     {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:145,step:5,rest:150},
     {name:'Flat Dumbbell Bench Press',history:['Flat Dumbbell Bench Press'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Incline Dumbbell Fly',history:['Incline Dumbbell Fly'],sets:3,min:8,max:10,step:5,rest:75}
   ]},
-  2:{name:'Legs',time:'11:00 AM',color:'#22c3a6',stretchVideos:[{label:'Legs',url:'https://www.youtube.com/watch?v=425X5y4yzvY'}],exercises:[
+  2:{name:'Legs',time:'7:30 AM',color:'#22c3a6',stretchVideos:[{label:'Legs',url:'https://www.youtube.com/watch?v=425X5y4yzvY'}],exercises:[
     {name:'Barbell Back Squat',history:['Barbell Squat'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:155,step:10,rest:150},
     {name:'Leg Press',history:['Leg Press'],sets:5,min:10,max:10,step:10,rest:90},
     {name:'Leg Extension',history:['Leg Extension'],sets:3,min:8,max:8,step:5,rest:75}
   ]},
-  3:{name:'Shoulders',time:'11:00 AM',color:'#b98cff',stretchVideos:[{label:'Shoulders',url:'https://www.youtube.com/watch?v=qLsgIzQ8_eQ'}],exercises:[
+  3:{name:'Shoulders',time:'7:30 AM',color:'#b98cff',stretchVideos:[{label:'Shoulders',url:'https://www.youtube.com/watch?v=qLsgIzQ8_eQ'}],exercises:[
     {name:'Standing Barbell Military Press',history:['Standing Military Press','Overhead Press'],sets:3,min:8,max:8,step:5,rest:90},
     {name:'Wide-Grip Upright Barbell Row',history:['Wide-Grip Upright Barbell Row'],sets:3,min:8,max:8,step:5,rest:75},
     {name:'Standing Dumbbell Upright Row',history:['Standing Dumbbell Upright Row'],sets:3,min:8,max:8,step:5,rest:75},
     {name:'Dumbbell Lateral Raise',history:['Lateral Dumbbell Raise','Seated Dumbbell Lateral Raise'],sets:4,min:12,max:12,step:5,rest:60},
     {name:'Seated Bent-Over Rear-Delt Raise',history:['Seated Bent Over Rear Delt Raise'],sets:4,min:12,max:12,step:5,rest:60}
   ]},
-  4:{name:'Arms',time:'11:00 AM',color:'#ff8a3d',stretchVideos:[{label:'Biceps',url:'https://www.youtube.com/watch?v=Xm6rif0Crcg'},{label:'Triceps',url:'https://www.youtube.com/watch?v=03XyeYNxOSc'}],exercises:[
+  4:{name:'Arms',time:'7:30 AM',color:'#ff8a3d',stretchVideos:[{label:'Biceps',url:'https://www.youtube.com/watch?v=Xm6rif0Crcg'},{label:'Triceps',url:'https://www.youtube.com/watch?v=03XyeYNxOSc'}],exercises:[
     {name:'Barbell Curl',history:['Barbell Curl'],sets:3,min:8,max:12,step:5,rest:75},
     {name:'Seated Dumbbell Curl',history:['Seated Dumbbell Curl'],sets:3,min:8,max:12,step:5,rest:75},
     {name:'Preacher Curl',history:['Barbell Preacher Curl'],sets:3,min:8,max:12,step:5,rest:75},
@@ -36,7 +36,7 @@ const DEFAULT_PROGRAM={
     {name:'Triceps Pushdown',history:['Rope Push Down'],sets:4,min:8,max:12,step:5,rest:75},
     {name:'Incline Dumbbell Triceps Extension',history:['Dumbbell Incline Tricep Extension'],sets:4,min:8,max:12,step:5,rest:75}
   ]},
-  5:{name:'Back',time:'11:00 AM',color:'#ff5c8a',stretchVideos:[{label:'Back',url:'https://www.youtube.com/watch?v=DrkBSODtE5s'}],exercises:[
+  5:{name:'Back',time:'7:30 AM',color:'#ff5c8a',stretchVideos:[{label:'Back',url:'https://www.youtube.com/watch?v=DrkBSODtE5s'}],exercises:[
     {name:'Barbell Deadlift',history:['Barbell Deadlift','Deadlift'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:190,step:10,rest:180},
     {name:'One-Arm Dumbbell Row',history:['Dumbbell Row'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Wide-Grip Lat Pulldown',history:['Lat Pulldown'],sets:3,min:8,max:8,step:5,rest:75}
@@ -51,8 +51,9 @@ const SUBSTITUTE_POOL={
   Back:['Barbell Row','Lat Pulldown','Seated Cable Row','One-Arm Dumbbell Row','Pull-Ups','T-Bar Row']
 };
 const WEEK_ORDER=[1,2,3,4,5,6,0];
-const SCHEDULE_VERSION=2;
+const SCHEDULE_VERSION=3;
 const PROGRAM_VERSION=2;
+const PROGRAM_TIME_VERSION=1;
 const STRETCH_VIDEO_VERSION=2;
 const PROGRAM_COLOR_VERSION=1;
 const INSANITY_BACKFILL_VERSION=2;
@@ -72,25 +73,23 @@ function insanityDueFor(d){const dow=d.getDay();if(dow===0||dow===6)return null;
 const DEFAULT_SCHEDULE=[
   {name:'Wake up',time:'05:00',type:'other'},
   {name:'Water — Bottle #1 (500 mL)',time:'05:00',type:'water'},
-  {name:'Full Breakfast — 700–850 cal • 30–40p • 70–90c • 20–30f (eggs, potatoes/hash browns, toast, fruit)',time:'07:00',type:'meal'},
-  {name:'Water — Bottle #2',time:'07:00',type:'water'},
-  {name:'Pre-Gym Snack — 250–350 cal • 10–20p • 30–45c • low/moderate fat (banana, yogurt, granola, toast)',time:'09:30',type:'meal'},
-  {name:'Water — Bottle #3',time:'09:30',type:'water'},
-  {name:'Big Post-Gym Lunch — 750–900 cal • 35–45p • 90–120c • 20–30f (rice/pasta/potatoes, protein, vegetables)',time:'12:00',type:'meal'},
-  {name:'Water — Bottle #4',time:'12:00',type:'water'},
-  {name:'Meal/Snack — 400–550 cal • 20–30p • 50–70c • 15–25f (sandwich/wrap, leftovers, yogurt + granola)',time:'15:30',type:'meal'},
+  {name:'Pre-Gym Shake — 500–550 cal • 30–35p • 60–75c • 10–15f (protein + carb shake before training)',time:'06:00',type:'meal'},
+  {name:'Water — Bottle #2',time:'06:00',type:'water'},
+  {name:'Breakfast — 1,000–1,100 cal • 45–50p • 120–150c • 20–30f (post-gym refuel: eggs, potatoes/hash browns, toast, fruit)',time:'09:00',type:'meal'},
+  {name:'Water — Bottle #3',time:'09:00',type:'water'},
+  {name:'Lunch — 1,000–1,100 cal • 35–45p • 180–220c • 20–30f (carb-focused: rice/pasta/potatoes, protein, vegetables)',time:'12:30',type:'meal'},
+  {name:'Water — Bottle #4',time:'12:30',type:'water'},
   {name:'Water — Bottle #5',time:'15:30',type:'water'},
-  {name:'Pre-Insanity Meal — 450–600 cal • 20–30p • 60–90c • 10–20f (carb-focused, easy to digest)',time:'17:30',type:'meal'},
-  {name:'Water — Bottle #6',time:'17:30',type:'water'},
-  {name:'Post-Workout Dinner — 600–750 cal • 30–40p • 70–100c • 15–25f (carbs + protein + vegetables)',time:'20:30',type:'meal'},
-  {name:'Water — Bottle #7',time:'20:30',type:'water'},
-  {name:"Shake if still needed — adjust to remaining calories, don't pad it just because it's scheduled (usually 300–600 cal • 25–35p • 40–70c • 10–20f)",time:'22:30',type:'meal'},
-  {name:'Bed / recovery',time:'23:00',type:'other'}
+  {name:'Dinner — 900–1,000 cal • 55–65p • 90–110c • 20–30f (protein + carbs + vegetables)',time:'18:30',type:'meal'},
+  {name:'Water — Bottle #6',time:'18:30',type:'water'},
+  {name:"Night Shake — 500–600 cal • 30–40p • 60–80c • 10–15f (adjust to remaining calories, don't pad it just because it's scheduled)",time:'21:00',type:'meal'},
+  {name:'Water — Bottle #7',time:'21:00',type:'water'},
+  {name:'Bed / recovery',time:'22:30',type:'other'}
 ];
 const DAILY_TARGETS=[
-  ['Calories','3,500–4,000'],
+  ['Calories','4,200–4,600'],
   ['Protein','170–200 g'],
-  ['Carbs','400–500 g'],
+  ['Carbs','450–635 g'],
   ['Fat','90–120 g'],
   ['Water','7 bottles = 3.5 L baseline (+ extra for heavy sweating)']
 ];
@@ -110,6 +109,7 @@ if((state.scheduleVersion||0)<SCHEDULE_VERSION){state.schedule=deep(DEFAULT_SCHE
 if((state.programVersion||0)<PROGRAM_VERSION){state.program=deep(DEFAULT_PROGRAM);state.programVersion=PROGRAM_VERSION;state.settings.programStartDate=state.settings.programStartDate||isoDate(nowDate());save()}
 if((state.stretchVideoVersion||0)<STRETCH_VIDEO_VERSION){Object.keys(state.program).forEach(day=>{const x=state.program[day];if(x.stretchVideo&&!(x.stretchVideos&&x.stretchVideos.length)){x.stretchVideos=[{label:x.name,url:x.stretchVideo}]}delete x.stretchVideo;const def=DEFAULT_PROGRAM[day];if(def&&def.stretchVideos&&!(x.stretchVideos&&x.stretchVideos.length))x.stretchVideos=deep(def.stretchVideos)});state.stretchVideoVersion=STRETCH_VIDEO_VERSION;save()}
 if((state.programColorVersion||0)<PROGRAM_COLOR_VERSION){Object.keys(state.program).forEach(day=>{const x=state.program[day],def=DEFAULT_PROGRAM[day];if(!x.color)x.color=(def&&def.color)||'#4aa3ff'});state.programColorVersion=PROGRAM_COLOR_VERSION;save()}
+if((state.programTimeVersion||0)<PROGRAM_TIME_VERSION){Object.keys(state.program).forEach(day=>{if(state.program[day].time==='11:00 AM')state.program[day].time='7:30 AM'});state.programTimeVersion=PROGRAM_TIME_VERSION;save()}
 if((state.insanityBackfillVersion||0)<INSANITY_BACKFILL_VERSION){
   const backfill=[
     ['2026-08-17','19:30','Plyometric Cardio Circuit'],
@@ -153,7 +153,7 @@ function todaysEvents(){
   if(d.getDay()>=1&&d.getDay()<=5){const baseMin=parseTimeStr('7:30 PM'),min=baseMin+offset;items.push({id:'insanity',name:insanityDueFor(d)||'Insanity Cardio',time:fmtTime12(min),min,done:state.insanity.some(x=>x.date===iso)})}
   schedBase.forEach(({s,baseMin})=>{
     let name=s.name;
-    if(isWeekend){if(name.startsWith('Pre-Insanity Meal'))name=name.replace('Pre-Insanity Meal','Meal');else if(name.startsWith('Post-Workout Dinner'))name=name.replace('Post-Workout Dinner','Dinner')}
+    if(isWeekend&&name.startsWith('Pre-Gym Shake'))name=name.replace('Pre-Gym Shake','Shake')
     const min=s.id===anchorId?baseMin:baseMin+offset;
     items.push({id:'sched:'+s.id,name,type:s.type,time:fmtTime12(min),min,done:(state.scheduleLog||[]).some(l=>l.scheduleId===s.id&&l.date===iso)});
   });
@@ -198,7 +198,7 @@ function workoutsPage(){const d=nowDate(),p=state.program[d.getDay()],isWeekday=
 function programViewHTML(d){const days=progDays();const phaseIdx=currentPhaseIdx(),week=currentWeekNum();return `<div class="muted" style="margin-bottom:8px">Week ${week} • Phase ${phaseIdx+1}/${PHASE_REPS.length} (${Math.round(PHASE_PCT[phaseIdx]*100)}% 1RM on main lifts). Tap a day to see it, or EDIT to add, remove or change your workout days.</div>${days.length?days.map(day=>{const x=state.program[day];return `<details class="program-day" data-day="${day}" ${day===d.getDay()?'open':''}><summary><span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${esc(x.color||'#4aa3ff')};margin-right:8px"></span>${DAYN[day]} • ${esc(x.name)}</span><span>⌄</span></summary>${x.exercises.length?x.exercises.map(e=>{const min=e.phased?e.reps[phaseIdx]:e.min,max=e.phased?e.reps[phaseIdx]:e.max,pctLabel=e.phased?` @ ${Math.round(e.pct[phaseIdx]*100)}%`:'';return `<div class="exercise-preview row between"><span>${esc(e.name)}${e.phased?' <span class="badge">PHASED</span>':''}</span><b>${e.sets} × ${min===max?min:`${min}-${max}`}${pctLabel}</b></div>`}).join(''):'<div class="exercise-preview muted">No exercises yet — tap EDIT to add some.</div>'}${x.exercises.length?`<button class="btn small ghost full" style="margin-top:10px" data-start-day="${day}">${state.activeWorkout?'RESUME WORKOUT':'START / LOG THIS WORKOUT'}</button>`:''}</details>`}).join(''):'<div class="history-empty">No workout days yet. Tap EDIT to build your program.</div>'}`}
 function programEditHTML(){const days=progDays();const phaseIdx=currentPhaseIdx();return `${days.map(day=>{const x=state.program[day];return `<div class="program-day" data-pday="${day}"><div class="row between gap"><input class="field" data-pname="${day}" value="${esc(x.name)}" placeholder="Day name"><button class="btn small danger" data-pdel-day="${day}">Delete</button></div><div class="muted" style="margin:8px 0 4px">${DAYN[day]}</div><div class="subtle" style="margin-top:6px">COOL-DOWN STRETCH VIDEOS</div>${(x.stretchVideos||[]).map((v,vi)=>`<div style="display:grid;grid-template-columns:90px 1fr 34px;gap:6px;margin-top:6px"><input class="field" data-pstretchlabel="${day}|${vi}" value="${esc(v.label||'')}" placeholder="Label"><input class="field" data-pstretchurl="${day}|${vi}" value="${esc(v.url||'')}" placeholder="Video URL"><button class="btn small danger" data-pstretchdel="${day}|${vi}">✕</button></div>`).join('')}<button class="btn small ghost full" style="margin-top:6px;margin-bottom:10px" data-pstretchadd="${day}">+ Add Stretch Video</button>${x.exercises.map((e,i)=>e.phased?`<div style="border-top:1px solid #242424;padding:10px 0"><input class="field" data-pexname="${day}|${i}" value="${esc(e.name)}" placeholder="Exercise name"><div style="display:grid;grid-template-columns:1fr 1fr 40px;gap:8px;margin-top:8px"><div class="set-head">SETS</div><div class="set-head">1RM (LB)</div><div class="set-head"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 40px;gap:8px;margin-top:2px"><input class="field" type="number" min="1" data-pexsets="${day}|${i}" value="${e.sets}"><input class="field" type="number" min="0" step="5" data-pex1rm="${day}|${i}" value="${e.oneRM||0}"><button class="btn small danger" data-pdel-ex="${day}|${i}">✕</button></div><div class="subtle" style="margin-top:6px">Phased lift — reps/% are auto-set by the 12-week program (currently ${PHASE_REPS[phaseIdx]} reps @ ${Math.round(PHASE_PCT[phaseIdx]*100)}% of 1RM)</div></div>`:`<div style="border-top:1px solid #242424;padding:10px 0"><input class="field" data-pexname="${day}|${i}" value="${esc(e.name)}" placeholder="Exercise name"><div style="display:grid;grid-template-columns:1fr 1fr 1fr 40px;gap:8px;margin-top:8px"><div class="set-head">SETS</div><div class="set-head">MIN REPS</div><div class="set-head">MAX REPS</div><div class="set-head"></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr 40px;gap:8px;margin-top:2px"><input class="field" type="number" min="1" data-pexsets="${day}|${i}" value="${e.sets}"><input class="field" type="number" min="0" data-pexmin="${day}|${i}" value="${e.min}"><input class="field" type="number" min="0" data-pexmax="${day}|${i}" value="${e.max}"><button class="btn small danger" data-pdel-ex="${day}|${i}">✕</button></div></div>`).join('')||'<div class="muted" style="padding:8px 0">No exercises yet.</div>'}<button class="btn small ghost full" style="margin-top:10px" data-padd-ex="${day}">+ Add Exercise</button></div>`}).join('')}<button class="btn ghost full" style="margin-top:14px" data-padd-day>+ Add Day</button>`}
 function addProgramExercise(day){state.program[day].exercises.push({name:'New Exercise',history:['New Exercise'],sets:3,min:10,max:10,step:5,rest:90});save();render()}
-function addProgramDayModal(){const used=Object.keys(state.program).map(Number);const avail=WEEK_ORDER.filter(x=>!used.includes(x));if(!avail.length){toast('All 7 days already have a workout.');return}const overlay=document.createElement('div');overlay.className='modal';overlay.innerHTML=`<div class="modal-card"><div class="row between"><div class="modal-title">Add Day</div><button class="btn small ghost" data-close>Close</button></div><div class="choice-list">${avail.map(x=>`<button class="btn ghost" data-day-choice="${x}">${DAYN[x]}</button>`).join('')}</div></div>`;document.body.appendChild(overlay);overlay.querySelector('[data-close]').onclick=()=>overlay.remove();overlay.querySelectorAll('[data-day-choice]').forEach(b=>b.onclick=()=>{const day=+b.dataset.dayChoice;const name=prompt('Name this day (e.g. Push, Pull, Legs)')||'New Day';state.program[day]={name,time:'11:00 AM',exercises:[]};save();overlay.remove();render()})}
+function addProgramDayModal(){const used=Object.keys(state.program).map(Number);const avail=WEEK_ORDER.filter(x=>!used.includes(x));if(!avail.length){toast('All 7 days already have a workout.');return}const overlay=document.createElement('div');overlay.className='modal';overlay.innerHTML=`<div class="modal-card"><div class="row between"><div class="modal-title">Add Day</div><button class="btn small ghost" data-close>Close</button></div><div class="choice-list">${avail.map(x=>`<button class="btn ghost" data-day-choice="${x}">${DAYN[x]}</button>`).join('')}</div></div>`;document.body.appendChild(overlay);overlay.querySelector('[data-close]').onclick=()=>overlay.remove();overlay.querySelectorAll('[data-day-choice]').forEach(b=>b.onclick=()=>{const day=+b.dataset.dayChoice;const name=prompt('Name this day (e.g. Push, Pull, Legs)')||'New Day';state.program[day]={name,time:'7:30 AM',exercises:[]};save();overlay.remove();render()})}
 function historySection(){let all=[...state.workouts.map(w=>({...w,kind:'strength'})),...state.insanity.map(w=>({...w,kind:'insanity'}))].sort((a,b)=>(b.endTs||0)-(a.endTs||0));if(ui.historyFilter!=='all')all=all.filter(x=>x.kind===ui.historyFilter);return `<div class="tabs"><button class="tab ${ui.historyFilter==='all'?'active':''}" data-hf="all">All Workouts</button><button class="tab ${ui.historyFilter==='strength'?'active':''}" data-hf="strength">Strength</button><button class="tab ${ui.historyFilter==='insanity'?'active':''}" data-hf="insanity">Insanity</button><button class="tab ${ui.historyFilter==='other'?'active':''}" data-hf="other">Other</button></div><div class="card"><div class="row between"><div class="section-title">WORKOUT HISTORY</div><button class="btn small ghost" data-add-workout>+ Add Workout</button></div>${all.length?all.slice(0,40).map(w=>historyItem(w)).join(''):`<div class="history-empty">No logged workouts in this filter yet.<br><span class="subtle">Historical FitNotes data powers exercise comparisons without creating fake current-app workouts.</span></div>`}</div>`}
 function historyItem(w){if(w.kind==='insanity')return `<div class="history-item"><div class="row between"><div><div class="history-name">${esc(w.name||'Insanity')}</div><div class="muted">${w.date} • ${w.duration||'completed'}</div></div><span class="row gap"><span class="badge">CARDIO</span><button class="mini-toggle danger" data-insanity-del="${w.id}">✕</button></span></div></div>`;const sets=w.exercises?.reduce((n,e)=>n+e.sets.filter(s=>s.done&&!s.warmup).length,0)||0;const vol=w.exercises?.reduce((n,e)=>n+e.sets.filter(s=>s.done&&!s.warmup).reduce((a,s)=>a+(+s.weight||0)*(+s.reps||0),0),0)||0;return `<div class="history-item" data-history-id="${w.id}"><div class="row between"><div><div class="history-name">${esc(w.name)}</div><div class="muted">${w.date} • ${sets} work sets</div></div><div style="text-align:right"><span class="badge">${Math.round(vol).toLocaleString()} lb vol</span></div></div></div>`}
 function favoritesViewHTML(){const favs=state.favorites||[];if(!favs.length)return '<div class="muted" style="margin:8px 0 4px">No favorites yet — tap EDIT FAVORITES to add your go-to meals.</div>';return FAVORITE_CATEGORIES.filter(cat=>favs.some(f=>f.category===cat)).map(cat=>`<div class="subtle" style="margin-top:10px">${cat.toUpperCase()}</div><div class="row gap wrap" style="margin-top:6px">${favs.filter(f=>f.category===cat).map(f=>`<button class="btn ghost" data-log-fav="${f.id}">${f.emoji} ${esc(f.name)}</button>`).join('')}</div>`).join('')}
