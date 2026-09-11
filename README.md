@@ -128,6 +128,21 @@ The bundled calendar covers the full 63-day program — Month 1 (Weeks
 directly from the official day-by-day calendar, with the Fit-Test-skip/
 cascade rule applying automatically to every Fit Test week throughout.
 
+## Tapped FINISH too early
+Any finished workout can be reopened and completed — nothing is locked once
+it's saved. The summary that pops up the moment you finish (and the same
+summary reached later from Workout History, or Progress → History) has a
+"+ REOPEN & ADD SETS" button that drops the workout straight back into the
+live session screen with everything you already logged still checked off.
+Finish the sets you missed and hit FINISH again. It files back as the same
+workout — original date kept, time added onto the original duration — rather
+than a second entry, so volume and 1RM charts stay honest. Reopening is
+refused (with a reason) if a different workout is already in progress, so a
+live session can never be clobbered.
+
+FINISH also guards against the mistake in the first place: if any work sets
+are still unchecked, it asks before saving and tells you how many.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
