@@ -12,17 +12,17 @@ const PHASE_PCT=[0.70,0.80,0.90];
 // Day/feature accent colors must never be a red — red is reserved for danger (.btn.danger, .mini-toggle.danger) and the rest-timer banner.
 const DEFAULT_PROGRAM={
   1:{name:'Chest',time:'7:30 AM',color:'#4aa3ff',stretchVideos:[{label:'Chest',url:'https://youtu.be/aR-u_PRGZkY?si=VurvAhNY3MIZAzu2'}],exercises:[
-    {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:145,step:5,rest:150},
+    {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:145,step:5,rest:180,warmupSets:2},
     {name:'Flat Dumbbell Bench Press',history:['Flat Dumbbell Bench Press'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Incline Dumbbell Fly',history:['Incline Dumbbell Fly'],sets:3,min:8,max:10,step:5,rest:75}
   ]},
   2:{name:'Legs',time:'7:30 AM',color:'#22c3a6',stretchVideos:[{label:'Legs',url:'https://www.youtube.com/watch?v=425X5y4yzvY'}],exercises:[
-    {name:'Barbell Back Squat',history:['Barbell Squat'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:155,step:10,rest:150},
+    {name:'Barbell Back Squat',history:['Barbell Squat'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:155,step:10,rest:180,warmupSets:2},
     {name:'Leg Press',history:['Leg Press'],sets:5,min:10,max:10,step:10,rest:90},
     {name:'Leg Extension',history:['Leg Extension'],sets:3,min:8,max:8,step:5,rest:75}
   ]},
   3:{name:'Shoulders',time:'7:30 AM',color:'#b98cff',stretchVideos:[{label:'Shoulders',url:'https://www.youtube.com/watch?v=qLsgIzQ8_eQ'}],exercises:[
-    {name:'Standing Barbell Military Press',history:['Standing Military Press','Overhead Press'],sets:3,min:8,max:8,step:5,rest:90},
+    {name:'Standing Barbell Military Press',history:['Standing Military Press','Overhead Press'],sets:5,min:4,max:4,step:5,rest:90},
     {name:'Wide-Grip Upright Barbell Row',history:['Wide-Grip Upright Barbell Row'],sets:3,min:8,max:8,step:5,rest:75},
     {name:'Standing Dumbbell Upright Row',history:['Standing Dumbbell Upright Row'],sets:3,min:8,max:8,step:5,rest:75},
     {name:'Dumbbell Lateral Raise',history:['Lateral Dumbbell Raise','Seated Dumbbell Lateral Raise'],sets:4,min:12,max:12,step:5,rest:60},
@@ -37,7 +37,7 @@ const DEFAULT_PROGRAM={
     {name:'Incline Dumbbell Triceps Extension',history:['Dumbbell Incline Tricep Extension'],sets:4,min:8,max:12,step:5,rest:75}
   ]},
   5:{name:'Back',time:'7:30 AM',color:'#ff5c8a',stretchVideos:[{label:'Back',url:'https://www.youtube.com/watch?v=DrkBSODtE5s'}],exercises:[
-    {name:'Barbell Deadlift',history:['Barbell Deadlift','Deadlift'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:190,step:10,rest:180},
+    {name:'Barbell Deadlift',history:['Barbell Deadlift','Deadlift'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:190,step:10,rest:180,warmupSets:2},
     {name:'One-Arm Dumbbell Row',history:['Dumbbell Row'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Wide-Grip Lat Pulldown',history:['Lat Pulldown'],sets:3,min:8,max:8,step:5,rest:75}
   ]}
@@ -56,6 +56,7 @@ const PROGRAM_VERSION=2;
 const PROGRAM_TIME_VERSION=1;
 const STRETCH_VIDEO_VERSION=2;
 const PROGRAM_COLOR_VERSION=1;
+const PROGRAM_V3_FIX_VERSION=1;
 const INSANITY_BACKFILL_VERSION=2;
 const INSANITY_START='2026-08-17';
 const INSANITY_WEEKS=[
@@ -110,6 +111,14 @@ if((state.programVersion||0)<PROGRAM_VERSION){state.program=deep(DEFAULT_PROGRAM
 if((state.stretchVideoVersion||0)<STRETCH_VIDEO_VERSION){Object.keys(state.program).forEach(day=>{const x=state.program[day];if(x.stretchVideo&&!(x.stretchVideos&&x.stretchVideos.length)){x.stretchVideos=[{label:x.name,url:x.stretchVideo}]}delete x.stretchVideo;const def=DEFAULT_PROGRAM[day];if(def&&def.stretchVideos&&!(x.stretchVideos&&x.stretchVideos.length))x.stretchVideos=deep(def.stretchVideos)});state.stretchVideoVersion=STRETCH_VIDEO_VERSION;save()}
 if((state.programColorVersion||0)<PROGRAM_COLOR_VERSION){Object.keys(state.program).forEach(day=>{const x=state.program[day],def=DEFAULT_PROGRAM[day];if(!x.color)x.color=(def&&def.color)||'#4aa3ff'});state.programColorVersion=PROGRAM_COLOR_VERSION;save()}
 if((state.programTimeVersion||0)<PROGRAM_TIME_VERSION){Object.keys(state.program).forEach(day=>{if(state.program[day].time==='11:00 AM')state.program[day].time='7:30 AM'});state.programTimeVersion=PROGRAM_TIME_VERSION;save()}
+if((state.programV3FixVersion||0)<PROGRAM_V3_FIX_VERSION){
+  Object.values(state.program).forEach(day=>(day.exercises||[]).forEach(ex=>{
+    if((ex.name==='Incline Barbell Bench Press'||ex.name==='Barbell Back Squat'||ex.name==='Barbell Deadlift')&&ex.warmupSets==null)ex.warmupSets=2;
+    if((ex.name==='Incline Barbell Bench Press'||ex.name==='Barbell Back Squat')&&ex.rest===150)ex.rest=180;
+    if(ex.name==='Standing Barbell Military Press'&&ex.sets===3&&ex.min===8&&ex.max===8){ex.sets=5;ex.min=4;ex.max=4}
+  }));
+  state.programV3FixVersion=PROGRAM_V3_FIX_VERSION;save()
+}
 if((state.insanityBackfillVersion||0)<INSANITY_BACKFILL_VERSION){
   const backfill=[
     ['2026-08-17','19:30','Plyometric Cardio Circuit'],
@@ -177,7 +186,8 @@ function startWorkout(day){
   if(state.activeWorkout){ui.session=state.activeWorkout;renderSession();return}
   const d=nowDate(), useDay=day!=null?day:d.getDay(), p=state.program[useDay]; if(!p){toast('No plan for that day yet.');return} if(!p.exercises.length){toast('Add exercises to this plan first (Edit Program).');return}
   const phaseIdx=currentPhaseIdx();
-  const exercises=p.exercises.map(e=>{const min=e.phased?e.reps[phaseIdx]:e.min,max=e.phased?e.reps[phaseIdx]:e.max,pct=e.phased?e.pct[phaseIdx]:null;const last=latestHist(e);const lastWork=last?last.sets.filter(s=>s.weight!=null||s.reps!=null):[];const pctWeight=pct&&e.oneRM?Math.round(e.oneRM*pct/5)*5:0;const seedWeight=pctWeight||(lastWork.length?lastWork[lastWork.length-1].weight||0:0);return {id:uid(),name:e.name,history:e.history,planned:{sets:e.sets,min,max},pct,oneRM:e.oneRM||0,step:e.step||5,rest:e.rest||90,notes:'',skipped:false,sets:Array.from({length:e.sets},(_,i)=>({id:uid(),weight:seedWeight||0,reps:min,warmup:false,effort:'',done:false}))}});
+  const WARMUP_PCTS=[0.5,0.7,0.85];
+  const exercises=p.exercises.map(e=>{const min=e.phased?e.reps[phaseIdx]:e.min,max=e.phased?e.reps[phaseIdx]:e.max,pct=e.phased?e.pct[phaseIdx]:null;const last=latestHist(e);const lastWork=last?last.sets.filter(s=>s.weight!=null||s.reps!=null):[];const pctWeight=pct&&e.oneRM?Math.round(e.oneRM*pct/5)*5:0;const seedWeight=pctWeight||(lastWork.length?lastWork[lastWork.length-1].weight||0:0);const step=e.step||5;const warmupSets=(e.warmupSets?WARMUP_PCTS.slice(0,e.warmupSets):[]).map(wp=>({id:uid(),weight:seedWeight?Math.round((seedWeight*wp)/step)*step:0,reps:min,warmup:true,effort:'',done:false}));const workSets=Array.from({length:e.sets},(_,i)=>({id:uid(),weight:seedWeight||0,reps:min,warmup:false,effort:'',done:false}));return {id:uid(),name:e.name,history:e.history,planned:{sets:e.sets,min,max},pct,oneRM:e.oneRM||0,step,rest:e.rest||90,notes:'',skipped:false,sets:[...warmupSets,...workSets]}});
   state.activeWorkout={id:uid(),type:'strength',date:isoDate(d),name:p.name,color:p.color||'#4aa3ff',stretchVideos:p.stretchVideos||[],startTs:Date.now(),exercises};save();ui.session=state.activeWorkout;renderSession();
 }
 function render(){ if(ui.session){renderSession();return} const app=document.getElementById('app');app.innerHTML=`<div class="app-shell"><header class="topbar"><div class="brand">BODY <span>GOALS</span></div><div class="tagline">DISCIPLINE. CONSISTENCY. RESULTS.</div></header><main id="main"></main>${nav()}</div>`; document.getElementById('main').innerHTML=pageHTML();bindCommon();if(ui.page==='home'&&!ui.editingSchedule){if(!homeTimer)homeTimer=setInterval(()=>{if(ui.page==='home'&&!ui.session&&!ui.editingSchedule)render();else{clearInterval(homeTimer);homeTimer=null}},30000)}else if(homeTimer){clearInterval(homeTimer);homeTimer=null}}

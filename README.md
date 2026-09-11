@@ -95,7 +95,11 @@ reps and load intensity change every 4-week phase: Weeks 1–4 are 5×4 @
 program start date recorded the first time this version loads. Enter each
 lift's 1RM from the Workouts tab (EDIT PROGRAM) to get an actual target
 weight and phase countdown; accessory exercises for every day keep fixed
-sets/reps and are unaffected by phasing. No cardio progression is bundled
+sets/reps and are unaffected by phasing. The three main lifts each
+pre-populate 2 warm-up sets (ramping to roughly 50%/70% of that day's
+work weight) ahead of the working sets, and rest between their heavy
+sets is 3 minutes, matching the source program. Standing Barbell
+Military Press on Shoulders day runs 5×4. No cardio progression is bundled
 with this program — Insanity is logged separately as its own schedule item.
 Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
