@@ -123,6 +123,17 @@ with the real dates/workouts already done, at 7:30 PM each, via a
 one-time additive migration that never overwrites a real logged entry
 if one already exists for that date.
 
+Forgetting to tap LOG no longer costs you the record. Any past scheduled
+Insanity day with no entry is counted as outstanding, and the Workouts tab
+shows a "N past Insanity days not logged — CATCH UP" prompt when there are
+any. CATCH UP lists each one with the workout that was actually due that day,
+every day ticked by default; untick anything you genuinely skipped and log
+the rest in one tap, stamped 7:30 PM. Today is deliberately never included,
+since the 7:30 PM session may not have happened yet — that stays the normal
+LOG button. A one-time migration also caught up everything outstanding from
+the program start through yesterday, additively, so no day that was already
+logged had its entry or its name touched.
+
 The bundled calendar covers the full 63-day program — Month 1 (Weeks
 1–4), Recovery Week, and all of Month 2 (Weeks 5–9) — transcribed
 directly from the official day-by-day calendar, with the Fit-Test-skip/
