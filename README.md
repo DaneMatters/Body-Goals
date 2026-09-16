@@ -125,6 +125,43 @@ Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
 adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 
+## Multiple programs
+More than one full program can be saved at once, and only one is ever
+"loaded" and active — the one the Workouts tab actually shows and starts
+sessions from. A PROGRAMS card above YOUR PROGRAM lists every saved
+program with the active one marked, LOAD to switch into any other one,
+a pencil to rename it, and a delete button on the inactive ones (the
+active program can't be deleted — switch away first). Two programs come
+bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
+default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
+Tuesday through Monday-Thursday-Friday, incline bench and standing
+overhead press as the main upper lifts, back squat/Zercher squat and a
+straight 5×5 conventional deadlift on the lower days. + NEW creates a
+blank program and drops you straight into EDIT mode to build it out
+with the same Add Day/Add Exercise tools used everywhere else — there's
+no separate "custom program" flow, building your own program from
+scratch already looked like this.
+
+Switching programs is a swap, not a merge: whichever program is active
+owns "the program" everywhere in the app (EDIT PROGRAM, the Home
+schedule's workout line, badges' Phase-Complete conditions) exactly like
+before this feature existed. Editing the active program and switching
+away saves those edits back into that program's own saved slot before
+the new one loads, so nothing is lost either direction. A program's
+first activation stamps today as its own start date — switching to a
+program you've already run before picks its original start date back
+up, so its week/month count keeps going rather than resetting.
+
+Exercises that are genuinely the same lift across programs (incline
+bench, back squat, deadlift, standing overhead press) use the same
+canonical names the app already merges FitNotes and program history
+under, so switching programs doesn't fragment the 1RM chart the way two
+different names for the same lift used to.
+
+A progress bar above YOUR PROGRAM shows week X of 12 (and a month
+counter, for either program's phase/month-based lifts) for whichever
+program is currently active.
+
 ## Levels and badges
 A quiet level indicator sits under the date on Home — level number, title,
 and a thin XP bar, small enough to not compete with UP NOW. Tapping it
