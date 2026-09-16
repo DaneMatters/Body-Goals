@@ -200,6 +200,15 @@ are still unchecked, it asks before saving and tells you how many.
   to the YouTube app/tab — closing the modal drops you straight back into
   your session. Add, relabel, or remove any day's videos from EDIT PROGRAM
   ("+ Add Stretch Video")
+- **+ ADD EXERCISE**, always visible at the bottom of every session's
+  exercise list, for anything outside the planned day — an extra
+  bodypart, a one-off movement you felt like doing, whatever. Opens a
+  search box over the same usage-sorted exercise list from Progress →
+  Exercise Progress, or "+ Custom Exercise" for something not logged
+  before. Picking one drops a new card into the current session with 3
+  empty sets (reps and starting weight seeded from that exercise's last
+  performance when there is one), right alongside the planned exercises —
+  same FINISH button, same saved workout, no separate entry to track
 - Autosave and Resume Workout
 - Workout timer and completion progress
 - Real FitNotes history bundled for previous-performance comparisons, blended
