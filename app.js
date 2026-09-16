@@ -274,6 +274,20 @@ function allKnownExerciseNames(){
   state.workouts.forEach(w=>(w.exercises||[]).forEach(e=>names.add(canonicalExercise(e.name,map))));
   return [...names].sort();
 }
+function exerciseUsageStats(){
+  const map=exerciseAliasMap(),stats={};
+  const bump=(name,vol)=>{const s=stats[name]=stats[name]||{sessions:0,volume:0};s.sessions++;s.volume+=vol};
+  (window.FITNOTES_HISTORY||[]).forEach(h=>{const n=canonicalExercise(h.exercise,map);const vol=(h.sets||[]).reduce((a,s)=>a+(s.weight&&s.reps?s.weight*s.reps:0),0);bump(n,vol)});
+  state.workouts.forEach(w=>(w.exercises||[]).forEach(e=>{if(e.skipped)return;const n=canonicalExercise(e.name,map);const vol=e.sets.reduce((a,s)=>a+(s.done&&!s.warmup&&s.weight&&s.reps?s.weight*s.reps:0),0);bump(n,vol)}));
+  return stats;
+}
+function exerciseNamesByUsage(){
+  const stats=exerciseUsageStats();
+  return allKnownExerciseNames().sort((a,b)=>{
+    const sa=stats[a]||{sessions:0,volume:0},sb=stats[b]||{sessions:0,volume:0};
+    return sb.sessions-sa.sessions||sb.volume-sa.volume||a.localeCompare(b);
+  });
+}
 function exercise1RMSeries(name){
   const map=exerciseAliasMap(),byDate={};
   const add=(date,y)=>{if(!(date in byDate)||y>byDate[date])byDate[date]=y};
@@ -298,7 +312,7 @@ function oneRMNudgeHTML(name,estimate){
   return `<div class="nudge">Your program still works off <b>${cur} lb</b> as this lift's 1RM, so every prescribed weight is running light. Your recent sets estimate <b>${suggested} lb</b>.<button class="btn small primary full" style="margin-top:10px" data-setonerm="${esc(hit.day)}|${hit.idx}|${suggested}">UPDATE PROGRAM TO ${suggested} LB</button></div>`;
 }
 function e1rmChartHTML(){
-  const options=allKnownExerciseNames();
+  const options=exerciseNamesByUsage();
   const picker=`<select class="field" data-e1rm-exercise><option value="">Pick an exercise</option>${options.map(n=>`<option value="${esc(n)}" ${ui.e1rmExercise===n?'selected':''}>${esc(n)}</option>`).join('')}</select>`;
   if(!ui.e1rmExercise)return `${picker}<div class="muted" style="margin-top:10px">Pick an exercise to see its estimated 1RM trend.</div>`;
   const all=exercise1RMSeries(ui.e1rmExercise);

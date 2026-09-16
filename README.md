@@ -49,6 +49,10 @@ scoped down to what's actually useful day to day:
   happened. Same 1m/3m/6m/1y/all range toggles as the volume chart, and
   the y-axis zooms to the data instead of always starting at zero, so a
   trend is actually visible rather than squashed into the top third.
+  The picker itself is sorted by how much you actually use each lift —
+  most logged sessions first, ties broken by total volume — instead of
+  alphabetically, so the exercises you actually check sit at the top
+  instead of requiring a scroll through 60+ options to find.
   Drag a finger anywhere across the chart to scrub it: a crosshair follows
   your finger, the nearest session highlights, and its date and weight read
   out above. Vertical scrolling still works normally while you do it.
