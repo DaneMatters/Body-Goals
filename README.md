@@ -125,6 +125,32 @@ Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
 adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 
+## Levels and badges
+A quiet level indicator sits under the date on Home — level number, title,
+and a thin XP bar, small enough to not compete with UP NOW. Tapping it
+jumps straight to a new Badges tab under Progress. XP comes from finishing
+a workout (50, or 25 if finished early with sets still unchecked), logging
+Insanity (30), marking any scheduled item done (5), or logging bodyweight
+(5); each level costs a bit more XP than the last. Level titles: 1–5
+Titan, 6–10 Gym Rat, 11–20 Conqueror, 21+ Juggernaut.
+
+21 badges cover real strength milestones (a main lift crossing 225/315/405
+lb estimated 1RM), lifetime volume (250k/500k/1M lb), a 10,000 lb single
+session, PRs (first one, and one on all three main lifts in the same
+week), streaks (schedule items marked done 7 or 30 days running, water or
+protein targets hit 7 days running), program milestones (each 4-week
+phase finished, 100 workouts logged), and a few tied to features already
+in the app — reopening a finished workout and completing it, logging
+something with + ADD EXERCISE that wasn't on the plan, and finishing 10
+workouts with every set checked off. The Badges tab shows every badge,
+locked ones outlined with their condition visible rather than hidden as a
+mystery, unlocked ones filled in with the date earned. Unlocking one (or
+several at once) shows as a plain toast, same style as "Workout saved."
+
+Everything here counts from the day this feature shipped onward only —
+none of it scans the 7 years of bundled FitNotes history or backfills
+anything, so nothing unlocks in a pile the first time you open the app.
+
 ## Insanity calendar
 The "7:30 PM Insanity" line (Home and Workouts) shows the actual named
 workout due that day — e.g. "Plyometric Cardio Circuit" — computed from
