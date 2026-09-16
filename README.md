@@ -37,8 +37,24 @@ scoped down to what's actually useful day to day:
   combining your own logged workouts with the bundled historical data, with
   1m/3m/6m/1y/all range toggles.
 - **Exercise Progress** — pick any exercise you've ever logged (from either
-  source) and see its estimated 1RM (Epley formula) plotted over time, with
-  the current estimate shown big above the chart.
+  source) and see its estimated 1RM (Epley formula) plotted over time.
+  A lift is one entry in the picker even when the bundled data and the
+  program call it different things: every exercise's `history` aliases are
+  folded into one canonical name, so "Barbell Squat" and "Barbell Back
+  Squat" are a single continuous line rather than two half-histories.
+  Two separate stats sit above the chart, because they answer different
+  questions: **est. 1RM** is your best estimate from the last eight weeks,
+  so one light or deload session no longer reads as losing strength, and
+  **all-time best** is your highest estimate ever, with the date it
+  happened. Same 1m/3m/6m/1y/all range toggles as the volume chart, and
+  the y-axis zooms to the data instead of always starting at zero, so a
+  trend is actually visible rather than squashed into the top third.
+  Drag a finger anywhere across the chart to scrub it: a crosshair follows
+  your finger, the nearest session highlights, and its date and weight read
+  out above. Vertical scrolling still works normally while you do it.
+  If your logged sets outrun the 1RM your program is using for that lift,
+  the card says so and offers a one-tap update, since a stale 1RM means
+  every %1RM-prescribed weight is running light.
 - **History** — pick any date and see everything logged that day in one
   place: workouts, Insanity, bundled historical exercises, food, water, and
   bodyweight. This is how you look back at a specific past day (e.g. a
