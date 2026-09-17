@@ -128,11 +128,13 @@ adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
 ## Multiple programs
 More than one full program can be saved at once, and only one is ever
 "loaded" and active — the one the Workouts tab actually shows and starts
-sessions from. A PROGRAMS card above YOUR PROGRAM lists every saved
-program with the active one marked, LOAD to switch into any other one,
-a pencil to rename it, and a delete button on the inactive ones (the
-active program can't be deleted — switch away first). Two programs come
-bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
+sessions from. The YOUR PROGRAM card header carries a compact dropdown
+of every saved program — pick one to switch, with a confirmation since
+it changes what you're training mid-plan — plus a small ⋮ menu next to
+EDIT for the rest: + NEW PROGRAM, a pencil to rename any program, and a
+delete button on the inactive ones (the active program can't be
+deleted — switch away first, then delete it from the menu). Two
+programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
 default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
 Tuesday through Monday-Thursday-Friday, incline bench and standing
 overhead press as the main upper lifts, back squat/Zercher squat and a
