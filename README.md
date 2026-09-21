@@ -181,10 +181,13 @@ protein targets hit 7 days running), program milestones (each 4-week
 phase finished, 100 workouts logged), and a few tied to features already
 in the app — reopening a finished workout and completing it, logging
 something with + ADD EXERCISE that wasn't on the plan, and finishing 10
-workouts with every set checked off. The Badges tab shows every badge,
-locked ones outlined with their condition visible rather than hidden as a
-mystery, unlocked ones filled in with the date earned. Unlocking one (or
-several at once) shows as a plain toast, same style as "Workout saved."
+workouts with every set checked off. The Badges tab shows every badge as
+a shield icon — a gold gradient with a soft glow once earned, a plain
+outlined shield with its condition visible while locked, so nothing is
+hidden as a mystery. Tap any earned badge to jump straight to Progress →
+History on the day you earned it, so "what did I actually do to get
+this" is one tap away instead of a guess. Unlocking one (or several at
+once) shows as a plain toast, same style as "Workout saved."
 
 Everything here counts from the day this feature shipped onward only —
 none of it scans the 7 years of bundled FitNotes history or backfills
@@ -281,7 +284,14 @@ are still unchecked, it asks before saving and tells you how many.
   and PR flags stay current instead of freezing at the bundled data. Loads
   as JSON in the background after the app first renders, so this ~450 KB
   dataset never delays getting to the Home screen
-- Load/rep PR flags on newly completed work sets
+- Load/rep PR flags on newly completed work sets — a PR triggers a
+  full-screen celebration the instant you tap the set done (the
+  exercise, weight×reps, and whether it's your heaviest or highest-rep
+  set ever), auto-dismissing on its own after a couple seconds so it
+  never blocks logging the next set. The set itself keeps a gold
+  checkmark and a small "LOAD PR"/"REP PR" tag right on its row
+  afterward, so it's still obvious later in the session, not just in
+  the moment
 - Exercise notes and workout history
 - No post-workout review form
 - No fake current-app workout history seeded
