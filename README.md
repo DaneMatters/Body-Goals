@@ -182,12 +182,17 @@ phase finished, 100 workouts logged), and a few tied to features already
 in the app — reopening a finished workout and completing it, logging
 something with + ADD EXERCISE that wasn't on the plan, and finishing 10
 workouts with every set checked off. The Badges tab shows every badge as
-a shield icon — a gold gradient with a soft glow once earned, a plain
-outlined shield with its condition visible while locked, so nothing is
-hidden as a mystery. Tap any earned badge to jump straight to Progress →
-History on the day you earned it, so "what did I actually do to get
-this" is one tap away instead of a guess. Unlocking one (or several at
-once) shows as a plain toast, same style as "Workout saved."
+a shield icon, colored by category — copper for strength, blue for
+volume, gold for PRs, green for consistency, purple for grit, silver for
+program milestones — with a soft glow and a slow shimmer sweep once
+earned, a plain outlined shield with its condition visible while locked.
+Tap an earned badge and a popup shows exactly what earned it in place —
+the exercise, weight × reps, and PR type for a lift badge; the workout
+and its volume for a volume badge; the streak length; whatever's
+actually relevant to that badge — with an optional VIEW FULL WORKOUT
+button if you want more context, rather than always dropping you into
+History to go find it yourself. Unlocking one (or several at once) shows
+as a plain toast, same style as "Workout saved."
 
 Everything here counts from the day this feature shipped onward only —
 none of it scans the 7 years of bundled FitNotes history or backfills
@@ -291,7 +296,11 @@ are still unchecked, it asks before saving and tells you how many.
   never blocks logging the next set. The set itself keeps a gold
   checkmark and a small "LOAD PR"/"REP PR" tag right on its row
   afterward, so it's still obvious later in the session, not just in
-  the moment
+  the moment. The post-workout summary carries this through too — a PR
+  set gets its own bold gold line instead of being appended as small
+  text alongside every other set, and the "N PRs today" pill actually
+  does something when tapped: jumps to and briefly highlights the first
+  PR exercise in the list
 - Exercise notes and workout history
 - No post-workout review form
 - No fake current-app workout history seeded
