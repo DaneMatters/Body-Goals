@@ -233,29 +233,43 @@ function fullHouseToday(){
   const insanityDone=!insanityDue||(state.insanity||[]).some(x=>x.date===iso);
   return workoutDone&&insanityDone;
 }
+function bodypartWorkoutCount(re){return myWorkoutsSince().filter(w=>(w.exercises||[]).some(e=>!e.skipped&&re.test(e.name))).length}
+function myWeightsSince(){return (state.weights||[]).filter(x=>sinceStart(x.date)).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time))}
+function weightGainSince(){const list=myWeightsSince();return list.length<2?0:list[list.length-1].value-list[0].value}
+function maxWeightSince(){const list=myWeightsSince();return list.length?Math.max(...list.map(x=>x.value)):0}
 function weeksIntoProgram(){const start=state.settings.programStartDate;if(!start)return 0;return Math.floor((nowDate()-new Date(start+'T00:00:00'))/86400000/7)}
 const BADGE_DEFS=[
-  {id:'plates225',cat:'strength',name:'Two Plates',glyph:'225',hint:'A main lift (bench, squat, or deadlift) hits a 225 lb estimated 1RM',check:()=>mainLiftBestSince()>=225},
-  {id:'plates315',cat:'strength',name:'Three Plates',glyph:'315',hint:'A main lift hits a 315 lb estimated 1RM',check:()=>mainLiftBestSince()>=315},
-  {id:'plates405',cat:'strength',name:'Four Plates',glyph:'405',hint:'A main lift hits a 405 lb estimated 1RM',check:()=>mainLiftBestSince()>=405},
-  {id:'session10k',cat:'volume',name:'10K Session',glyph:'10K',hint:'A single workout hits 10,000 lb of volume',check:()=>myWorkoutsSince().some(w=>workoutVolume(w)>=10000)},
-  {id:'vol250k',cat:'volume',name:'Quarter Million',glyph:'¼M',hint:'250,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=250000},
-  {id:'vol500k',cat:'volume',name:'Half Million',glyph:'½M',hint:'500,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=500000},
-  {id:'vol1m',cat:'volume',name:'Million Pound Club',glyph:'1M',hint:'1,000,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=1000000},
-  {id:'firstblood',cat:'pr',name:'First Blood',glyph:'PR',hint:'Your first logged PR',check:()=>myWorkoutsSince().some(w=>(w.exercises||[]).some(e=>e.sets.some(s=>s.pr)))},
+  {id:'plates225',cat:'strength',name:'Two Plates',glyph:'225',img:'badges/07_heavy_hitter.png',hint:'A main lift (bench, squat, or deadlift) hits a 225 lb estimated 1RM',check:()=>mainLiftBestSince()>=225},
+  {id:'plates315',cat:'strength',name:'Three Plates',glyph:'315',img:'badges/07_heavy_hitter.png',hint:'A main lift hits a 315 lb estimated 1RM',check:()=>mainLiftBestSince()>=315},
+  {id:'plates405',cat:'strength',name:'Four Plates',glyph:'405',img:'badges/07_heavy_hitter.png',hint:'A main lift hits a 405 lb estimated 1RM',check:()=>mainLiftBestSince()>=405},
+  {id:'session10k',cat:'volume',name:'10K Session',glyph:'10K',img:'badges/08_volume_king.png',hint:'A single workout hits 10,000 lb of volume',check:()=>myWorkoutsSince().some(w=>workoutVolume(w)>=10000)},
+  {id:'vol250k',cat:'volume',name:'Quarter Million',glyph:'¼M',img:'badges/08_volume_king.png',hint:'250,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=250000},
+  {id:'vol500k',cat:'volume',name:'Half Million',glyph:'½M',img:'badges/08_volume_king.png',hint:'500,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=500000},
+  {id:'vol1m',cat:'volume',name:'Million Pound Club',glyph:'1M',img:'badges/08_volume_king.png',hint:'1,000,000 lb lifted in total',check:()=>myWorkoutsSince().reduce((n,w)=>n+workoutVolume(w),0)>=1000000},
+  {id:'firstblood',cat:'pr',name:'First Blood',glyph:'PR',img:'badges/06_personal_best.png',hint:'Your first logged PR',check:()=>myWorkoutsSince().some(w=>(w.exercises||[]).some(e=>e.sets.some(s=>s.pr)))},
   {id:'hattrick',cat:'pr',name:'Hat Trick',glyph:'3×',hint:'A PR on bench, squat, and deadlift in the same week',check:hatTrickSince},
-  {id:'streak7',cat:'consistency',name:'7-Day Streak',glyph:'7',hint:'A schedule item marked done 7 days in a row',check:()=>scheduleStreak()>=7},
-  {id:'streak30',cat:'consistency',name:'30-Day Streak',glyph:'30',hint:'A schedule item marked done 30 days in a row',check:()=>scheduleStreak()>=30},
+  {id:'streak7',cat:'consistency',name:'7-Day Streak',glyph:'7',img:'badges/02_seven_day_streak.png',hint:'A schedule item marked done 7 days in a row',check:()=>scheduleStreak()>=7},
+  {id:'streak30',cat:'consistency',name:'30-Day Streak',glyph:'30',img:'badges/03_thirty_day_streak.png',hint:'A schedule item marked done 30 days in a row',check:()=>scheduleStreak()>=30},
   {id:'comeback',cat:'grit',name:'The Comeback',glyph:'↺',hint:'Reopen a finished workout and complete it',check:()=>myWorkoutsSince().some(w=>w.reopened)},
   {id:'freelancer',cat:'grit',name:'Freelancer',glyph:'+1',hint:'Log an exercise outside the plan with + ADD EXERCISE',check:()=>myWorkoutsSince().some(w=>(w.exercises||[]).some(e=>e.added))},
-  {id:'ironwill',cat:'grit',name:'Iron Will',glyph:'10',hint:'Finish 10 workouts with every set checked off',check:()=>myWorkoutsSince().filter(w=>w.allSetsDone).length>=10},
-  {id:'hydrated',cat:'consistency',name:'Hydrated',glyph:'H₂O',hint:'Hit your 3.5 L water target 7 days in a row',check:()=>waterStreak()>=7},
-  {id:'dialedin',cat:'consistency',name:'Dialed In',glyph:'P',hint:'Hit your 170 g protein target 7 days in a row',check:()=>proteinStreak()>=7},
-  {id:'fullhouse',name:'Full House',glyph:'★',hint:'Every scheduled item done in a single day',check:fullHouseToday},
+  {id:'ironwill',cat:'grit',name:'Iron Will',glyph:'10',img:'badges/04_workout_warrior.png',hint:'Finish 10 workouts with every set checked off',check:()=>myWorkoutsSince().filter(w=>w.allSetsDone).length>=10},
+  {id:'hydrated',cat:'consistency',name:'Hydrated',glyph:'H₂O',img:'badges/17_hydration_hero.png',hint:'Hit your 3.5 L water target 7 days in a row',check:()=>waterStreak()>=7},
+  {id:'dialedin',cat:'consistency',name:'Dialed In',glyph:'P',img:'badges/14_protein_target.png',hint:'Hit your 170 g protein target 7 days in a row',check:()=>proteinStreak()>=7},
+  {id:'fullhouse',cat:'consistency',name:'Full House',glyph:'★',hint:'Every scheduled item done in a single day',check:fullHouseToday},
   {id:'phase1',cat:'program',name:'Phase 1 Complete',glyph:'I',hint:'Weeks 1–4 of the 12-week program finished',check:()=>weeksIntoProgram()>=4},
   {id:'phase2',cat:'program',name:'Phase 2 Complete',glyph:'II',hint:'Weeks 5–8 of the 12-week program finished',check:()=>weeksIntoProgram()>=8},
   {id:'phase3',cat:'program',name:'Phase 3 Complete',glyph:'III',hint:'The full 12-week program finished',check:()=>weeksIntoProgram()>=12},
-  {id:'century',cat:'program',name:'Century',glyph:'100',hint:'100 workouts logged',check:()=>myWorkoutsSince().length>=100},
+  {id:'century',cat:'program',name:'Century',glyph:'100',img:'badges/05_iron_discipline.png',hint:'100 workouts logged',check:()=>myWorkoutsSince().length>=100},
+  {id:'firststep',cat:'consistency',name:'First Step',glyph:'1',img:'badges/01_first_step.png',hint:'Your first logged workout',check:()=>myWorkoutsSince().length>=1},
+  {id:'chestchamp',cat:'training',name:'Chest Champion',glyph:'CH',img:'badges/09_chest_champion.png',hint:'20 workouts that included chest work',check:()=>bodypartWorkoutCount(/bench|fly|chest|pec/i)>=20},
+  {id:'backbuilder',cat:'training',name:'Back Builder',glyph:'BK',img:'badges/10_back_builder.png',hint:'20 workouts that included back work',check:()=>bodypartWorkoutCount(/deadlift|row|pulldown|lat pull/i)>=20},
+  {id:'legday',cat:'training',name:'Leg Day Legend',glyph:'LG',img:'badges/11_leg_day_legend.png',hint:'20 workouts that included leg work',check:()=>bodypartWorkoutCount(/squat|leg press|leg extension|leg curl|calf|lunge/i)>=20},
+  {id:'shoulderforge',cat:'training',name:'Shoulder Forge',glyph:'SH',img:'badges/12_shoulder_forge.png',hint:'20 workouts that included shoulder work',check:()=>bodypartWorkoutCount(/overhead press|military press|lateral raise|rear.delt|shoulder/i)>=20},
+  {id:'armarsenal',cat:'training',name:'Arm Arsenal',glyph:'AR',img:'badges/13_arm_arsenal.png',hint:'20 workouts that included arm work',check:()=>bodypartWorkoutCount(/curl|triceps|tricep|bicep/i)>=20},
+  {id:'fivepound',cat:'bodyweight',name:'Five-Pound Gain',glyph:'+5',img:'badges/21_five_pound_gain.png',hint:'Gained 5 lb since you started logging',check:()=>weightGainSince()>=5},
+  {id:'tenpound',cat:'bodyweight',name:'Ten-Pound Gain',glyph:'+10',img:'badges/22_ten_pound_gain.png',hint:'Gained 10 lb since you started logging',check:()=>weightGainSince()>=10},
+  {id:'twohundred',cat:'bodyweight',name:'200-Pound Milestone',glyph:'200',img:'badges/23_two_hundred_milestone.png',hint:'Logged a bodyweight of 200 lb or more',check:()=>maxWeightSince()>=200},
+  {id:'masstitan',cat:'bodyweight',name:'Mass Titan',glyph:'220',img:'badges/25_mass_titan.png',hint:'Logged a bodyweight of 220 lb or more',check:()=>maxWeightSince()>=220},
 ];
 function fmtSet(x){return `${x.weight}×${x.reps}`}
 function badgeAchievementDetail(id){
@@ -317,6 +331,25 @@ function badgeAchievementDetail(id){
     const hit=centuryWorkoutSince();
     return {lines:hit?[`<div class="pr-line">Workout #100: ${esc(hit.name)}</div>`,`<div class="muted" style="margin-top:6px">${hit.date}</div>`]:[],workoutId:hit&&hit.id};
   }
+  if(id==='firststep'){
+    const list=[...myWorkoutsSince()].sort((a,b)=>a.date.localeCompare(b.date));
+    const hit=list[0];
+    return {lines:hit?[`<div class="pr-line">${esc(hit.name)} — your first logged workout</div>`,`<div class="muted" style="margin-top:6px">${hit.date}</div>`]:[],workoutId:hit&&hit.id};
+  }
+  const BODYPART_RE={chestchamp:/bench|fly|chest|pec/i,backbuilder:/deadlift|row|pulldown|lat pull/i,legday:/squat|leg press|leg extension|leg curl|calf|lunge/i,shoulderforge:/overhead press|military press|lateral raise|rear.delt|shoulder/i,armarsenal:/curl|triceps|tricep|bicep/i};
+  if(BODYPART_RE[id]){
+    const re=BODYPART_RE[id],n=bodypartWorkoutCount(re);
+    const recent=[...myWorkoutsSince()].reverse().find(w=>(w.exercises||[]).some(e=>!e.skipped&&re.test(e.name)));
+    return {lines:[`<div class="pr-line">${n} workouts with this bodypart trained</div>`,recent?`<div class="muted" style="margin-top:6px">Most recent: ${esc(recent.name)}, ${recent.date}</div>`:''],workoutId:recent&&recent.id};
+  }
+  if(id==='fivepound'||id==='tenpound'){
+    const g=weightGainSince(),list=myWeightsSince();
+    return {lines:[`<div class="pr-line">+${Math.round(g*10)/10} lb since ${list[0]?list[0].date:'you started logging'}</div>`],workoutId:null};
+  }
+  if(id==='twohundred'||id==='masstitan'){
+    const list=myWeightsSince(),hit=list.reduce((b,x)=>!b||x.value>b.value?x:b,null);
+    return {lines:hit?[`<div class="pr-line">${hit.value} lb, logged ${hit.date}</div>`]:[],workoutId:null};
+  }
   return {lines:[],workoutId:null};
 }
 function mainLiftBestSetSince(){
@@ -369,7 +402,7 @@ function badgeDetailModal(id){
   const got=(state.badges||[]).find(b=>b.id===id);if(!got)return;
   const det=badgeAchievementDetail(id);
   const overlay=document.createElement('div');overlay.className='modal';
-  overlay.innerHTML=`<div class="modal-card" style="text-align:center"><div class="row between"><div class="modal-title" style="text-align:left">${esc(def.name)}</div><button class="btn small ghost" data-close>Close</button></div><div style="width:84px;margin:14px auto 6px">${badgeIconSVG(def.glyph,true,def.cat)}</div><div class="muted" style="margin-bottom:14px">Earned ${esc(got.date)}</div><div style="text-align:left">${det.lines.join('')}</div>${det.workoutId?`<button class="btn ghost full" style="margin-top:16px" data-view-workout="${esc(det.workoutId)}">VIEW FULL WORKOUT</button>`:''}</div>`;
+  overlay.innerHTML=`<div class="modal-card" style="text-align:center"><div class="row between"><div class="modal-title" style="text-align:left">${esc(def.name)}</div><button class="btn small ghost" data-close>Close</button></div><div style="width:84px;margin:14px auto 6px">${badgeIcon(def,true)}</div><div class="muted" style="margin-bottom:14px">Earned ${esc(got.date)}</div><div style="text-align:left">${det.lines.join('')}</div>${det.workoutId?`<button class="btn ghost full" style="margin-top:16px" data-view-workout="${esc(det.workoutId)}">VIEW FULL WORKOUT</button>`:''}</div>`;
   document.body.appendChild(overlay);
   overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
   const vw=overlay.querySelector('[data-view-workout]');
@@ -523,6 +556,10 @@ const BADGE_PALETTES={
   grit:{stops:['#ecd6ff','#b06bf5','#7a1fd4','#3d0f6b'],stroke:'#9a4be8',glow:'#b06bf5'},
   program:{stops:['#f2f2f5','#c4c4cf','#84848f','#45454e'],stroke:'#a8a8b4','glow':'#c4c4cf'},
 };
+function badgeIcon(def,earned){
+  if(def.img)return `<img src="${esc(def.img)}" class="badge-icon badge-icon-img ${earned?'':'locked'}" alt="" loading="lazy">`;
+  return badgeIconSVG(def.glyph,earned,def.cat);
+}
 function badgeIconSVG(glyph,earned,cat){
   const uidS='bg'+(badgeSvgSeq++);
   const pal=BADGE_PALETTES[cat]||BADGE_PALETTES.pr;
@@ -713,7 +750,7 @@ function historyDayHTML(dateStr){
   html+='</div>';
   return html;
 }
-function progressPage(){const latest=[...state.weights].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time))[0];const tab=ui.progressTab;const tabs=`<div class="tabs">${[['overview','Overview'],['charts','Charts'],['badges','Badges'],['history','History'],['patterns','Patterns']].map(([k,l])=>`<button class="tab ${tab===k?'active':''}" data-ptab="${k}">${l}</button>`).join('')}</div>`;const overview=`<div class="card"><div class="section-title">BODYWEIGHT</div><div class="muted">Keep home-scale readings separate and consistent.</div><div class="form-row" style="margin-top:14px"><input id="weightVal" type="number" step="0.1" class="field" placeholder="Weight (lb)"/><select id="weightScale" class="field"><option>Home scale</option><option>Gym scale</option><option>Doctor scale</option><option>Other scale</option></select></div><button class="btn primary full" style="margin-top:10px" data-add-weight>LOG WEIGHT</button></div><div class="card"><div class="section-title">LATEST</div>${latest?`<div class="big">${latest.value} lb</div><div class="muted">${latest.date} ${latest.time} • ${esc(latest.scale)}</div>`:'<div class="history-empty">No app weight entries yet.</div>'}</div><div class="card"><div class="section-title">RECENT WEIGHTS</div>${[...state.weights].reverse().slice(0,20).map(x=>`<div class="history-item row between"><b>${x.value} lb</b><span class="muted">${x.date} • ${esc(x.scale)}</span></div>`).join('')||'<div class="history-empty">Start with your next same-scale weigh-in.</div>'}</div>`;const charts=`<div class="card"><div class="section-title">TRAINING VOLUME</div>${volumeChartHTML()}</div><div class="card"><div class="section-title">EXERCISE PROGRESS</div>${e1rmChartHTML()}</div>`;const badges=`<div class="card">${levelLineHTML(false)}</div><div class="card"><div class="section-title">BADGES</div><div class="muted" style="margin-bottom:14px">${(state.badges||[]).length} of ${BADGE_DEFS.length} unlocked · counting from today onward. Tap an earned one to see exactly what earned it.</div><div class="badge-grid">${BADGE_DEFS.map(def=>{const got=(state.badges||[]).find(b=>b.id===def.id);return `<div class="badge-tile ${got?'earned':'locked'}" ${got?`data-badge-id="${esc(def.id)}"`:''}>${badgeIconSVG(def.glyph,!!got,def.cat)}<div class="badge-name">${esc(def.name)}</div><div class="badge-sub">${got?got.date:esc(def.hint)}</div></div>`}).join('')}</div></div>`;const history=`<div class="card"><div class="section-title">HISTORY</div><input type="date" class="field" data-history-date value="${esc(ui.historyDate)}">${ui.historyDate?historyDayHTML(ui.historyDate):'<div class="muted" style="margin-top:10px">Pick a date to see everything logged that day.</div>'}</div>`;const patterns=`<div class="card"><div class="section-title">PATTERNS</div>${patternsHTML()}</div>`;const body=tab==='charts'?charts:tab==='badges'?badges:tab==='history'?history:tab==='patterns'?patterns:overview;return `<div class="page">${tabs}${body}</div>`}
+function progressPage(){const latest=[...state.weights].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time))[0];const tab=ui.progressTab;const tabs=`<div class="tabs">${[['overview','Overview'],['charts','Charts'],['badges','Badges'],['history','History'],['patterns','Patterns']].map(([k,l])=>`<button class="tab ${tab===k?'active':''}" data-ptab="${k}">${l}</button>`).join('')}</div>`;const overview=`<div class="card"><div class="section-title">BODYWEIGHT</div><div class="muted">Keep home-scale readings separate and consistent.</div><div class="form-row" style="margin-top:14px"><input id="weightVal" type="number" step="0.1" class="field" placeholder="Weight (lb)"/><select id="weightScale" class="field"><option>Home scale</option><option>Gym scale</option><option>Doctor scale</option><option>Other scale</option></select></div><button class="btn primary full" style="margin-top:10px" data-add-weight>LOG WEIGHT</button></div><div class="card"><div class="section-title">LATEST</div>${latest?`<div class="big">${latest.value} lb</div><div class="muted">${latest.date} ${latest.time} • ${esc(latest.scale)}</div>`:'<div class="history-empty">No app weight entries yet.</div>'}</div><div class="card"><div class="section-title">RECENT WEIGHTS</div>${[...state.weights].reverse().slice(0,20).map(x=>`<div class="history-item row between"><b>${x.value} lb</b><span class="muted">${x.date} • ${esc(x.scale)}</span></div>`).join('')||'<div class="history-empty">Start with your next same-scale weigh-in.</div>'}</div>`;const charts=`<div class="card"><div class="section-title">TRAINING VOLUME</div>${volumeChartHTML()}</div><div class="card"><div class="section-title">EXERCISE PROGRESS</div>${e1rmChartHTML()}</div>`;const badges=`<div class="card">${levelLineHTML(false)}</div><div class="card"><div class="section-title">BADGES</div><div class="muted" style="margin-bottom:14px">${(state.badges||[]).length} of ${BADGE_DEFS.length} unlocked · counting from today onward. Tap an earned one to see exactly what earned it.</div><div class="badge-grid">${BADGE_DEFS.map(def=>{const got=(state.badges||[]).find(b=>b.id===def.id);return `<div class="badge-tile ${got?'earned':'locked'}" ${got?`data-badge-id="${esc(def.id)}"`:''}>${badgeIcon(def,!!got)}<div class="badge-name">${esc(def.name)}</div><div class="badge-sub">${got?got.date:esc(def.hint)}</div></div>`}).join('')}</div></div>`;const history=`<div class="card"><div class="section-title">HISTORY</div><input type="date" class="field" data-history-date value="${esc(ui.historyDate)}">${ui.historyDate?historyDayHTML(ui.historyDate):'<div class="muted" style="margin-top:10px">Pick a date to see everything logged that day.</div>'}</div>`;const patterns=`<div class="card"><div class="section-title">PATTERNS</div>${patternsHTML()}</div>`;const body=tab==='charts'?charts:tab==='badges'?badges:tab==='history'?history:tab==='patterns'?patterns:overview;return `<div class="page">${tabs}${body}</div>`}
 const DAY_PERIODS=[['Early AM','05:00','07:00'],['Morning','07:00','10:00'],['Midday','10:00','13:00'],['Afternoon','13:00','17:00'],['Evening','17:00','21:00'],['Night','21:00','24:00']];
 function periodBar(label,avg,max,unit){const pct=max?Math.round(avg/max*100):0;return `<div style="margin-bottom:10px;opacity:${avg?1:.4}"><div class="row between"><span class="subtle">${label}</span><span class="subtle">${Math.round(avg)} ${unit}</span></div><div style="height:10px;background:#1c1c1c;border-radius:6px;overflow:hidden;margin-top:4px"><div style="height:100%;width:${pct}%;background:var(--red)"></div></div></div>`}
 function patternsHTML(){const allDays=new Set([...state.food.map(f=>f.date),...(state.water||[]).map(w=>w.date)]);if(!allDays.size)return `<div class="history-empty">No food or water logged yet.<br><span class="subtle">Patterns by time of day will show up here once you start logging.</span></div>`;const dayCount=allDays.size;const bucket=(entries,key)=>DAY_PERIODS.map(([label,startStr,endStr])=>{const start=parseTimeStr(startStr),end=parseTimeStr(endStr);const total=entries.filter(e=>{const m=parseTimeStr(e.time);return m!=null&&m>=start&&m<end}).reduce((a,b)=>a+(+b[key]||0),0);return {label,avg:total/dayCount}});const waterBuckets=bucket(state.water||[],'amountMl'),calBuckets=bucket(state.food,'calories');const maxWater=Math.max(1,...waterBuckets.map(b=>b.avg)),maxCal=Math.max(1,...calBuckets.map(b=>b.avg));return `<div class="muted" style="margin-bottom:14px">Based on ${dayCount} day${dayCount===1?'':'s'} logged</div><div style="font-size:15px;font-weight:900;margin-bottom:8px">WATER BY TIME OF DAY</div>${waterBuckets.map(b=>periodBar(b.label,b.avg,maxWater,'mL')).join('')}<div style="font-size:15px;font-weight:900;margin:18px 0 8px">CALORIES BY TIME OF DAY</div>${calBuckets.map(b=>periodBar(b.label,b.avg,maxCal,'cal')).join('')}`}
