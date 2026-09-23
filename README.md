@@ -118,12 +118,27 @@ behavior changes, just a consistent visual language across tiles that
 already existed.
 
 The same pass extends to the primary quick-action buttons: 🏋️ on every
-start/resume-workout button (Home, Workouts tab's TODAY'S TRAINING
-card, and the day-preview EXERCISES card), 📋 on VIEW TODAY'S WORKOUT,
-✅ on MARK DONE (Home's UP NOW card) and the Insanity catch-up modal's
-LOG N DAY(S) confirm button, ⚡ on both LOG INSANITY buttons, 🔁 on
-CATCH UP, 🍽️ on LOG CONSUMED FOOD, and ⚖️ on LOG WEIGHT. Same
-buttons, same actions — just faster to spot at a glance.
+start/resume-workout button (Home and the Workouts tab's day-preview
+EXERCISES card), 📋 on VIEW TODAY'S WORKOUT, ✅ on MARK DONE (Home's
+UP NOW card) and the Insanity catch-up modal's LOG N DAY(S) confirm
+button, ⚡ on both LOG INSANITY buttons, 🔁 on CATCH UP, 🍽️ on LOG
+CONSUMED FOOD, and ⚖️ on LOG WEIGHT. Same buttons, same actions — just
+faster to spot at a glance.
+
+## Workouts tab: one place to start today's workout
+The Workouts tab used to open with a TODAY'S TRAINING card duplicating
+what the EXERCISES card right below it already showed, sometimes with
+two different-looking action buttons on screen at once. That card is
+gone — THIS WEEK now leads the page, followed by tonight's Insanity
+line (still its own LOG button and missed-day CATCH UP nudge) if
+Insanity is enabled for the active program, then the day-preview
+EXERCISES card. That card's action button now tracks today's real
+status: 🏋️ START / LOG THIS WORKOUT normally, 🏋️ RESUME WORKOUT if a
+session's in progress, and 📋 VIEW TODAY'S WORKOUT once today's session
+is actually logged — but only while today itself is the day selected
+in THIS WEEK. Preview a different day (say, catching up on Friday)
+and it stays 🏋️ START / LOG THIS WORKOUT for that day, regardless of
+whether today's own workout is already done.
 
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
