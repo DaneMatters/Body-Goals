@@ -174,16 +174,18 @@ they're on.
 ## Multiple programs
 More than one full program can be saved at once, and only one is ever
 "loaded" and active — the one the Workouts tab actually shows and starts
-sessions from. The YOUR PROGRAM card header is just one compact dropdown
-that handles all of it: pick a saved program to switch to it, with a
+sessions from. The active program's name, right inside THIS WEEK's
+progress widget (see below), is itself one compact dropdown that
+handles all of it: pick a saved program to switch to it, with a
 confirmation since it changes what you're training mid-plan; pick
 "✎ Edit Current Program" to jump into editing the active program's days
 and exercises; or pick "⚙ Manage Programs…" for the rest — + NEW
 PROGRAM, a pencil to rename any program, and a delete button on the
 inactive ones (the active program can't be deleted — switch away first,
-then delete it from there). No separate menu or EDIT button cluttering
-the header — one dropdown covers switching, editing, and managing. Two
-programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
+then delete it from there). No separate card, menu, or EDIT button
+cluttering the page — one small dropdown covers switching, editing, and
+managing, and an EDIT PROGRAM card only appears when you're actually
+using it. Two programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
 default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
 Tuesday through Monday-Thursday-Friday, incline bench and standing
 overhead press as the main upper lifts, back squat/Zercher squat and a
@@ -210,16 +212,17 @@ under, so switching programs doesn't fragment the 1RM chart the way two
 different names for the same lift used to.
 
 A progress widget inside the THIS WEEK card, right under the day
-chips, carries the active program's name plus week X of 12 (and a
-month counter, for either program's phase/month-based lifts) and its
-progress bar all together — so THIS WEEK tells you at a glance which
-program you're running and how far into it you are, without needing
-to also check YOUR PROGRAM below. YOUR PROGRAM itself is now just the
-switch/edit/manage dropdown, since the name and progress live above it.
+chips, carries the active program's name (small — that name is the
+switch/edit/manage dropdown described above, not a big heading) plus
+week X of 12 (and a month counter, for either program's phase/month-based
+lifts) and its progress bar all together — so THIS WEEK tells you at a
+glance which program you're running, how far into it you are, and gives
+you a way to change it, all in one compact widget instead of a whole
+separate card.
 
 ## Preview any day from THIS WEEK
 The day chips in THIS WEEK aren't just a logging streak anymore — tap
-one and an EXERCISES card between THIS WEEK and YOUR PROGRAM shows that
+one and an EXERCISES card right below THIS WEEK shows that
 day's planned exercises (sets × reps, phased %1RM where it applies) and
 a START / LOG THIS WORKOUT button, so you can check what Friday looks
 like, or catch up on a day you skipped, without leaving the Workouts
@@ -320,9 +323,10 @@ the program start through yesterday, additively, so no day that was already
 logged had its entry or its name touched.
 
 Insanity is now a per-program setting rather than a fixed always-on
-feature: open Edit Current Program (the YOUR PROGRAM dropdown on the
-Workouts tab) and there's an Insanity Cardio ON/OFF toggle at the top,
-above the day list. Turning it OFF removes the Insanity line from Home
+feature: open Edit Current Program (the program-name dropdown inside
+THIS WEEK's progress widget on the Workouts tab) and there's an
+Insanity Cardio ON/OFF toggle at the top, above the day list. Turning
+it OFF removes the Insanity line from Home
 and Workouts, and silences the missed-days CATCH UP nudge, for whichever
 program is currently active — nothing already logged in Progress →
 History is touched. Turning it back ON (for that program or after
