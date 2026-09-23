@@ -209,9 +209,13 @@ canonical names the app already merges FitNotes and program history
 under, so switching programs doesn't fragment the 1RM chart the way two
 different names for the same lift used to.
 
-A progress bar inside the THIS WEEK card, right under the day chips,
-shows week X of 12 (and a month counter, for either program's
-phase/month-based lifts) for whichever program is currently active.
+A progress widget inside the THIS WEEK card, right under the day
+chips, carries the active program's name plus week X of 12 (and a
+month counter, for either program's phase/month-based lifts) and its
+progress bar all together — so THIS WEEK tells you at a glance which
+program you're running and how far into it you are, without needing
+to also check YOUR PROGRAM below. YOUR PROGRAM itself is now just the
+switch/edit/manage dropdown, since the name and progress live above it.
 
 ## Preview any day from THIS WEEK
 The day chips in THIS WEEK aren't just a logging streak anymore — tap
