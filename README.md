@@ -123,8 +123,9 @@ Press, Barbell Back Squat, Barbell Deadlift. Sets stay fixed at 5; only
 reps and load intensity change every 4-week phase: Weeks 1–4 are 5×4 @
 70% 1RM, Weeks 5–8 are 5×3 @ 80%, Weeks 9–12 are 5×2 @ 90%, based on the
 program start date recorded the first time this version loads. Enter each
-lift's 1RM from the Workouts tab (EDIT PROGRAM) to get an actual target
-weight and phase countdown; accessory exercises for every day keep fixed
+lift's 1RM from the Workouts tab (the program dropdown's Edit Current
+Program option) to get an actual target weight and phase countdown;
+accessory exercises for every day keep fixed
 sets/reps and are unaffected by phasing. The three main lifts each
 pre-populate 2 warm-up sets (ramping to roughly 50%/70% of that day's
 work weight) ahead of the working sets, and rest between their heavy
@@ -133,17 +134,21 @@ Military Press on Shoulders day runs 5×4. No cardio progression is bundled
 with this program — Insanity is logged separately as its own schedule item.
 Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
-adjust them in EDIT PROGRAM once real Week 1 sets show whether they're on.
+adjust them via Edit Current Program once real Week 1 sets show whether
+they're on.
 
 ## Multiple programs
 More than one full program can be saved at once, and only one is ever
 "loaded" and active — the one the Workouts tab actually shows and starts
-sessions from. The YOUR PROGRAM card header carries a compact dropdown
-of every saved program — pick one to switch, with a confirmation since
-it changes what you're training mid-plan — plus a small ⋮ menu next to
-EDIT for the rest: + NEW PROGRAM, a pencil to rename any program, and a
-delete button on the inactive ones (the active program can't be
-deleted — switch away first, then delete it from the menu). Two
+sessions from. The YOUR PROGRAM card header is just one compact dropdown
+that handles all of it: pick a saved program to switch to it, with a
+confirmation since it changes what you're training mid-plan; pick
+"✎ Edit Current Program" to jump into editing the active program's days
+and exercises; or pick "⚙ Manage Programs…" for the rest — + NEW
+PROGRAM, a pencil to rename any program, and a delete button on the
+inactive ones (the active program can't be deleted — switch away first,
+then delete it from there). No separate menu or EDIT button cluttering
+the header — one dropdown covers switching, editing, and managing. Two
 programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
 default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
 Tuesday through Monday-Thursday-Friday, incline bench and standing
@@ -155,7 +160,7 @@ no separate "custom program" flow, building your own program from
 scratch already looked like this.
 
 Switching programs is a swap, not a merge: whichever program is active
-owns "the program" everywhere in the app (EDIT PROGRAM, the Home
+owns "the program" everywhere in the app (Edit Current Program, the Home
 schedule's workout line, badges' Phase-Complete conditions) exactly like
 before this feature existed. Editing the active program and switching
 away saves those edits back into that program's own saved slot before
@@ -279,7 +284,7 @@ FINISH also guards against the mistake in the first place: if any work sets
 are still unchecked, it asks before saving and tells you how many.
 
 ## Main workout features
-- Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (EDIT PROGRAM): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
+- Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (the program dropdown's Edit Current Program option): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
   the Workouts tab list) that carries through into that day's session
   screen — the header, progress bar, and FINISH button all pick it up —
@@ -302,8 +307,8 @@ are still unchecked, it asks before saving and tells you how many.
   the session after the last exercise. Tapping it plays the video right in
   an in-app modal (embedded YouTube player, autoplay) instead of jumping out
   to the YouTube app/tab — closing the modal drops you straight back into
-  your session. Add, relabel, or remove any day's videos from EDIT PROGRAM
-  ("+ Add Stretch Video")
+  your session. Add, relabel, or remove any day's videos from Edit
+  Current Program ("+ Add Stretch Video")
 - **+ ADD EXERCISE**, always visible at the bottom of every session's
   exercise list, for anything outside the planned day — an extra
   bodypart, a one-off movement you felt like doing, whatever. Opens a
