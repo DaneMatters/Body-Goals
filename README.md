@@ -173,26 +173,47 @@ Insanity (30), marking any scheduled item done (5), or logging bodyweight
 (5); each level costs a bit more XP than the last. Level titles: 1–5
 Titan, 6–10 Gym Rat, 11–20 Conqueror, 21+ Juggernaut.
 
-21 badges cover real strength milestones (a main lift crossing 225/315/405
+31 badges cover real strength milestones (a main lift crossing 225/315/405
 lb estimated 1RM), lifetime volume (250k/500k/1M lb), a 10,000 lb single
 session, PRs (first one, and one on all three main lifts in the same
 week), streaks (schedule items marked done 7 or 30 days running, water or
 protein targets hit 7 days running), program milestones (each 4-week
-phase finished, 100 workouts logged), and a few tied to features already
-in the app — reopening a finished workout and completing it, logging
-something with + ADD EXERCISE that wasn't on the plan, and finishing 10
-workouts with every set checked off. The Badges tab shows every badge as
-a shield icon, colored by category — copper for strength, blue for
+phase finished, 100 workouts logged), your first logged workout, 20
+workouts that trained each bodypart (chest/back/legs/shoulders/arms,
+detected from the exercises actually logged that session — works across
+any program, not just one specific split), bodyweight milestones off
+your own weigh-ins (5 lb and 10 lb gained since you started logging, and
+crossing 200 or 220 lb), and a few tied to features already in the app —
+reopening a finished workout and completing it, logging something with +
+ADD EXERCISE that wasn't on the plan, and finishing 10 workouts with
+every set checked off.
+
+24 of the 31 use real commissioned trophy artwork (`badges/*.png`, 200×200,
+~1.6 MB total) — full color once earned, desaturated and dimmed while
+locked, matching the pack's own spec. The other 7 (Hat Trick, The
+Comeback, Freelancer, Full House, and the three Phase Complete badges)
+have no matching art in the pack and fall back to a code-drawn shield —
+a radial gradient colored by category (copper for strength, blue for
 volume, gold for PRs, green for consistency, purple for grit, silver for
-program milestones — with a soft glow and a slow shimmer sweep once
-earned, a plain outlined shield with its condition visible while locked.
+program) with a soft glow and shimmer once earned, outlined and muted
+while locked, so the whole grid still reads as one consistent set even
+where the art runs out.
+
 Tap an earned badge and a popup shows exactly what earned it in place —
 the exercise, weight × reps, and PR type for a lift badge; the workout
-and its volume for a volume badge; the streak length; whatever's
-actually relevant to that badge — with an optional VIEW FULL WORKOUT
-button if you want more context, rather than always dropping you into
-History to go find it yourself. Unlocking one (or several at once) shows
-as a plain toast, same style as "Workout saved."
+and its volume for a volume badge; the streak length; how many
+bodypart-matching workouts; whatever's actually relevant to that badge —
+with an optional VIEW FULL WORKOUT button if you want more context,
+rather than always dropping you into History to go find it yourself.
+Unlocking one (or several at once) shows as a plain toast, same style as
+"Workout saved."
+
+Six achievements from the source trophy pack (carbs, calories, meal
+prep, recovery days, sleep, and a bodyweight goal target) aren't wired
+up — each needs a tracking feature the app doesn't have yet (carb
+logging, a meal-prep concept, sleep logging, a settable goal weight),
+not just an image. Their artwork is still bundled in `badges/` for
+whenever those features exist.
 
 Everything here counts from the day this feature shipped onward only —
 none of it scans the 7 years of bundled FitNotes history or backfills
