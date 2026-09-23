@@ -108,7 +108,7 @@ schedule too, timestamped to when you actually logged it — not whenever you
 happen to next open Home. No more mismatch between when you actually ate or
 drank and when the to-do list says you did.
 
-## Icon accents on metric tiles
+## Icon accents across the app
 Every stat tile app-wide carries a small icon next to its label now,
 matching the 💧 on the Water Bottle button: 🔥 Calories, 💪 Protein, 💧
 Water (Home and Food), 🏋️ Est. 1RM / 🏆 All-Time Best (Progress →
@@ -116,6 +116,14 @@ Charts → Exercise Progress), and 📊 Volume / ✅ Sets (tapping into a
 logged workout from Workout History). Purely cosmetic — no data or
 behavior changes, just a consistent visual language across tiles that
 already existed.
+
+The same pass extends to the primary quick-action buttons: 🏋️ on every
+start/resume-workout button (Home, Workouts tab's TODAY'S TRAINING
+card, and the day-preview EXERCISES card), 📋 on VIEW TODAY'S WORKOUT,
+✅ on MARK DONE (Home's UP NOW card) and the Insanity catch-up modal's
+LOG N DAY(S) confirm button, ⚡ on both LOG INSANITY buttons, 🔁 on
+CATCH UP, 🍽️ on LOG CONSUMED FOOD, and ⚖️ on LOG WEIGHT. Same
+buttons, same actions — just faster to spot at a glance.
 
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
