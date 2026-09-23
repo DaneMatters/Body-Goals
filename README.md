@@ -106,6 +106,16 @@ schedule too, timestamped to when you actually logged it — not whenever you
 happen to next open Home. No more mismatch between when you actually ate or
 drank and when the to-do list says you did.
 
+## Food history
+The Food tab isn't just today anymore — scroll past Today's Entries and a
+FOOD HISTORY card lists every past day you've logged food or water,
+newest first, the same collapsible-day pattern the Workouts tab uses for
+workout history. Each day starts collapsed with a one-line summary
+(total calories, protein, and water if any was logged), and tapping it
+opens the full list of that day's food and water entries — each with its
+own delete button, same as Today's Entries. Today itself stays in its own
+card above, so nothing is shown twice.
+
 ## 12-week Power Bodybuilding program
 The default Mon–Fri split (Chest/Legs/Shoulders/Arms/Back) runs a 12-week
 %1RM-based progression on the three main lifts — Incline Barbell Bench
