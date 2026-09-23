@@ -175,9 +175,25 @@ canonical names the app already merges FitNotes and program history
 under, so switching programs doesn't fragment the 1RM chart the way two
 different names for the same lift used to.
 
-A progress bar above YOUR PROGRAM shows week X of 12 (and a month
-counter, for either program's phase/month-based lifts) for whichever
-program is currently active.
+Inside the YOUR PROGRAM card, a progress bar under the program's name
+shows week X of 12 (and a month counter, for either program's
+phase/month-based lifts) for whichever program is currently active.
+
+## Preview any day from THIS WEEK
+The day chips in THIS WEEK aren't just a logging streak anymore — tap
+one and an EXERCISES card between THIS WEEK and YOUR PROGRAM shows that
+day's planned exercises (sets × reps, phased %1RM where it applies) and
+a START / LOG THIS WORKOUT button, so you can check what Friday looks
+like, or catch up on a day you skipped, without leaving the Workouts
+tab. It's titled TODAY'S EXERCISES when the selected day is today, or
+e.g. FRIDAY'S EXERCISES otherwise. The tapped chip highlights solid to
+show it's the one being previewed, while today's own chip keeps its
+thin outline regardless of what's selected, so you can always tell
+"today" and "what I'm looking at" apart even when they're different
+days. Days with nothing scheduled (rest days, or days a program doesn't
+use) show a simple "no workout scheduled" message instead. This card is
+hidden while editing the program, since you're already looking at every
+day's exercises there.
 
 ## Levels and badges
 A quiet level indicator sits under the date on Home — level number, title,
