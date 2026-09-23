@@ -87,20 +87,22 @@ entry below the grid still works for anything that isn't a go-to.
 
 ## Water logging
 Real amounts, not just a checkbox. Marking a "Water" schedule item done on
-Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab also has
-its own Water card for logging outside the schedule — quick +250 mL/+500
-mL/+1 L buttons plus a custom amount — with a running total against the
-3.5 L daily baseline shown there and as a metric tile on Home. Every
-water entry, and every food entry in Today's Entries, has a delete (✕)
-button on the Food tab and in History if one gets logged by mistake
-(e.g. a duplicate). Tapping MARK DONE (or a schedule item's
-mini checkmark) flashes it green to confirm the tap registered, and
+Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab logs
+water the same way food favorites work: a blue "💧 Water Bottle" button
+sits right above your food favorites (always 500 mL, one tap, no separate
+card or custom-amount form to deal with), with a running total against
+the 3.5 L daily baseline shown as its own WATER tile next to TODAY and
+PROTEIN, and as a metric tile on Home. Logged water shows up alongside
+food in Today's Entries — sorted together by time — and every entry,
+water or food, has a delete (✕) button there and in History if one gets
+logged by mistake (e.g. a duplicate). Tapping MARK DONE (or a schedule
+item's mini checkmark) flashes it green to confirm the tap registered, and
 marking something done is a real toggle — the History day view (see
 below) lists everything checked off that day with an Undo button, so an
 accidental tap is always fixable, not just hidden.
 
 This stays in sync in both directions: logging water or food from the Food
-tab (the quick-add buttons, custom amount, manual entry, or a Favorites tap)
+tab (the Water Bottle button, manual entry, or a Favorites tap)
 automatically checks off the next not-yet-done Water or meal item on Home's
 schedule too, timestamped to when you actually logged it — not whenever you
 happen to next open Home. No more mismatch between when you actually ate or
