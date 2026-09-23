@@ -108,6 +108,15 @@ schedule too, timestamped to when you actually logged it — not whenever you
 happen to next open Home. No more mismatch between when you actually ate or
 drank and when the to-do list says you did.
 
+## Icon accents on metric tiles
+Every stat tile app-wide carries a small icon next to its label now,
+matching the 💧 on the Water Bottle button: 🔥 Calories, 💪 Protein, 💧
+Water (Home and Food), 🏋️ Est. 1RM / 🏆 All-Time Best (Progress →
+Charts → Exercise Progress), and 📊 Volume / ✅ Sets (tapping into a
+logged workout from Workout History). Purely cosmetic — no data or
+behavior changes, just a consistent visual language across tiles that
+already existed.
+
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
 FOOD HISTORY card lists every past day you've logged food or water,
