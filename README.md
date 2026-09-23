@@ -254,12 +254,14 @@ anything, so nothing unlocks in a pile the first time you open the app.
 The "7:30 PM Insanity" line (Home and Workouts) shows the actual named
 workout due that day — e.g. "Plyometric Cardio Circuit" — computed from
 the real Insanity calendar and a recorded start date, not just a generic
-"planned" placeholder. It also encodes this household's actual pattern:
-Fit Test days are skipped, cascading the rest of that week's workouts
-forward by one slot (Monday does Tuesday's workout, ..., Friday does
-Saturday's), since Saturday itself is never trained. The LOG button is
-blue/primary so it's easy to spot. Tapping it records that day's
-specific workout name, visible later in Progress → History — an
+"planned" placeholder. The bundled calendar covers the complete 63-day
+program exactly as published — Month 1 (Weeks 1–4), Recovery Week, and
+all of Month 2 (Weeks 6–9), all 6 training days a week (Monday through
+Saturday, Sunday is the only rest day) — including every Fit Test day.
+Nothing in the calendar is skipped or substituted: each of the 54
+workout days maps to its own real day, Fit Test included. The LOG
+button is blue/primary so it's easy to spot. Tapping it records that
+day's specific workout name, visible later in Progress → History — an
 accidental tap is fixable via the Undo button that replaces LOG once
 logged (Workouts tab), or a delete (✕) button on any Insanity entry in
 History or the Workouts tab's Workout History list.
@@ -279,10 +281,17 @@ LOG button. A one-time migration also caught up everything outstanding from
 the program start through yesterday, additively, so no day that was already
 logged had its entry or its name touched.
 
-The bundled calendar covers the full 63-day program — Month 1 (Weeks
-1–4), Recovery Week, and all of Month 2 (Weeks 5–9) — transcribed
-directly from the official day-by-day calendar, with the Fit-Test-skip/
-cascade rule applying automatically to every Fit Test week throughout.
+Insanity is now a per-program setting rather than a fixed always-on
+feature: open Edit Current Program (the YOUR PROGRAM dropdown on the
+Workouts tab) and there's an Insanity Cardio ON/OFF toggle at the top,
+above the day list. Turning it OFF removes the Insanity line from Home
+and Workouts, and silences the missed-days CATCH UP nudge, for whichever
+program is currently active — nothing already logged in Progress →
+History is touched. Turning it back ON (for that program or after
+switching to a different one) picks the calendar right back up from
+INSANITY_START, so switching it off for a while and back on later just
+means those in-between days show up as outstanding the next time CATCH
+UP runs, same as any other missed day.
 
 ## Tapped FINISH too early
 Any finished workout can be reopened and completed — nothing is locked once
