@@ -634,7 +634,8 @@ function monthCalendarHTML(monthKey,loggedDates,navAttr){
     const iso=isoDate(new Date(y,m-1,day));
     const hasLog=loggedDates.has(iso);
     const dayBadges=(badgesByDate[iso]||[]).map(b=>BADGE_DEFS.find(d=>d.id===b.id)).filter(Boolean);
-    const trophy=dayBadges.length?`<img class="cal-trophy" src="${esc(dayBadges[0].img)}" alt="" title="${esc(dayBadges.map(d=>d.name).join(', '))}">`:'';
+    const trophyTitle=esc(dayBadges.map(d=>d.name).join(', '));
+    const trophy=dayBadges.length?(dayBadges[0].img?`<img class="cal-trophy" src="${esc(dayBadges[0].img)}" alt="" title="${trophyTitle}">`:`<div class="cal-trophy cal-trophy-svg" title="${trophyTitle}">${badgeIconSVG(dayBadges[0].glyph,true,dayBadges[0].cat)}</div>`):'';
     const check=hasLog?'<svg class="cal-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,13 9,18 20,6"></polyline></svg>':'';
     cells.push(`<button class="cal-day ${iso===todayIso?'today':''} ${hasLog?'logged':''}" data-cal-day="${iso}"><span class="cal-num">${day}</span>${check}${trophy}</button>`);
   }
@@ -658,7 +659,7 @@ function foodHistoryCalendarHTML(){
 function showCalendarDay(dateStr){
   const dayBadges=(state.badges||[]).filter(b=>b.date===dateStr).map(b=>BADGE_DEFS.find(d=>d.id===b.id)).filter(Boolean);
   const overlay=document.createElement('div');overlay.className='modal';
-  overlay.innerHTML=`<div class="modal-card"><div class="row between"><div class="modal-title">${esc(dateStr)}</div><button class="btn small ghost" data-close>Close</button></div>${dayBadges.length?`<div class="row gap wrap" style="margin:12px 0">${dayBadges.map(def=>`<div style="text-align:center;width:56px"><img src="${esc(def.img)}" style="width:36px;height:36px;object-fit:contain"><div class="subtle" style="font-size:10px;margin-top:2px">${esc(def.name)}</div></div>`).join('')}</div>`:''}${historyDayHTML(dateStr)}</div>`;
+  overlay.innerHTML=`<div class="modal-card"><div class="row between"><div class="modal-title">${esc(dateStr)}</div><button class="btn small ghost" data-close>Close</button></div>${dayBadges.length?`<div class="row gap wrap" style="margin:12px 0">${dayBadges.map(def=>`<div class="cal-trophy-popup-item" style="text-align:center;width:56px">${badgeIcon(def,true)}<div class="subtle" style="font-size:10px;margin-top:2px">${esc(def.name)}</div></div>`).join('')}</div>`:''}${historyDayHTML(dateStr)}</div>`;
   document.body.appendChild(overlay);
   overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
   bindCommon();
