@@ -131,17 +131,17 @@ const DAILY_RULES=[
 const FAVORITE_CATEGORIES=['Breakfast','Lunch','Dinner','Snack','Shake'];
 const FAVORITE_ICONS=['🍳','🥓','🧇','🥞','🍞','🥪','🍗','🥩','🍔','🌮','🍜','🍝','🍕','🥗','🍚','🍲','🥙','🍎','🥤','🥛','🍫'];
 const BODYPART_RE={chestchamp:/bench|fly|chest|pec/i,backbuilder:/deadlift|row|pulldown|lat pull/i,legday:/squat|leg press|leg extension|leg curl|calf|lunge/i,shoulderforge:/overhead press|military press|lateral raise|rear.delt|shoulder/i,armarsenal:/curl|triceps|tricep|bicep/i};
-const BODYPART_ICON={chestchamp:'🏋️',backbuilder:'🚣',legday:'🦵',shoulderforge:'🤾',armarsenal:'💪'};
+const BODYPART_ICON={chestchamp:'icons/chestchamp.png',backbuilder:'icons/backbuilder.png',legday:'icons/legday.png',shoulderforge:'icons/shoulderforge.png',armarsenal:'icons/armarsenal.png',rest:'icons/rest.png'};
 function dayBodypartIcon(dow){
   const p=state.program[dow];
-  if(!p||!p.exercises||!p.exercises.length)return '➖';
+  if(!p||!p.exercises||!p.exercises.length)return BODYPART_ICON.rest;
   const counts={};
   p.exercises.forEach(e=>{
     if(e.skipped)return;
     for(const id in BODYPART_RE)if(BODYPART_RE[id].test(e.name))counts[id]=(counts[id]||0)+1;
   });
   const top=Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
-  return top?BODYPART_ICON[top]:'🏋️';
+  return top?BODYPART_ICON[top]:BODYPART_ICON.chestchamp;
 }
 const state=load();
 if((state.programVersion||0)<PROGRAM_VERSION){state.program=deep(DEFAULT_PROGRAM);state.programVersion=PROGRAM_VERSION;state.settings.programStartDate=state.settings.programStartDate||isoDate(nowDate());save()}
@@ -538,7 +538,7 @@ function homePage(){
     <div class="metric-grid"><div class="metric"><div class="subtle">🔥 CALORIES LOGGED</div><div class="val">${Math.round(c)}</div></div><div class="metric"><div class="subtle">💪 PROTEIN LOGGED</div><div class="val">${Math.round(pr)} g</div></div><div class="metric"><div class="subtle">💧 WATER LOGGED</div><div class="val">${(waterToday()/1000).toFixed(1)} / 3.5 L</div></div></div>
   </div>`;
 }
-function weekHTML(){const d=nowDate();const day=d.getDay();const selDow=ui.workoutsDay==null?day:ui.workoutsDay;const monday=new Date(d);monday.setDate(d.getDate()-((day+6)%7));return `<div class="week">${Array.from({length:7},(_,i)=>{const x=new Date(monday);x.setDate(monday.getDate()+i);const logged=state.workouts.some(w=>w.date===isoDate(x))||state.insanity.some(w=>w.date===isoDate(x));return `<div class="day-chip ${isoDate(x)===isoDate(d)?'today':''} ${x.getDay()===selDow?'selected':''} ${logged?'logged':''}" style="cursor:pointer" data-daychip="${x.getDay()}"><div class="chip-icon">${dayBodypartIcon(x.getDay())}</div><div class="dow">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}</div><div class="num">${x.getDate()}</div><div class="dot"></div></div>`}).join('')}</div>`}
+function weekHTML(){const d=nowDate();const day=d.getDay();const selDow=ui.workoutsDay==null?day:ui.workoutsDay;const monday=new Date(d);monday.setDate(d.getDate()-((day+6)%7));return `<div class="week">${Array.from({length:7},(_,i)=>{const x=new Date(monday);x.setDate(monday.getDate()+i);const logged=state.workouts.some(w=>w.date===isoDate(x))||state.insanity.some(w=>w.date===isoDate(x));return `<div class="day-chip ${isoDate(x)===isoDate(d)?'today':''} ${x.getDay()===selDow?'selected':''} ${logged?'logged':''}" style="cursor:pointer" data-daychip="${x.getDay()}"><div class="chip-icon"><img src="${dayBodypartIcon(x.getDay())}" alt=""></div><div class="dow">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}</div><div class="num">${x.getDate()}</div><div class="dot"></div></div>`}).join('')}</div>`}
 function insanityCatchupHTML(){if(!activeProgramInsanityEnabled())return '';const m=missedInsanity();return m.length?`<div class="muted" style="margin-top:14px">${m.length} past Insanity day${m.length===1?'':'s'} not logged <button class="btn small primary" data-insanity-catchup>🔁 CATCH UP</button></div>`:''}
 function insanityCatchupModal(){const missed=missedInsanity();if(!missed.length){toast('Nothing to catch up on.');return}const picked=new Set(missed.map(m=>m.date));const overlay=document.createElement('div');overlay.className='modal';const draw=()=>{overlay.innerHTML=`<div class="modal-card"><div class="row between"><div><div class="modal-title">Catch Up Insanity</div><div class="muted">Untick any day you actually missed.</div></div><button class="btn small ghost" data-close>Close</button></div>${missed.map(m=>`<div class="history-item"><div class="row between"><div><b>${esc(m.name)}</b><div class="muted">${m.date}</div></div><button class="mini-toggle ${picked.has(m.date)?'on':'danger'}" data-pick="${m.date}">${picked.has(m.date)?'DID IT':'SKIPPED'}</button></div></div>`).join('')}<button class="btn primary full" style="margin-top:14px" data-confirm ${picked.size?'':'disabled'}>${picked.size?`✅ LOG ${picked.size} DAY${picked.size===1?'':'S'}`:'NOTHING SELECTED'}</button></div>`;overlay.querySelector('[data-close]').onclick=()=>overlay.remove();overlay.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{const d=b.dataset.pick;picked.has(d)?picked.delete(d):picked.add(d);draw()});const c=overlay.querySelector('[data-confirm]');if(picked.size)c.onclick=()=>{state.insanity=state.insanity||[];const add=missed.filter(m=>picked.has(m.date));add.forEach(m=>{if(!state.insanity.some(x=>x.date===m.date))state.insanity.push({id:uid(),date:m.date,endTs:new Date(`${m.date}T19:30:00`).getTime(),name:m.name,duration:'completed'})});save();overlay.remove();toast(`${add.length} Insanity day${add.length===1?'':'s'} logged.`);render()}};draw();document.body.appendChild(overlay)}
 

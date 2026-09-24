@@ -216,10 +216,10 @@ use) show a simple "no workout scheduled" message instead. This card is
 hidden while editing the program, since you're already looking at every
 day's exercises there.
 
-Each chip also carries a small emoji above the day name showing which
-bodypart that day trains — 🏋️ chest, 🦵 legs, 🤾 shoulders, 💪 arms, 🚣
-back, or ➖ for a rest day / a day with no exercises. It's detected the
-same way the Chest Champion/Back Builder/etc. badges are: by matching
+Each chip also carries a small bodypart icon above the day name showing
+which muscle group that day trains — chest, legs, shoulders, arms, back,
+or a plain bar for a rest day / a day with no exercises. It's detected
+the same way the Chest Champion/Back Builder/etc. badges are: by matching
 the day's actual exercise names against each bodypart's keywords and
 picking whichever one shows up most, so it works for any program (not
 just the bundled ones) and updates automatically if you edit a day's
