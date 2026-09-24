@@ -629,7 +629,7 @@ function monthCalendarHTML(monthKey,loggedDates,navAttr){
   const daysInMonth=new Date(y,m,0).getDate();
   const todayIso=isoDate(nowDate());
   const cells=[];
-  for(let i=0;i<first.getDay();i++)cells.push('<div class="cal-day empty"></div>');
+  for(let i=0;i<(first.getDay()+6)%7;i++)cells.push('<div class="cal-day empty"></div>');
   for(let day=1;day<=daysInMonth;day++){
     const iso=isoDate(new Date(y,m-1,day));
     const hasLog=loggedDates.has(iso);
@@ -641,7 +641,7 @@ function monthCalendarHTML(monthKey,loggedDates,navAttr){
   const trailing=(7-(cells.length%7))%7;
   for(let i=0;i<trailing;i++)cells.push('<div class="cal-day empty"></div>');
   const monthLabel=first.toLocaleDateString('en-US',{month:'long',year:'numeric'}).toUpperCase();
-  return `<div class="row between" style="margin-bottom:10px"><button class="btn small ghost" data-${navAttr}="-1">‹</button><div class="section-title">${esc(monthLabel)}</div><button class="btn small ghost" data-${navAttr}="1">›</button></div><div class="cal-weekdays">${['S','M','T','W','T','F','S'].map(d=>`<div>${d}</div>`).join('')}</div><div class="cal-grid">${cells.join('')}</div>`;
+  return `<div class="row between" style="margin-bottom:10px"><button class="btn small ghost" data-${navAttr}="-1">‹</button><div class="section-title">${esc(monthLabel)}</div><button class="btn small ghost" data-${navAttr}="1">›</button></div><div class="cal-weekdays">${['M','T','W','T','F','S','S'].map(d=>`<div>${d}</div>`).join('')}</div><div class="cal-grid">${cells.join('')}</div>`;
 }
 function historyCalendarHTML(){
   let all=[...state.workouts.map(w=>({...w,kind:'strength'})),...state.insanity.map(w=>({...w,kind:'insanity'}))];
