@@ -9,6 +9,12 @@ reopening the installed app won't dump you back on Home. If you refresh
 mid-workout, it also drops you straight back into that in-progress
 session instead of the tab you'd otherwise land on.
 
+## Popups close on a tap outside them
+Every popup in the app — a workout summary, a day's history, a badge's
+detail, program pickers, all of it — closes if you tap anywhere outside
+its card, not just its Close button. Tapping inside the card itself never
+closes it, so scrolling or tapping a button inside is safe.
+
 ## Home: current PRs and trophies
 Home used to be a live Now/Next schedule queue (a wake-up-anchored daily
 to-do list with its own EDIT SCHEDULE mode). That's gone — in practice,
@@ -65,10 +71,13 @@ scoped down to what's actually useful day to day:
   bodyweight. This is how you look back at a specific past day (e.g. a
   session logged from old FitNotes data) without it being buried in a filter.
   Food, water, and bodyweight entries there all have a delete button too
-  — the fix for an accidental duplicate or a fat-fingered number. Deleting
-  a bodyweight entry also drops any bodyweight-milestone badge (5 lb gain,
-  10 lb gain, 200 lb, 220 lb) it earned if the remaining entries no longer
-  qualify — no permanent trophy for a typo.
+  — the fix for an accidental duplicate or a fat-fingered number. Every
+  delete (there, Today's Entries, and everywhere else a ✕ shows up) asks
+  for a confirmation first, since a bare ✕ next to real data is too easy
+  to tap by accident. Deleting a bodyweight entry also drops any
+  bodyweight-milestone badge (5 lb gain, 10 lb gain, 200 lb, 220 lb) it
+  earned if the remaining entries no longer qualify — no permanent trophy
+  for a typo.
 
 ## Patterns
 A card on the Progress tab breaks your logged water and calories into six
