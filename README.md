@@ -24,6 +24,13 @@ shows a plain empty-state message instead of a blank card. The
 CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
 unchanged.
 
+Tap any CURRENT PR tile and a pop-up shows exactly which set produced
+that estimate (weight × reps, and the date), with a VIEW FULL WORKOUT
+button when it came from a workout still in the app — no more digging
+through History to find where a number came from. A PR sourced from the
+bundled historical data (no live workout behind it) just skips that
+button.
+
 ## Training charts and history
 Three cards on the Progress tab, inspired by FitNotes' analysis view but
 scoped down to what's actually useful day to day:
@@ -57,8 +64,11 @@ scoped down to what's actually useful day to day:
   place: workouts, Insanity, bundled historical exercises, food, water, and
   bodyweight. This is how you look back at a specific past day (e.g. a
   session logged from old FitNotes data) without it being buried in a filter.
-  Food and water entries there have a delete button too — the fix for an
-  accidental duplicate.
+  Food, water, and bodyweight entries there all have a delete button too
+  — the fix for an accidental duplicate or a fat-fingered number. Deleting
+  a bodyweight entry also drops any bodyweight-milestone badge (5 lb gain,
+  10 lb gain, 200 lb, 220 lb) it earned if the remaining entries no longer
+  qualify — no permanent trophy for a typo.
 
 ## Patterns
 A card on the Progress tab breaks your logged water and calories into six
