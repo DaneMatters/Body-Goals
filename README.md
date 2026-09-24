@@ -120,11 +120,23 @@ in THIS WEEK. Preview a different day (say, catching up on Friday)
 and it stays 🏋️ START / LOG THIS WORKOUT for that day, regardless of
 whether today's own workout is already done.
 
+## Workout history calendar
+WORKOUT HISTORY at the bottom of the Workouts tab is a real month
+calendar instead of a flat scrolling list. Any day with a logged workout
+(strength or Insanity, matching whichever All Workouts/Strength/Insanity
+filter tab is active) shows a translucent green checkmark behind the date
+number, and any day a badge was earned shows a small trophy icon in its
+corner — tap that day and everything logged shows up in a pop-up: the
+workout(s) themselves, plus food, water, and bodyweight if any were
+logged that day, and any trophy earned that day up top with its name.
+‹ and › step between months. It's the same day-detail view used by
+Progress → History, just reached by tapping a calendar day instead of
+picking a date.
+
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
 FOOD HISTORY card lists every past day you've logged food or water,
-newest first, the same collapsible-day pattern the Workouts tab uses for
-workout history. Each day starts collapsed with a one-line summary
+newest first, as a collapsible list. Each day starts collapsed with a one-line summary
 (total calories, protein, and water if any was logged), and tapping it
 opens the full list of that day's food and water entries — each with its
 own delete button, same as Today's Entries. Today itself stays in its own
