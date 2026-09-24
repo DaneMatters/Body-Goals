@@ -211,14 +211,14 @@ canonical names the app already merges FitNotes and program history
 under, so switching programs doesn't fragment the 1RM chart the way two
 different names for the same lift used to.
 
-A progress widget inside the THIS WEEK card, right under the day
-chips, carries the active program's name (small — that name is the
-switch/edit/manage dropdown described above, not a big heading) plus
-week X of 12 (and a month counter, for either program's phase/month-based
-lifts) and its progress bar all together — so THIS WEEK tells you at a
-glance which program you're running, how far into it you are, and gives
-you a way to change it, all in one compact widget instead of a whole
-separate card.
+A progress widget leads that first card, above the day chips, carrying
+the active program's name (small — that name is the switch/edit/manage
+dropdown described above, not a big heading) plus week X of 12 (and a
+month counter, for either program's phase/month-based lifts) and its
+progress bar all together — so the top of the Workouts tab tells you at
+a glance which program you're running and how far into it you are,
+gives you a way to change it, and only then shows the day chips below,
+with no section titles or extra labels in between.
 
 ## Preview any day from THIS WEEK
 The day chips in THIS WEEK aren't just a logging streak anymore — tap
