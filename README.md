@@ -145,12 +145,14 @@ picking a date.
 
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
-FOOD HISTORY card lists every past day you've logged food or water,
-newest first, as a collapsible list. Each day starts collapsed with a one-line summary
-(total calories, protein, and water if any was logged), and tapping it
-opens the full list of that day's food and water entries — each with its
-own delete button, same as Today's Entries. Today itself stays in its own
-card above, so nothing is shown twice.
+FOOD HISTORY card shows the same kind of month calendar as Workout
+History. Any day you logged food or water shows a translucent checkmark,
+any day a badge was earned shows a trophy icon, and tapping a day pops up
+everything logged that day — food and water entries with their own
+delete buttons, same as Today's Entries, plus any workout or bodyweight
+entry logged that day too. ‹ and › step between months, independently of
+the Workouts tab's own calendar. Today itself stays in its own card
+above, so nothing is shown twice.
 
 ## 12-week Power Bodybuilding program
 The default Mon–Fri split (Chest/Legs/Shoulders/Arms/Back) runs a 12-week
