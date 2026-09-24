@@ -9,26 +9,20 @@ reopening the installed app won't dump you back on Home. If you refresh
 mid-workout, it also drops you straight back into that in-progress
 session instead of the tab you'd otherwise land on.
 
-## Home: Now/Next schedule
-The Home tab is a live daily queue, not a summary. It shows the single next
-undone thing on your day — workout, Insanity, or anything you add (meals,
-water, etc.) via EDIT SCHEDULE — bold and up top with a due-now/overdue
-countdown, and everything still coming up beneath it, sized larger the
-closer its time gets. Tapping the primary action (start the workout, log
-Insanity, or mark a scheduled item done) clears it and the next item takes
-over the bold slot. Refreshes automatically every 30 seconds while you're
-on the tab.
-
-The whole day is anchored to whatever you mark done first (the earliest
-item on your schedule — "Wake up" by default). Before that's marked, the
-day shows at its normal scheduled times. The moment you mark it, the app
-compares when you actually did it to when it was scheduled for, and shifts
-every remaining item that day — food, water, the workout, Insanity, all of
-it — by that same gap, so the spacing between things stays intact even if
-the whole day starts late or early. A small "shifted +Xh Xm" badge next to
-UP NOW shows when this is active. It resets to normal every new day, and
-undoing that first item's completion (Progress → History → Undo) reverts
-today back to the unshifted times too.
+## Home: current PRs and trophies
+Home used to be a live Now/Next schedule queue (a wake-up-anchored daily
+to-do list with its own EDIT SCHEDULE mode). That's gone — in practice,
+water and food get logged from the Food tab and workouts from the
+Workouts tab, so the schedule queue was one more click without a real
+use. Home is now a quick trophy case instead: a CURRENT PRs card shows
+your best-ever estimated 1RM on each of the three main lifts (Incline
+Barbell Bench Press, Barbell Back Squat, Barbell Deadlift) with the date
+it was set, and a TROPHIES card shows your most recently earned badges
+in full color (up to 6), with an "N of 28" pill that jumps straight to
+Progress → Badges for the complete list. Log nothing yet and TROPHIES
+shows a plain empty-state message instead of a blank card. The
+CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
+unchanged.
 
 ## Training charts and history
 Three cards on the Progress tab, inspired by FitNotes' analysis view but
@@ -63,9 +57,8 @@ scoped down to what's actually useful day to day:
   place: workouts, Insanity, bundled historical exercises, food, water, and
   bodyweight. This is how you look back at a specific past day (e.g. a
   session logged from old FitNotes data) without it being buried in a filter.
-  A "Completed" section also lists every schedule item checked off that day
-  with an Undo button, and water entries there have a delete button too —
-  the fix for an accidental tap on Home.
+  Food and water entries there have a delete button too — the fix for an
+  accidental duplicate.
 
 ## Patterns
 A card on the Progress tab breaks your logged water and calories into six
@@ -86,27 +79,15 @@ a small preset emoji list, set its calories/protein) or delete one; manual
 entry below the grid still works for anything that isn't a go-to.
 
 ## Water logging
-Real amounts, not just a checkbox. Marking a "Water" schedule item done on
-Home auto-logs 500 mL (one bottle) and time-stamps it. The Food tab logs
-water the same way food favorites work: a blue "💧 Water Bottle" button
-sits right above your food favorites (always 500 mL, one tap, no separate
-card or custom-amount form to deal with), with a running total against
-the 3.5 L daily baseline shown as its own WATER tile next to TODAY and
+Real amounts, not just a checkbox. The Food tab logs water the same way
+food favorites work: a blue "💧 Water Bottle" button sits right above
+your food favorites (always 500 mL, one tap, no separate card or
+custom-amount form to deal with), with a running total against the
+3.5 L daily baseline shown as its own WATER tile next to TODAY and
 PROTEIN, and as a metric tile on Home. Logged water shows up alongside
 food in Today's Entries — sorted together by time — and every entry,
 water or food, has a delete (✕) button there and in History if one gets
-logged by mistake (e.g. a duplicate). Tapping MARK DONE (or a schedule
-item's mini checkmark) flashes it green to confirm the tap registered, and
-marking something done is a real toggle — the History day view (see
-below) lists everything checked off that day with an Undo button, so an
-accidental tap is always fixable, not just hidden.
-
-This stays in sync in both directions: logging water or food from the Food
-tab (the Water Bottle button, manual entry, or a Favorites tap)
-automatically checks off the next not-yet-done Water or meal item on Home's
-schedule too, timestamped to when you actually logged it — not whenever you
-happen to next open Home. No more mismatch between when you actually ate or
-drank and when the to-do list says you did.
+logged by mistake (e.g. a duplicate).
 
 ## Icon accents across the app
 Every stat tile app-wide carries a small icon next to its label now,
@@ -118,12 +99,11 @@ behavior changes, just a consistent visual language across tiles that
 already existed.
 
 The same pass extends to the primary quick-action buttons: 🏋️ on every
-start/resume-workout button (Home and the Workouts tab's day-preview
-EXERCISES card), 📋 on VIEW TODAY'S WORKOUT, ✅ on MARK DONE (Home's
-UP NOW card) and the Insanity catch-up modal's LOG N DAY(S) confirm
-button, ⚡ on both LOG INSANITY buttons, 🔁 on CATCH UP, 🍽️ on LOG
-CONSUMED FOOD, and ⚖️ on LOG WEIGHT. Same buttons, same actions — just
-faster to spot at a glance.
+start/resume-workout button (the Workouts tab's day-preview EXERCISES
+card), 📋 on VIEW TODAY'S WORKOUT, ✅ on the Insanity catch-up modal's
+LOG N DAY(S) confirm button, ⚡ on both LOG INSANITY buttons, 🔁 on
+CATCH UP, 🍽️ on LOG CONSUMED FOOD, and ⚖️ on LOG WEIGHT. Same buttons,
+same actions — just faster to spot at a glance.
 
 ## Workouts tab: one place to start today's workout
 The Workouts tab used to open with a TODAY'S TRAINING card duplicating
@@ -165,7 +145,7 @@ pre-populate 2 warm-up sets (ramping to roughly 50%/70% of that day's
 work weight) ahead of the working sets, and rest between their heavy
 sets is 3 minutes, matching the source program. Standing Barbell
 Military Press on Shoulders day runs 5×4. No cardio progression is bundled
-with this program — Insanity is logged separately as its own schedule item.
+with this program — Insanity is tracked and logged entirely separately.
 Starting 1RMs (145/155/190 lb for bench/squat/deadlift) are pre-seeded
 from recent bundled FitNotes history rather than a fresh max-effort test —
 adjust them via Edit Current Program once real Week 1 sets show whether
@@ -238,38 +218,37 @@ day's exercises there.
 
 ## Levels and badges
 A quiet level indicator sits under the date on Home — level number, title,
-and a thin XP bar, small enough to not compete with UP NOW. Tapping it
-jumps straight to a new Badges tab under Progress. XP comes from finishing
+and a thin XP bar. Tapping it jumps straight to a new Badges tab under
+Progress, and Home's own TROPHIES card (see above) surfaces your most
+recent earned badges without that extra tap. XP comes from finishing
 a workout (50, or 25 if finished early with sets still unchecked), logging
-Insanity (30), marking any scheduled item done (5), or logging bodyweight
-(5); each level costs a bit more XP than the last. Level titles: 1–5
-Titan, 6–10 Gym Rat, 11–20 Conqueror, 21+ Juggernaut.
+Insanity (30), or logging bodyweight (5); each level costs a bit more XP
+than the last. Level titles: 1–5 Titan, 6–10 Gym Rat, 11–20 Conqueror,
+21+ Juggernaut.
 
-31 badges cover real strength milestones (a main lift crossing 225/315/405
+28 badges cover real strength milestones (a main lift crossing 225/315/405
 lb estimated 1RM), lifetime volume (250k/500k/1M lb), a 10,000 lb single
 session, PRs (first one, and one on all three main lifts in the same
-week), streaks (schedule items marked done 7 or 30 days running, water or
-protein targets hit 7 days running), program milestones (each 4-week
-phase finished, 100 workouts logged), your first logged workout, 20
-workouts that trained each bodypart (chest/back/legs/shoulders/arms,
-detected from the exercises actually logged that session — works across
-any program, not just one specific split), bodyweight milestones off
-your own weigh-ins (5 lb and 10 lb gained since you started logging, and
-crossing 200 or 220 lb), and a few tied to features already in the app —
-reopening a finished workout and completing it, logging something with +
-ADD EXERCISE that wasn't on the plan, and finishing 10 workouts with
-every set checked off.
+week), streaks (water or protein targets hit 7 days running), program
+milestones (each 4-week phase finished, 100 workouts logged), your first
+logged workout, 20 workouts that trained each bodypart
+(chest/back/legs/shoulders/arms, detected from the exercises actually
+logged that session — works across any program, not just one specific
+split), bodyweight milestones off your own weigh-ins (5 lb and 10 lb
+gained since you started logging, and crossing 200 or 220 lb), and a few
+tied to features already in the app — reopening a finished workout and
+completing it, logging something with + ADD EXERCISE that wasn't on the
+plan, and finishing 10 workouts with every set checked off.
 
-24 of the 31 use real commissioned trophy artwork (`badges/*.png`, 200×200,
-~1.6 MB total) — full color once earned, desaturated and dimmed while
-locked, matching the pack's own spec. The other 7 (Hat Trick, The
-Comeback, Freelancer, Full House, and the three Phase Complete badges)
-have no matching art in the pack and fall back to a code-drawn shield —
-a radial gradient colored by category (copper for strength, blue for
-volume, gold for PRs, green for consistency, purple for grit, silver for
-program) with a soft glow and shimmer once earned, outlined and muted
-while locked, so the whole grid still reads as one consistent set even
-where the art runs out.
+22 of the 28 use real commissioned trophy artwork (`badges/*.png`,
+200×200) — full color once earned, desaturated and dimmed while locked,
+matching the pack's own spec. The other 6 (Hat Trick, The Comeback,
+Freelancer, and the three Phase Complete badges) have no matching art in
+the pack and fall back to a code-drawn shield — a radial gradient colored
+by category (copper for strength, blue for volume, gold for PRs, green
+for consistency, purple for grit, silver for program) with a soft glow
+and shimmer once earned, outlined and muted while locked, so the whole
+grid still reads as one consistent set even where the art runs out.
 
 Tap an earned badge and a popup shows exactly what earned it in place —
 the exercise, weight × reps, and PR type for a lift badge; the workout
@@ -292,7 +271,7 @@ none of it scans the 7 years of bundled FitNotes history or backfills
 anything, so nothing unlocks in a pile the first time you open the app.
 
 ## Insanity calendar
-The "7:30 PM Insanity" line (Home and Workouts) shows the actual named
+The "7:30 PM Insanity" line on the Workouts tab shows the actual named
 workout due that day — e.g. "Plyometric Cardio Circuit" — computed from
 the real Insanity calendar and a recorded start date, not just a generic
 "planned" placeholder. The bundled calendar covers the complete 63-day
@@ -326,8 +305,8 @@ Insanity is now a per-program setting rather than a fixed always-on
 feature: open Edit Current Program (the program-name dropdown inside
 THIS WEEK's progress widget on the Workouts tab) and there's an
 Insanity Cardio ON/OFF toggle at the top, above the day list. Turning
-it OFF removes the Insanity line from Home
-and Workouts, and silences the missed-days CATCH UP nudge, for whichever
+it OFF removes the Insanity line from the Workouts tab and silences the
+missed-days CATCH UP nudge, for whichever
 program is currently active — nothing already logged in Progress →
 History is touched. Turning it back ON (for that program or after
 switching to a different one) picks the calendar right back up from
