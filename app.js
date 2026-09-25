@@ -132,6 +132,8 @@ const FAVORITE_CATEGORIES=['Breakfast','Lunch','Dinner','Snack','Shake'];
 const FAVORITE_ICONS=['🍳','🥓','🧇','🥞','🍞','🥪','🍗','🥩','🍔','🌮','🍜','🍝','🍕','🥗','🍚','🍲','🥙','🍎','🥤','🥛','🍫'];
 const BODYPART_RE={chestchamp:/bench|fly|chest|pec/i,backbuilder:/deadlift|row|pulldown|lat pull/i,legday:/squat|leg press|leg extension|leg curl|calf|lunge/i,shoulderforge:/overhead press|military press|lateral raise|rear.delt|shoulder/i,armarsenal:/curl|triceps|tricep|bicep/i};
 const BODYPART_ICON={chestchamp:'icons/chestchamp.png',backbuilder:'icons/backbuilder.png',legday:'icons/legday.png',shoulderforge:'icons/shoulderforge.png',armarsenal:'icons/armarsenal.png',rest:'icons/rest.png'};
+const BODYPART_LABEL={chestchamp:'Chest',legday:'Legs',shoulderforge:'Shoulders',armarsenal:'Arms',backbuilder:'Back'};
+const BODYPART_ORDER=['chestchamp','legday','shoulderforge','armarsenal','backbuilder'];
 function dayBodypartIcon(dow){
   const p=state.program[dow];
   if(!p||!p.exercises||!p.exercises.length)return BODYPART_ICON.rest;
@@ -646,7 +648,10 @@ function monthCalendarHTML(monthKey,loggedDates,navAttr){
 }
 function historyCalendarHTML(){
   let all=[...state.workouts.map(w=>({...w,kind:'strength'})),...state.insanity.map(w=>({...w,kind:'insanity'}))];
-  if(ui.historyFilter!=='all')all=all.filter(x=>x.kind===ui.historyFilter);
+  if(ui.historyFilter!=='all'){
+    const re=BODYPART_RE[ui.historyFilter];
+    all=re?all.filter(x=>x.kind==='strength'&&(x.exercises||[]).some(e=>!e.skipped&&re.test(e.name))):[];
+  }
   const loggedDates=new Set(all.map(x=>x.date));
   const monthKey=ui.historyCalMonth||calMonthKey(nowDate());
   return monthCalendarHTML(monthKey,loggedDates,'cal-nav');
@@ -664,7 +669,7 @@ function showCalendarDay(dateStr){
   overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
   bindCommon();
 }
-function historySection(){return `<div class="tabs"><button class="tab ${ui.historyFilter==='all'?'active':''}" data-hf="all">All Workouts</button><button class="tab ${ui.historyFilter==='strength'?'active':''}" data-hf="strength">Strength</button><button class="tab ${ui.historyFilter==='insanity'?'active':''}" data-hf="insanity">Insanity</button><button class="tab ${ui.historyFilter==='other'?'active':''}" data-hf="other">Other</button></div><div class="card"><div class="row between"><div class="section-title">WORKOUT HISTORY</div><button class="btn small ghost" data-add-workout>+ Add Workout</button></div>${historyCalendarHTML()}</div>`}
+function historySection(){return `<div class="tabs"><button class="tab ${ui.historyFilter==='all'?'active':''}" data-hf="all">All Workouts</button>${BODYPART_ORDER.map(id=>`<button class="tab ${ui.historyFilter===id?'active':''}" data-hf="${id}">${BODYPART_LABEL[id]}</button>`).join('')}</div><div class="card"><div class="row between"><div class="section-title">WORKOUT HISTORY</div><button class="btn small ghost" data-add-workout>+ Add Workout</button></div>${historyCalendarHTML()}</div>`}
 function historyItem(w){if(w.kind==='insanity')return `<div class="history-item"><div class="row between"><div><div class="history-name">${esc(w.name||'Insanity')}</div><div class="muted">${w.date} • ${w.duration||'completed'}</div></div><span class="row gap"><span class="badge">CARDIO</span><button class="mini-toggle danger" data-insanity-del="${w.id}">✕</button></span></div></div>`;const sets=w.exercises?.reduce((n,e)=>n+e.sets.filter(s=>s.done&&!s.warmup).length,0)||0;const vol=w.exercises?.reduce((n,e)=>n+e.sets.filter(s=>s.done&&!s.warmup).reduce((a,s)=>a+(+s.weight||0)*(+s.reps||0),0),0)||0;return `<div class="history-item" data-history-id="${w.id}"><div class="row between"><div><div class="history-name">${esc(w.name)}</div><div class="muted">${w.date} • ${sets} work sets</div></div><div style="text-align:right"><span class="badge">${Math.round(vol).toLocaleString()} lb vol</span></div></div></div>`}
 function favoritesViewHTML(){const favs=state.favorites||[];if(!favs.length)return '<div class="muted" style="margin:8px 0 4px">No favorites yet — tap EDIT FAVORITES to add your go-to meals.</div>';return FAVORITE_CATEGORIES.filter(cat=>favs.some(f=>f.category===cat)).map(cat=>`<div class="subtle" style="margin-top:10px">${cat.toUpperCase()}</div><div class="row gap wrap" style="margin-top:6px">${favs.filter(f=>f.category===cat).map(f=>`<button class="btn ghost" data-log-fav="${f.id}">${f.emoji} ${esc(f.name)}</button>`).join('')}</div>`).join('')}
 function favoritesEditHTML(){const favs=state.favorites||[];return FAVORITE_CATEGORIES.map(cat=>`<div class="subtle" style="margin-top:10px">${cat.toUpperCase()}</div>${favs.filter(f=>f.category===cat).map(f=>`<div class="row between" style="padding:8px 0;border-top:1px solid #242424"><span>${f.emoji} ${esc(f.name)} <span class="subtle">(${f.calories} cal • ${f.protein}g)</span></span><button class="btn small danger" data-fav-del="${f.id}">✕</button></div>`).join('')}<button class="btn small ghost full" style="margin-top:6px" data-fav-add="${cat}">+ Add ${cat} Favorite</button>`).join('')}
