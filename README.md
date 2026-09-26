@@ -140,20 +140,27 @@ and it stays 🏋️ START / LOG THIS WORKOUT for that day, regardless of
 whether today's own workout is already done.
 
 ## Workout history calendar
-WORKOUT HISTORY at the bottom of the Workouts tab is a real month
-calendar instead of a flat scrolling list. The filter tabs above it are
-bodypart-based — All Workouts, Chest, Legs, Shoulders, Arms, Back —
-using the same exercise-name matching as the day-chip icons and the
-Chest Champion/Back Builder/etc. badges, so picking e.g. Legs shows only
-the days that included a leg exercise, across any program. Any day
-matching the active filter shows a translucent green checkmark behind
-the date number, and any day a badge was earned shows a small trophy
-icon in its corner — tap that day and everything logged shows up in a
-pop-up: the workout(s) themselves, plus food, water, and bodyweight if
-any were logged that day, and any trophy earned that day up top with its
-name. ‹ and › step between months. It's the same day-detail view used by
+WORKOUT HISTORY at the bottom of the Workouts tab leads with ALL
+WORKOUTS — a real month calendar instead of a flat scrolling list. Any
+day with a logged workout shows a translucent green checkmark behind the
+date number, and any day a badge was earned shows a small trophy icon in
+its corner — tap that day and everything logged shows up in a pop-up:
+the workout(s) themselves, plus food, water, and bodyweight if any were
+logged that day, and any trophy earned that day up top with its name. ‹
+and › step between months. It's the same day-detail view used by
 Progress → History, just reached by tapping a calendar day instead of
 picking a date.
+
+The other tabs — Chest, Legs, Shoulders, Arms, Back — switch away from
+the calendar to a plain chronological list of just that bodypart's
+workouts (name, date, work sets, volume), the same list style Workout
+History used before the calendar existed. They use the same
+exercise-name matching as the day-chip icons and the Chest
+Champion/Back Builder/etc. badges, so e.g. Legs lists every workout that
+included a leg exercise, across any program — tap one to open its full
+detail, same as before. Only All Workouts is a calendar; a calendar
+filtered down to one bodypart would mostly be empty squares, so a list
+reads better there.
 
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
