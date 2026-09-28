@@ -598,7 +598,7 @@ function programsMenuModal(){
     const rows=Object.entries(lib).map(([id,p])=>{
       const active=id===state.activeProgramId;
       const weeks=p.startDate?Math.max(1,Math.floor((nowDate()-new Date(p.startDate+'T00:00:00'))/86400000/7)+1):0;
-      return `<div class="history-item"><div class="row between gap"><div style="min-width:0"><b>${esc(p.label)}</b>${active?' <span class="badge pr">ACTIVE</span>':''}<div class="muted" style="margin-top:3px">${p.startDate?`Started ${p.startDate} · week ${weeks}`:'Not started yet'}</div></div><div class="row gap">${active?'':`<button class="btn small ghost" data-switch-program="${esc(id)}">LOAD</button>`}<button class="btn small ghost" data-rename-program="${esc(id)}">✎</button>${active?'':`<button class="btn small danger" data-delete-program="${esc(id)}">✕</button>`}</div></div></div>`;
+      return `<div class="history-item"><div class="row between gap"><div style="min-width:0"><b>${esc(p.label)}</b>${active?' <span class="badge pr">ACTIVE</span>':''}<div class="muted" style="margin-top:3px">${p.startDate?`Started ${p.startDate} · week ${weeks}`:'Not started yet'}</div></div><div class="row gap">${active?'':`<button class="btn small ghost" data-switch-program="${esc(id)}">LOAD</button>`}<button class="btn small ghost" data-view-program="${esc(id)}">👁</button><button class="btn small ghost" data-rename-program="${esc(id)}">✎</button>${active?'':`<button class="btn small danger" data-delete-program="${esc(id)}">✕</button>`}</div></div></div>`;
     }).join('');
     overlay.innerHTML=`<div class="modal-card"><div class="row between"><div class="modal-title">Programs</div><button class="btn small ghost" data-close>Close</button></div><button class="btn ghost full" style="margin:12px 0" data-add-program>+ NEW PROGRAM</button>${rows||'<div class="history-empty">No saved programs yet.</div>'}</div>`;
     overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
@@ -608,11 +608,29 @@ function programsMenuModal(){
       const id=b.dataset.switchProgram,l=state.programLibrary[id];
       if(confirm(`Switch to "${l.label}"? Your current program's progress stays saved and you can switch back anytime.`)){overlay.remove();switchProgram(id)}
     });
+    overlay.querySelectorAll('[data-view-program]').forEach(b=>b.onclick=()=>viewProgramModal(b.dataset.viewProgram));
     overlay.querySelectorAll('[data-rename-program]').forEach(b=>b.onclick=()=>{renameProgramPrompt(b.dataset.renameProgram);draw()});
     overlay.querySelectorAll('[data-delete-program]').forEach(b=>b.onclick=()=>{deleteProgramPrompt(b.dataset.deleteProgram);draw()});
   };
   draw();
   document.body.appendChild(overlay);
+}
+function phaseIdxForProgram(p){
+  if(!p.startDate)return 0;
+  const days=Math.floor((nowDate()-new Date(p.startDate+'T00:00:00'))/86400000);
+  const week=Math.floor(days/7);
+  return Math.min(PHASE_REPS.length-1,Math.max(0,Math.floor(week/4)));
+}
+function viewProgramModal(id){
+  const lib=state.programLibrary[id];
+  if(!lib)return;
+  const prog=id===state.activeProgramId?state.program:(lib.program||{});
+  const days=WEEK_ORDER.filter(d=>prog[d]);
+  const phaseIdx=phaseIdxForProgram(lib);
+  const overlay=document.createElement('div');overlay.className='modal';
+  overlay.innerHTML=`<div class="modal-card"><div class="row between"><div><div class="modal-title">${esc(lib.label)}</div><div class="muted">${lib.startDate?`Started ${esc(lib.startDate)}`:'Not started yet'}</div></div><button class="btn small ghost" data-close>Close</button></div>${days.length?days.map(d=>{const x=prog[d];return `<div class="history-item" style="margin-top:12px"><div class="eyebrow" style="margin-bottom:8px">${DAYN[d]} • ${esc(x.name)}</div>${exerciseRowsHTML(x,phaseIdx)}</div>`}).join(''):'<div class="history-empty" style="margin-top:14px">No days set up yet.</div>'}</div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
 }
 function exerciseRowsHTML(x,phaseIdx){return x.exercises.length?x.exercises.map(e=>{const min=e.phased?e.reps[phaseIdx]:e.monthReps?e.monthReps[phaseIdx]:e.min,max=e.phased?e.reps[phaseIdx]:e.monthReps?e.monthReps[phaseIdx]:e.max,pctLabel=e.phased?` @ ${Math.round(e.pct[phaseIdx]*100)}%`:'',tag=e.phased?' <span class="badge">PHASED</span>':e.monthReps?' <span class="badge">MONTH '+(phaseIdx+1)+'</span>':'';return `<div class="exercise-preview row between"><span>${esc(e.name)}${tag}</span><b>${e.sets} × ${min===max?min:`${min}-${max}`}${pctLabel}</b></div>`}).join(''):'<div class="exercise-preview muted">No exercises yet — pick Edit Current Program to add some.</div>'}
 function selectedDayCardHTML(d){const todayDow=d.getDay();const selDow=ui.workoutsDay==null?todayDow:ui.workoutsDay;const isToday=selDow===todayDow;const title=isToday?"TODAY'S EXERCISES":`${DAYN[selDow].toUpperCase()}'S EXERCISES`;const x=state.program[selDow];if(!x)return `<div class="card"><div class="section-title">${title}</div><div class="muted" style="margin-bottom:10px">Tap a day above to preview its workout.</div><div class="history-empty">No workout scheduled for this day. Use Edit Current Program to add one.</div></div>`;const phaseIdx=currentPhaseIdx();const todayWorkout=state.workouts.find(w=>w.date===isoDate(d));const actionBtn=!x.exercises.length?'':state.activeWorkout?`<button class="btn small ghost full" style="margin-top:12px" data-start-day="${selDow}">🏋️ RESUME WORKOUT</button>`:(isToday&&todayWorkout)?`<button class="btn small ghost full" style="margin-top:12px" data-history-id="${todayWorkout.id}">📋 VIEW TODAY'S WORKOUT</button>`:`<button class="btn small ghost full" style="margin-top:12px" data-start-day="${selDow}">🏋️ START / LOG THIS WORKOUT</button>`;return `<div class="card"><div class="section-title">${title}</div><div class="muted" style="margin-bottom:10px">Tap a day above to preview its workout.</div><div class="eyebrow" style="margin-bottom:10px">${DAYN[selDow]} • ${esc(x.name)}</div>${exerciseRowsHTML(x,phaseIdx)}${actionBtn}</div>`}
