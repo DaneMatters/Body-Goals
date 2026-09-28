@@ -400,7 +400,7 @@ log — but REOPEN & ADD SETS still works on it if you want to fill real
 numbers in later.
 
 ## Main workout features
-- Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (the program dropdown's Edit Current Program option): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
+- Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (the program dropdown's Edit Current Program option): rename days, add/remove exercises, reorder exercises within a day (↑/↓ next to each one), add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
   the Workouts tab list) that carries through into that day's session
   screen — the header, progress bar, and FINISH button all pick it up —
