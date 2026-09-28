@@ -378,6 +378,13 @@ than a second entry, so volume and 1RM charts stay honest. Reopening is
 refused (with a reason) if a different workout is already in progress, so a
 live session can never be clobbered.
 
+Reopening never puts the already-saved workout at risk. Hitting Cancel on
+a reopened session — even after leaving it running overnight — only
+discards whatever changes were made since reopening; the workout as it
+was already saved is untouched, and its Cancel confirmation says so
+explicitly (a plain new workout's Cancel still deletes it outright, since
+nothing was saved yet).
+
 FINISH also guards against the mistake in the first place: if any work sets
 are still unchecked, it asks before saving and tells you how many.
 
