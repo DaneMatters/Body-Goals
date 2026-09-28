@@ -203,12 +203,19 @@ handles all of it: pick a saved program to switch to it, with a
 confirmation since it changes what you're training mid-plan; pick
 "✎ Edit Current Program" to jump into editing the active program's days
 and exercises; or pick "⚙ Manage Programs…" for the rest — + NEW
-PROGRAM, a pencil to rename any program, and a delete button on the
-inactive ones (the active program can't be deleted — switch away first,
-then delete it from there). No separate card, menu, or EDIT button
-cluttering the page — one small dropdown covers switching, editing, and
-managing, and an EDIT PROGRAM card only appears when you're actually
-using it. Two programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
+PROGRAM, a 👁 to view any program's full day-by-day exercise breakdown
+without switching to it or editing anything, a pencil to rename any
+program, and a delete button on the inactive ones (the active program
+can't be deleted — switch away first, then delete it from there). 👁
+VIEW is read-only and safe to poke around in even mid-workout — no
+LOAD, no edits, just every day's exercises with their sets × reps (or
+current phase's %1RM for phased lifts), so you can see what a program
+actually involves before committing to it. It always shows the real
+current state, not a stale snapshot — viewing the active program
+reflects whatever you've edited it to since it was last switched to.
+No separate card, menu, or EDIT button cluttering the page — one small
+dropdown covers switching, viewing, editing, and managing, and an EDIT
+PROGRAM card only appears when you're actually using it. Two programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
 default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
 Tuesday through Monday-Thursday-Friday, incline bench and standing
 overhead press as the main upper lifts, back squat/Zercher squat and a
