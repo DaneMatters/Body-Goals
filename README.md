@@ -388,6 +388,17 @@ nothing was saved yet).
 FINISH also guards against the mistake in the first place: if any work sets
 are still unchecked, it asks before saving and tells you how many.
 
++ Add Workout (Workout History, above the calendar) backfills a workout
+you know you did but never got logged — including one lost to the exact
+Cancel-after-reopen mistake above, from before this fix existed. Give it
+a date, a name, and an optional note explaining what happened or what
+you remember, and it shows up immediately: a green checkmark on that
+day's calendar cell, and the note front-and-center both in the day
+pop-up and the workout's own detail view. No exercises or sets are
+required — it's a placeholder marking the day as trained, not a full
+log — but REOPEN & ADD SETS still works on it if you want to fill real
+numbers in later.
+
 ## Main workout features
 - Mon–Fri workouts prebuilt and automatically selected by weekday, fully editable from the Workouts tab (the program dropdown's Edit Current Program option): rename days, add/remove exercises, add/remove whole days, change sets and rep ranges
 - Each training day has its own accent color (a small dot next to it in
