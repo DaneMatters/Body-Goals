@@ -275,6 +275,19 @@ picking whichever one shows up most, so it works for any program (not
 just the bundled ones) and updates automatically if you edit a day's
 exercises.
 
+‹ and › above the chip strip step it a week at a time — THIS WEEK,
+NEXT WEEK, LAST WEEK, and beyond that "WEEK OF <date>" — so you can
+scroll ahead and preview e.g. next week's Tuesday without waiting for
+it to arrive. A day stays selected across the jump, so picking Tuesday
+then tapping › once lands you exactly on next week's Tuesday. For a
+phased lift the numbers shown are whichever phase that future date
+actually falls in (not today's), so the preview is accurate even
+across a phase boundary a few weeks out. Any week besides THIS WEEK is
+preview-only — the START/LOG or VIEW/RESUME button is replaced with a
+note saying to switch back to THIS WEEK to actually log something,
+since logging always stamps today's real date regardless of which
+day's exercises you're looking at.
+
 ## Levels and badges
 A quiet level indicator sits under the date on Home — level number, title,
 and a thin XP bar. Tapping it jumps straight to a new Badges tab under
