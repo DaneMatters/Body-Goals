@@ -443,8 +443,12 @@ numbers in later.
   the session after the last exercise. Tapping it plays the video right in
   an in-app modal (embedded YouTube player, autoplay) instead of jumping out
   to the YouTube app/tab — closing the modal drops you straight back into
-  your session. Add, relabel, or remove any day's videos from Edit
-  Current Program ("+ Add Stretch Video")
+  your session. While that video modal is open, the app holds a screen
+  wake lock so the phone doesn't dim and background the app mid-stretch
+  the way an embedded (non-fullscreen) video can if the OS doesn't
+  otherwise realize something's still playing; it releases the instant
+  the modal closes, however you close it. Add, relabel, or remove any
+  day's videos from Edit Current Program ("+ Add Stretch Video")
 - **+ ADD EXERCISE**, always visible at the bottom of every session's
   exercise list, for anything outside the planned day — an extra
   bodypart, a one-off movement you felt like doing, whatever. Opens a
