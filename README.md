@@ -162,6 +162,17 @@ detail, same as before. Only All Workouts is a calendar; a calendar
 filtered down to one bodypart would mostly be empty squares, so a list
 reads better there.
 
+Every workout has always recorded exactly when it happened — the app
+just wasn't showing it anywhere. It now is: the time (and a start–end
+range once you've finished one, if they differ) shows right next to the
+date wherever a workout appears — the bodypart lists, a calendar day's
+pop-up, and the workout's own detail view — so "what time was I
+actually at the gym" is answerable at a glance, today or years from
+now. A workout backfilled via + Add Workout shows whatever time you
+happened to add it, since there's no way to know the real one after
+the fact; everything logged through a normal session carries its real
+clock time automatically.
+
 ## Food history
 The Food tab isn't just today anymore — scroll past Today's Entries and a
 FOOD HISTORY card shows the same kind of month calendar as Workout
