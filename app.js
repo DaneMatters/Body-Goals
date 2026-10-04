@@ -13,6 +13,7 @@ const PHASE_PCT=[0.70,0.80,0.90];
 // Day/feature accent colors must never be a red — red is reserved for danger (.btn.danger, .mini-toggle.danger) and the rest-timer banner.
 const DEFAULT_PROGRAM={
   1:{name:'Chest',time:'7:30 AM',color:'#4aa3ff',stretchVideos:[{label:'Chest',url:'https://youtu.be/aR-u_PRGZkY?si=VurvAhNY3MIZAzu2'}],exercises:[
+    {name:'Dips',history:['Dips','Chest Dips','Bodyweight Dips'],sets:1,min:12,max:12,step:5,rest:90},
     {name:'Flat Dumbbell Bench Press',history:['Flat Dumbbell Bench Press'],sets:5,min:10,max:10,step:5,rest:90},
     {name:'Incline Barbell Bench Press',history:['Incline Barbell Bench Press','Incline Dumbbell Bench Press'],phased:true,sets:5,reps:PHASE_REPS,pct:PHASE_PCT,oneRM:145,step:5,rest:180,warmupSets:2},
     {name:'Incline Dumbbell Fly',history:['Incline Dumbbell Fly'],sets:3,min:8,max:10,step:5,rest:75}
