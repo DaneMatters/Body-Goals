@@ -591,11 +591,21 @@ function programProgressHTML(){
   const start=state.settings.programStartDate;
   const switcher=`<div style="margin-bottom:8px">${programSwitchSelectHTML()}</div>`;
   if(!start)return `<div class="level-line" style="margin-bottom:14px">${switcher}</div>`;
-  const totalWeeks=12,week=Math.min(totalWeeks,currentWeekNum()),pct=Math.min(100,Math.round(week/totalWeeks*100));
+  const {total,done,left}=programDayCounts(start),pct=total?Math.min(100,Math.round(done/total*100)):0;
   const anyPhased=Object.values(state.program).some(d=>(d.exercises||[]).some(e=>e.phased||e.monthReps));
   const phaseIdx=currentPhaseIdx();
   const phaseLabel=anyPhased?` · Month ${phaseIdx+1}/3`:'';
-  return `<div class="level-line" style="margin-bottom:14px">${switcher}<div class="row between"><span>WEEK ${week} of ${totalWeeks}${phaseLabel}</span><span class="subtle">${pct}%</span></div><div class="xp-track"><div class="xp-fill" style="width:${pct}%"></div></div></div>`;
+  return `<div class="level-line" style="margin-bottom:14px">${switcher}<div class="row between"><span>DAY ${done} of ${total}${phaseLabel}</span><span class="subtle">${pct}%</span></div><div class="xp-track"><div class="xp-fill" style="width:${pct}%"></div></div><div class="muted" style="margin-top:6px">${done} workout${done===1?'':'s'} done · ${left} day${left===1?'':'s'} left</div></div>`;
+}
+// Counts the 12-week program in workout days: total = scheduled days in the 84 days from start,
+// done = distinct days with a logged workout in that window, left = scheduled days still ahead (today included if not yet logged).
+function programDayCounts(start){
+  const s=new Date(start+'T00:00:00'),today=isoDate(nowDate()),dates=new Set();
+  const end=new Date(s);end.setDate(end.getDate()+83);const endIso=isoDate(end);
+  (state.workouts||[]).forEach(w=>{if(w.date>=start&&w.date<=endIso)dates.add(w.date)});
+  let total=0,left=0;
+  for(let i=0;i<84;i++){const d=new Date(s);d.setDate(d.getDate()+i);if(!state.program[d.getDay()])continue;total++;const iso=isoDate(d);if(iso>today||(iso===today&&!dates.has(iso)))left++}
+  return {total,done:dates.size,left};
 }
 function programSwitchSelectHTML(){
   const lib=state.programLibrary||{};
