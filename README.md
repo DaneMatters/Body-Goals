@@ -192,8 +192,14 @@ reps and load intensity change every 4-week phase: Weeks 1–4 are 5×4 @
 70% 1RM, Weeks 5–8 are 5×3 @ 80%, Weeks 9–12 are 5×2 @ 90%, based on the
 program start date recorded the first time this version loads. Enter each
 lift's 1RM from the Workouts tab (the program dropdown's Edit Current
-Program option) to get an actual target weight and phase countdown;
-accessory exercises for every day keep fixed
+Program option) to see the phase's suggested weight as a banner above
+the sets ("70% phase target: 100 lb for 4 reps × 5 sets"); the weight
+that actually pre-fills each set, though, is always whatever you lifted
+last session, regardless of the suggested target or a rep count that
+changed between phases — the %1RM number is a reference to weigh
+against, not something that silently overrides what you're actually
+capable of lifting that day. Reps still follow the current phase.
+Accessory exercises for every day keep fixed
 sets/reps and are unaffected by phasing. The three main lifts each
 pre-populate 2 warm-up sets (ramping to roughly 50%/70% of that day's
 work weight) ahead of the working sets, and rest between their heavy
