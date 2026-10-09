@@ -43,6 +43,13 @@ scoped down to what's actually useful day to day:
 - **Training Volume** — a line chart of total lb×reps volume per day,
   combining your own logged workouts with the bundled historical data, with
   1m/3m/6m/1y/all range toggles.
+- **Bodyweight Trend** (Progress → Overview, right below LATEST) — every
+  logged weigh-in plotted as a line, same 1m/3m/6m/1y/all toggles and
+  scrub-to-read interaction as the other two charts, y-axis zoomed to the
+  data so a few pounds of real movement is actually visible instead of
+  flattened against a 0–lb axis. Reads straight from the same entries
+  RECENT WEIGHTS lists below it — delete one there and the chart updates
+  too.
 - **Exercise Progress** — pick any exercise you've ever logged (from either
   source) and see its estimated 1RM (Epley formula) plotted over time.
   A lift is one entry in the picker even when the bundled data and the
