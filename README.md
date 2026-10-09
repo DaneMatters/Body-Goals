@@ -10,7 +10,7 @@ mid-workout, it also drops you straight back into that in-progress
 session instead of the tab you'd otherwise land on.
 
 ## Popups close on a tap outside them
-Every popup in the app — a workout summary, a day's history, a badge's
+Every popup in the app — a workout summary, a day's history, a trophy's
 detail, program pickers, all of it — closes if you tap anywhere outside
 its card, not just its Close button. Tapping inside the card itself never
 closes it, so scrolling or tapping a button inside is safe.
@@ -23,9 +23,9 @@ Workouts tab, so the schedule queue was one more click without a real
 use. Home is now a quick trophy case instead: a CURRENT PRs card shows
 your best-ever estimated 1RM on each of the three main lifts (Incline
 Barbell Bench Press, Barbell Back Squat, Barbell Deadlift) with the date
-it was set, and a TROPHIES card shows your most recently earned badges
+it was set, and a TROPHIES card shows your most recently earned trophies
 in full color (up to 6), with an "N of 28" pill that jumps straight to
-Progress → Badges for the complete list. Log nothing yet and TROPHIES
+Progress → Trophies for the complete list. Log nothing yet and TROPHIES
 shows a plain empty-state message instead of a blank card. The
 CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
 unchanged.
@@ -82,7 +82,7 @@ scoped down to what's actually useful day to day:
   delete (there, Today's Entries, and everywhere else a ✕ shows up) asks
   for a confirmation first, since a bare ✕ next to real data is too easy
   to tap by accident. Deleting a bodyweight entry also drops any
-  bodyweight-milestone badge (5 lb gain, 10 lb gain, 200 lb, 220 lb) it
+  bodyweight-milestone trophy (5 lb gain, 10 lb gain, 200 lb, 220 lb) it
   earned if the remaining entries no longer qualify — no permanent trophy
   for a typo.
 
@@ -150,7 +150,7 @@ whether today's own workout is already done.
 WORKOUT HISTORY at the bottom of the Workouts tab leads with ALL
 WORKOUTS — a real month calendar instead of a flat scrolling list. Any
 day with a logged workout shows a translucent green checkmark behind the
-date number, and any day a badge was earned shows a small trophy icon in
+date number, and any day a trophy was earned shows a small trophy icon in
 its corner — tap that day and everything logged shows up in a pop-up:
 the workout(s) themselves, plus food, water, and bodyweight if any were
 logged that day, and any trophy earned that day up top with its name. ‹
@@ -163,7 +163,7 @@ the calendar to a plain chronological list of just that bodypart's
 workouts (name, date, work sets, volume), the same list style Workout
 History used before the calendar existed. They use the same
 exercise-name matching as the day-chip icons and the Chest
-Champion/Back Builder/etc. badges, so e.g. Legs lists every workout that
+Champion/Back Builder/etc. trophies, so e.g. Legs lists every workout that
 included a leg exercise, across any program — tap one to open its full
 detail, same as before. Only All Workouts is a calendar; a calendar
 filtered down to one bodypart would mostly be empty squares, so a list
@@ -184,7 +184,7 @@ clock time automatically.
 The Food tab isn't just today anymore — scroll past Today's Entries and a
 FOOD HISTORY card shows the same kind of month calendar as Workout
 History. Any day you logged food or water shows a translucent checkmark,
-any day a badge was earned shows a trophy icon, and tapping a day pops up
+any day a trophy was earned shows a trophy icon, and tapping a day pops up
 everything logged that day — food and water entries with their own
 delete buttons, same as Today's Entries, plus any workout or bodyweight
 entry logged that day too. ‹ and › step between months, independently of
@@ -251,7 +251,7 @@ scratch already looked like this.
 
 Switching programs is a swap, not a merge: whichever program is active
 owns "the program" everywhere in the app (Edit Current Program, the Home
-schedule's workout line, badges' Phase-Complete conditions) exactly like
+schedule's workout line, trophies' Phase-Complete conditions) exactly like
 before this feature existed. Editing the active program and switching
 away saves those edits back into that program's own saved slot before
 the new one loads, so nothing is lost either direction. A program's
@@ -293,7 +293,7 @@ day's exercises there.
 Each chip also carries a small bodypart icon above the day name showing
 which muscle group that day trains — chest, legs, shoulders, arms, back,
 or a plain bar for a rest day / a day with no exercises. It's detected
-the same way the Chest Champion/Back Builder/etc. badges are: by matching
+the same way the Chest Champion/Back Builder/etc. trophies are: by matching
 the day's actual exercise names against each bodypart's keywords and
 picking whichever one shows up most, so it works for any program (not
 just the bundled ones) and updates automatically if you edit a day's
@@ -312,17 +312,17 @@ note saying to switch back to THIS WEEK to actually log something,
 since logging always stamps today's real date regardless of which
 day's exercises you're looking at.
 
-## Levels and badges
+## Levels and trophies
 A quiet level indicator sits under the date on Home — level number, title,
-and a thin XP bar. Tapping it jumps straight to a new Badges tab under
+and a thin XP bar. Tapping it jumps straight to a new Trophies tab under
 Progress, and Home's own TROPHIES card (see above) surfaces your most
-recent earned badges without that extra tap. XP comes from finishing
+recent earned trophies without that extra tap. XP comes from finishing
 a workout (50, or 25 if finished early with sets still unchecked), logging
 Insanity (30), or logging bodyweight (5); each level costs a bit more XP
 than the last. Level titles: 1–5 Titan, 6–10 Gym Rat, 11–20 Conqueror,
 21+ Juggernaut.
 
-28 badges cover real strength milestones (a main lift crossing 225/315/405
+28 trophies cover real strength milestones (a main lift crossing 225/315/405
 lb estimated 1RM), lifetime volume (250k/500k/1M lb), a 10,000 lb single
 session, PRs (first one, and one on all three main lifts in the same
 week), streaks (water or protein targets hit 7 days running), program
@@ -339,17 +339,17 @@ plan, and finishing 10 workouts with every set checked off.
 22 of the 28 use real commissioned trophy artwork (`badges/*.png`,
 200×200) — full color once earned, desaturated and dimmed while locked,
 matching the pack's own spec. The other 6 (Hat Trick, The Comeback,
-Freelancer, and the three Phase Complete badges) have no matching art in
+Freelancer, and the three Phase Complete trophies) have no matching art in
 the pack and fall back to a code-drawn shield — a radial gradient colored
 by category (copper for strength, blue for volume, gold for PRs, green
 for consistency, purple for grit, silver for program) with a soft glow
 and shimmer once earned, outlined and muted while locked, so the whole
 grid still reads as one consistent set even where the art runs out.
 
-Tap an earned badge and a popup shows exactly what earned it in place —
-the exercise, weight × reps, and PR type for a lift badge; the workout
-and its volume for a volume badge; the streak length; how many
-bodypart-matching workouts; whatever's actually relevant to that badge —
+Tap an earned trophy and a popup shows exactly what earned it in place —
+the exercise, weight × reps, and PR type for a lift trophy; the workout
+and its volume for a volume trophy; the streak length; how many
+bodypart-matching workouts; whatever's actually relevant to that trophy —
 with an optional VIEW FULL WORKOUT button if you want more context,
 rather than always dropping you into History to go find it yourself.
 Unlocking one (or several at once) shows as a plain toast, same style as
