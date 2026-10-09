@@ -346,7 +346,10 @@ for consistency, purple for grit, silver for program) with a soft glow
 and shimmer once earned, outlined and muted while locked, so the whole
 grid still reads as one consistent set even where the art runs out.
 
-Tap an earned trophy and a popup shows exactly what earned it in place —
+Tap an earned trophy and a popup — bigger icon, more room to breathe —
+opens with the trophy's own criteria spelled out (e.g. "Logged a
+bodyweight of 200 lb or more") right under the art, so it's never just
+a name and a date. Below that it shows exactly what earned it in place —
 the exercise, weight × reps, and PR type for a lift trophy; the workout
 and its volume for a volume trophy; the streak length; how many
 bodypart-matching workouts; whatever's actually relevant to that trophy —

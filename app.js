@@ -380,7 +380,7 @@ function badgeDetailModal(id){
   const got=(state.badges||[]).find(b=>b.id===id);if(!got)return;
   const det=badgeAchievementDetail(id);
   const overlay=document.createElement('div');overlay.className='modal';
-  overlay.innerHTML=`<div class="modal-card" style="text-align:center"><div class="row between"><div class="modal-title" style="text-align:left">${esc(def.name)}</div><button class="btn small ghost" data-close>Close</button></div><div style="width:84px;margin:14px auto 6px">${badgeIcon(def,true)}</div><div class="muted" style="margin-bottom:14px">Earned ${esc(got.date)}</div><div style="text-align:left">${det.lines.join('')}</div>${det.workoutId?`<button class="btn ghost full" style="margin-top:16px" data-view-workout="${esc(det.workoutId)}">VIEW FULL WORKOUT</button>`:''}</div>`;
+  overlay.innerHTML=`<div class="modal-card" style="text-align:center;padding:26px 22px 28px"><div class="row between"><div class="modal-title" style="text-align:left">${esc(def.name)}</div><button class="btn small ghost" data-close>Close</button></div><div style="width:120px;margin:20px auto 14px">${badgeIcon(def,true)}</div><div style="text-align:left;line-height:1.5;margin-bottom:16px">${esc(def.hint)}</div><div class="muted" style="margin-bottom:14px">Earned ${esc(got.date)}</div><div style="text-align:left">${det.lines.join('')}</div>${det.workoutId?`<button class="btn ghost full" style="margin-top:16px" data-view-workout="${esc(det.workoutId)}">VIEW FULL WORKOUT</button>`:''}</div>`;
   document.body.appendChild(overlay);
   overlay.querySelector('[data-close]').onclick=()=>overlay.remove();
   const vw=overlay.querySelector('[data-view-workout]');
