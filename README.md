@@ -38,7 +38,7 @@ bundled historical data (no live workout behind it) just skips that
 button.
 
 ## Training charts and history
-Three cards on the Progress tab, inspired by FitNotes' analysis view but
+Four cards on the Progress tab, inspired by FitNotes' analysis view but
 scoped down to what's actually useful day to day:
 - **Training Volume** — a line chart of total lb×reps volume per day,
   combining your own logged workouts with the bundled historical data, with
@@ -73,6 +73,13 @@ scoped down to what's actually useful day to day:
   If your logged sets outrun the 1RM your program is using for that lift,
   the card says so and offers a one-tap update, since a stale 1RM means
   every %1RM-prescribed weight is running light.
+- **Consistency** (Progress → Charts) — a GitHub-style contribution grid,
+  18 weeks of workout days as a 7-row grid, darker-to-brighter green by how
+  much volume that day moved relative to the rest of the visible window
+  (not your all-time max, so a recent light stretch doesn't read as empty
+  just because some session months ago was huge). An Insanity-only day with
+  no lifted weight still shows as the lightest shade — logged counts as
+  logged. Hover/tap a cell for the exact date and volume.
 - **History** — pick any date and see everything logged that day in one
   place: workouts, Insanity, bundled historical exercises, food, water, and
   bodyweight. This is how you look back at a specific past day (e.g. a
