@@ -37,6 +37,12 @@ through History to find where a number came from. A PR sourced from the
 bundled historical data (no live workout behind it) just skips that
 button.
 
+A tile also shows a green "▲ +N lb this month" line when that lift's
+all-time best grew in the last 30 days — comparing today's best against
+whatever the best already was 30+ days ago. No PR in the last month
+(or no data from before then to compare against) just omits the line
+rather than showing a flat "+0".
+
 ## Training charts and history
 Four cards on the Progress tab, inspired by FitNotes' analysis view but
 scoped down to what's actually useful day to day:
