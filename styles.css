@@ -38,3 +38,10 @@
 @media(prefers-reduced-motion:reduce){.badge-tile.earned::after{animation:none;display:none}}
 .badge-icon-img{width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
 .badge-icon-img.locked{filter:grayscale(1) brightness(.6);opacity:.4}
+.heat-grid{display:flex;gap:3px;overflow-x:auto;padding-bottom:2px}
+.heat-col{display:flex;flex-direction:column;gap:3px}
+.heat-cell{width:14px;height:14px;border-radius:3px;background:#1a1a1a;border:1px solid #242424;flex:0 0 auto}
+.heat-cell.lvl1{background:rgba(49,198,107,.28);border-color:rgba(49,198,107,.28)}
+.heat-cell.lvl2{background:rgba(49,198,107,.5);border-color:rgba(49,198,107,.5)}
+.heat-cell.lvl3{background:rgba(49,198,107,.74);border-color:rgba(49,198,107,.74)}
+.heat-cell.lvl4{background:var(--green);border-color:var(--green)}
