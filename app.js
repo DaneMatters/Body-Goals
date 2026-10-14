@@ -570,6 +570,19 @@ function badgeIconSVG(glyph,earned,cat){
 }
 
 function levelLineHTML(compact){const info=levelInfo(state.xp),title=levelTitle(info.level),pct=info.need?Math.round(info.into/info.need*100):0;return `<div class="level-line" ${compact?'data-goto-badges':''}><div class="row between"><span>LEVEL ${info.level} · ${esc(title)}</span><span class="subtle">${info.into}/${info.need} XP</span></div><div class="xp-track"><div class="xp-fill" style="width:${pct}%"></div></div></div>`}
+const DAILY_QUESTS=[
+  {id:'weighin',label:"Log today's weigh-in",check:iso=>(state.weights||[]).some(w=>w.date===iso)},
+  {id:'workout',label:'Log a workout today',check:iso=>state.workouts.some(w=>w.date===iso)||(state.insanity||[]).some(x=>x.date===iso)},
+  {id:'water',label:'Hit your 3.5 L water target',check:iso=>(state.water||[]).filter(w=>w.date===iso).reduce((a,b)=>a+(+b.amountMl||0),0)>=3500},
+  {id:'protein',label:'Hit your 170 g protein target',check:iso=>(state.food||[]).filter(f=>f.date===iso).reduce((a,b)=>a+(+b.protein||0),0)>=170},
+];
+function todaysQuestHTML(d){
+  const iso=isoDate(d);
+  const dayIndex=Math.floor(d.getTime()/86400000);
+  const quest=DAILY_QUESTS[((dayIndex%DAILY_QUESTS.length)+DAILY_QUESTS.length)%DAILY_QUESTS.length];
+  const done=quest.check(iso);
+  return `<div class="card"><div class="row between" style="align-items:center"><div class="section-title" style="margin:0">TODAY'S QUEST</div><span style="font-size:24px">${done?'✅':'⭕'}</span></div><div style="margin-top:8px;font-size:16px;font-weight:700">${esc(quest.label)}</div><div class="muted" style="margin-top:4px">${done?'Done for today.':'Still open today.'}</div></div>`;
+}
 function homePage(){
   const d=nowDate();
   const todayFoods=state.food.filter(f=>f.date===isoDate(d));
@@ -580,6 +593,7 @@ function homePage(){
   return `<div class="page">
     <div class="muted" style="text-align:center;margin-bottom:14px;font-size:14px">${fmtNowHeader(d)}</div>
     ${levelLineHTML(true)}
+    ${todaysQuestHTML(d)}
     <div class="card"><div class="section-title">CURRENT PRs</div><div class="metric-grid">${prs.map(p=>`<div class="metric" ${p.best?`style="cursor:pointer" data-pr-lift="${esc(p.name)}"`:''}><div class="subtle">🏆 ${esc(p.short)}</div><div class="val">${p.best?Math.round(p.best.y).toLocaleString()+' lb':'—'}</div>${p.best?`<div class="subtle" style="margin-top:2px">${esc(p.best.date)}</div>`:''}${p.trend?`<div class="trend-up" style="margin-top:4px">▲ +${p.trend} lb this month</div>`:''}</div>`).join('')}</div></div>
     <div class="card"><div class="row between"><div class="section-title">TROPHIES</div><button class="btn small ghost" data-goto-badges>${(state.badges||[]).length} of ${BADGE_DEFS.length}</button></div>${recentBadges.length?`<div class="badge-grid">${recentBadges.map(def=>`<div class="badge-tile earned" data-badge-id="${esc(def.id)}">${badgeIcon(def,true)}<div class="badge-name">${esc(def.name)}</div></div>`).join('')}</div>`:'<div class="history-empty">No trophies yet — log a workout, hit a PR, or build a streak to start earning them.</div>'}</div>
     <div class="metric-grid"><div class="metric"><div class="subtle">🔥 CALORIES LOGGED</div><div class="val">${Math.round(c)}</div></div><div class="metric"><div class="subtle">💪 PROTEIN LOGGED</div><div class="val">${Math.round(pr)} g</div></div><div class="metric"><div class="subtle">💧 WATER LOGGED</div><div class="val">${(waterToday()/1000).toFixed(1)} / 3.5 L</div></div></div>

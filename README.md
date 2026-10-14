@@ -30,6 +30,14 @@ shows a plain empty-state message instead of a blank card. The
 CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
 unchanged.
 
+Right under the level bar sits a TODAY'S QUEST card — one simple daily
+nudge instead of a full quest system: log today's weigh-in, log a
+workout, hit the 3.5 L water target, or hit the 170 g protein target.
+Which one shows is picked deterministically by the date, so it's the
+same quest all day and changes at midnight rather than reshuffling on
+every reload. It just flips to a ✅ and "Done for today" once whatever
+it's asking for is logged — there's nothing to tap or dismiss.
+
 Tap any CURRENT PR tile and a pop-up shows exactly which set produced
 that estimate (weight × reps, and the date), with a VIEW FULL WORKOUT
 button when it came from a workout still in the app — no more digging
