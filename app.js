@@ -505,12 +505,22 @@ function render(){ if(ui.session){renderSession();return} const app=document.get
 function nav(){return `<nav class="bottom-nav"><div class="bottom-nav-inner">${[['home','⌂','HOME'],['workouts','<img src="me-icon.jpg" class="nav-photo">','WORKOUTS'],['food','<img src="food-icon.jpg" class="nav-photo">','FOOD'],['progress','▥','PROGRESS'],['more','•••','MORE']].map(x=>`<button class="nav-btn ${ui.page===x[0]?'active':''}" data-page="${x[0]}"><span class="ico">${x[1]}</span>${x[2]}</button>`).join('')}</div></nav>`}
 function pageHTML(){return ui.page==='workouts'?workoutsPage():ui.page==='food'?foodPage():ui.page==='progress'?progressPage():ui.page==='more'?morePage():homePage()}
 function fmtNowHeader(d){const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const months=['January','February','March','April','May','June','July','August','September','October','November','December'];const h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM',hh=((h+11)%12)+1;return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()} · ${hh}:${String(m).padStart(2,'0')} ${ap}`}
+function mainLiftTrendLb(series,best){
+  if(!best)return null;
+  const cutoff=isoDate(new Date(nowDate().getTime()-30*86400000));
+  const before=series.filter(p=>p.date<cutoff);
+  if(!before.length)return null;
+  const bestBefore=before.reduce((b,p)=>p.y>b.y?p:b,before[0]).y;
+  const delta=Math.round(best.y-bestBefore);
+  return delta>0?delta:null;
+}
 function mainLiftCurrentPRs(){
   const lifts=[['Incline Barbell Bench Press','Bench'],['Barbell Back Squat','Squat'],['Barbell Deadlift','Deadlift']];
   return lifts.map(([name,short])=>{
     const series=exercise1RMSeries(name);
     const best=series.length?series.reduce((b,p)=>p.y>b.y?p:b,series[0]):null;
-    return {name,short,best};
+    const trend=mainLiftTrendLb(series,best);
+    return {name,short,best,trend};
   });
 }
 function showLiftPRDetail(name,best){
@@ -570,7 +580,7 @@ function homePage(){
   return `<div class="page">
     <div class="muted" style="text-align:center;margin-bottom:14px;font-size:14px">${fmtNowHeader(d)}</div>
     ${levelLineHTML(true)}
-    <div class="card"><div class="section-title">CURRENT PRs</div><div class="metric-grid">${prs.map(p=>`<div class="metric" ${p.best?`style="cursor:pointer" data-pr-lift="${esc(p.name)}"`:''}><div class="subtle">🏆 ${esc(p.short)}</div><div class="val">${p.best?Math.round(p.best.y).toLocaleString()+' lb':'—'}</div>${p.best?`<div class="subtle" style="margin-top:2px">${esc(p.best.date)}</div>`:''}</div>`).join('')}</div></div>
+    <div class="card"><div class="section-title">CURRENT PRs</div><div class="metric-grid">${prs.map(p=>`<div class="metric" ${p.best?`style="cursor:pointer" data-pr-lift="${esc(p.name)}"`:''}><div class="subtle">🏆 ${esc(p.short)}</div><div class="val">${p.best?Math.round(p.best.y).toLocaleString()+' lb':'—'}</div>${p.best?`<div class="subtle" style="margin-top:2px">${esc(p.best.date)}</div>`:''}${p.trend?`<div class="trend-up" style="margin-top:4px">▲ +${p.trend} lb this month</div>`:''}</div>`).join('')}</div></div>
     <div class="card"><div class="row between"><div class="section-title">TROPHIES</div><button class="btn small ghost" data-goto-badges>${(state.badges||[]).length} of ${BADGE_DEFS.length}</button></div>${recentBadges.length?`<div class="badge-grid">${recentBadges.map(def=>`<div class="badge-tile earned" data-badge-id="${esc(def.id)}">${badgeIcon(def,true)}<div class="badge-name">${esc(def.name)}</div></div>`).join('')}</div>`:'<div class="history-empty">No trophies yet — log a workout, hit a PR, or build a streak to start earning them.</div>'}</div>
     <div class="metric-grid"><div class="metric"><div class="subtle">🔥 CALORIES LOGGED</div><div class="val">${Math.round(c)}</div></div><div class="metric"><div class="subtle">💪 PROTEIN LOGGED</div><div class="val">${Math.round(pr)} g</div></div><div class="metric"><div class="subtle">💧 WATER LOGGED</div><div class="val">${(waterToday()/1000).toFixed(1)} / 3.5 L</div></div></div>
   </div>`;

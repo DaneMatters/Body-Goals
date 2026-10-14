@@ -45,3 +45,4 @@
 .heat-cell.lvl2{background:rgba(49,198,107,.5);border-color:rgba(49,198,107,.5)}
 .heat-cell.lvl3{background:rgba(49,198,107,.74);border-color:rgba(49,198,107,.74)}
 .heat-cell.lvl4{background:var(--green);border-color:var(--green)}
+.trend-up{font-size:12px;font-weight:850;color:var(--green)}
