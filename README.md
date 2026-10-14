@@ -456,11 +456,15 @@ numbers in later.
 - 7:30–8:15 AM Body Shop Fitness schedule + 7:30 PM Insanity quick log
 - Individual +/- controls for weight and reps on every set
 - Copy Previous Set and Copy Last Workout
-- Add/delete sets, warm-up toggle, optional RIR/RPE, skip/substitute/reorder exercises.
-  The warm-up/RIR-RPE/delete row per set is collapsed behind a small "⋯" by
-  default so a normal set is just one compact line — tap it to expand.
-  A collapsed set still shows a small WARM or RIR/RPE tag next to its number
-  if either is set, so nothing's hidden silently
+- Add/delete sets, warm-up toggle, optional RIR/RPE, a plate calculator,
+  skip/substitute/reorder exercises. The warm-up/RIR-RPE/plates/delete row
+  per set is collapsed behind a small "⋯" by default so a normal set is
+  just one compact line — tap it to expand. A collapsed set still shows a
+  small WARM or RIR/RPE tag next to its number if either is set, so
+  nothing's hidden silently. PLATES shows the per-side breakdown (standard
+  45 lb bar, 45/35/25/10/5/2.5 lb plates) for that set's current weight —
+  a flag if it's lighter than an empty bar, or a leftover-weight note if
+  it doesn't divide evenly into standard plates
 - One-tap set completion + automatic rest timer that floats fixed on screen
   (not just sticky within the top of the page) so it stays visible while
   you scroll down to whichever set you're actually working on
