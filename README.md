@@ -118,13 +118,34 @@ is always honest; needs no setup beyond logging food and water normally.
 
 ## Favorite meals
 For meals you eat close to the same way every time, the Food tab has a
-one-tap "Favorites" grid grouped by Breakfast/Lunch/Dinner/Snack/Shake — tap a
-tile and it logs instantly with that meal's saved calories/protein, no
-retyping. Variants (a lighter version, an extra egg) are just their own
-separate tiles rather than an adjustable modifier, so logging stays a
-single tap either way. EDIT FAVORITES lets you add one (name it, pick from
-a small preset emoji list, set its calories/protein) or delete one; manual
-entry below the grid still works for anything that isn't a go-to.
+"Favorites" grid grouped by Breakfast/Lunch/Dinner/Snack/Shake. A favorite
+isn't a single calorie/protein number anymore — it's a list of ingredients
+(e.g. "Usual Don Pablo's Breakfast" = 6× Egg, 3× French Toast, Hash
+Browns, 3× Bacon), each with its own calories/protein/carbs/fat, so the
+favorite's totals are always the sum of its real contents instead of a
+number you have to remember or re-derive later.
+
+Tapping a favorite opens a quick review instead of logging instantly: it
+shows every ingredient with a +/- stepper so you can bump anything up or
+down just for today (skipped an egg? tap −1) without changing the saved
+favorite — LOG IT logs that adjusted total, and the favorite goes right
+back to its normal recipe next time. EDIT FAVORITES still adds (name it,
+pick an icon) or deletes one, and now also has a pencil (✎) to edit an
+existing favorite's ingredient list permanently — add, remove, or adjust
+quantities, which is how you'd update a favorite's actual usual recipe
+(as opposed to a one-off tweak for today).
+
+Ingredients come from a shared library: the first time you use one (e.g.
+Egg) you set its macros once, and every favorite after that just picks
+it from a list instead of retyping numbers. + New Ingredient while
+building a favorite adds it to that shared list automatically.
+
+Favorites created before this existed still work exactly as before —
+they show up with their old saved total, and the first time you edit one
+it becomes a single ingredient line you can then split up into real
+contents whenever you want. Manual entry below the grid still works for
+anything that isn't a go-to, now with Carbs/Fat fields alongside
+Calories/Protein.
 
 ## Water logging
 Real amounts, not just a checkbox. The Food tab logs water the same way
