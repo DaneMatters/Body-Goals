@@ -28,7 +28,8 @@ in full color (up to 6), with an "N of 28" pill that jumps straight to
 Progress → Trophies for the complete list. Log nothing yet and TROPHIES
 shows a plain empty-state message instead of a blank card. The
 CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
-unchanged.
+unchanged (carbs and fat are tracked too now, but only shown in full on
+the Food tab itself — Home stays a quick glance, not a macro dashboard).
 
 Right under the level bar sits a TODAY'S QUEST card — one simple daily
 nudge instead of a full quest system: log today's weigh-in, log a
@@ -130,8 +131,8 @@ Real amounts, not just a checkbox. The Food tab logs water the same way
 food favorites work: a blue "💧 Water Bottle" button sits right above
 your food favorites (always 500 mL, one tap, no separate card or
 custom-amount form to deal with), with a running total against the
-3.5 L daily baseline shown as its own WATER tile next to TODAY and
-PROTEIN, and as a metric tile on Home. Logged water shows up alongside
+3.5 L daily baseline shown as its own WATER tile next to TODAY, PROTEIN,
+CARBS and FAT, and as a metric tile on Home. Logged water shows up alongside
 food in Today's Entries — sorted together by time — and every entry,
 water or food, has a delete (✕) button there and in History if one gets
 logged by mistake (e.g. a duplicate).
