@@ -129,7 +129,9 @@ Tapping a favorite opens a quick review instead of logging instantly: it
 shows every ingredient with a +/- stepper so you can bump anything up or
 down just for today (skipped an egg? tap −1) without changing the saved
 favorite — LOG IT logs that adjusted total, and the favorite goes right
-back to its normal recipe next time. EDIT FAVORITES still adds (name it,
+back to its normal recipe next time. Tapping the quantity number itself
+(instead of +/-) opens a prompt for typing an exact amount, for anything
++/- 1 can't reach — a scoop and a half of protein, 0.5 of something. EDIT FAVORITES still adds (name it,
 pick an icon) or deletes one, and now also has a pencil (✎) to edit an
 existing favorite's ingredient list permanently — add, remove, or adjust
 quantities, which is how you'd update a favorite's actual usual recipe
