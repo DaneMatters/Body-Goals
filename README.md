@@ -131,15 +131,21 @@ down just for today (skipped an egg? tap −1) without changing the saved
 favorite — LOG IT logs that adjusted total, and the favorite goes right
 back to its normal recipe next time. Tapping the quantity number itself
 (instead of +/-) opens a prompt for typing an exact amount, for anything
-+/- 1 can't reach — a scoop and a half of protein, 0.5 of something. EDIT FAVORITES still adds (name it,
-pick an icon) or deletes one, and now also has a pencil (✎) to edit an
-existing favorite's ingredient list permanently — add, remove, or adjust
-quantities, which is how you'd update a favorite's actual usual recipe
-(as opposed to a one-off tweak for today).
++/- 1 can't reach — a scoop and a half of protein, 0.3 of something.
+EDIT FAVORITES still adds (name it, pick an icon) or deletes one, and
+now also has a pencil (✎) to edit an existing favorite's ingredient
+list permanently — add, remove, or adjust quantities, which is how
+you'd update a favorite's actual usual recipe (as opposed to a one-off
+tweak for today).
 
 Ingredients come from a shared library: the first time you use one (e.g.
 Egg) you set its macros once, and every favorite after that just picks
-it from a list instead of retyping numbers. + New Ingredient while
+it from a list instead of retyping numbers. New ingredients can also take
+a unit (oz, cup, scoop, tbsp — whatever fits), so quantities are the
+actual amount you used rather than a multiplier you'd have to do the
+math for — "how many oz of milk did you use" instead of "what's 14 ÷ 10."
+A unit is optional; leave it blank and the ingredient is just a generic
+per-serving amount, same as before. + New Ingredient while
 building a favorite adds it to that shared list automatically.
 
 Favorites created before this existed still work exactly as before —
