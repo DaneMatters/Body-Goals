@@ -155,6 +155,24 @@ contents whenever you want. Manual entry below the grid still works for
 anything that isn't a go-to, now with Carbs/Fat fields alongside
 Calories/Protein.
 
+## Daily targets and "what should I eat?"
+A card below LOG CONSUMED FOOD tracks daily calorie/protein/carb/fat
+targets against what's actually logged so far — SET DAILY TARGETS asks
+for the four numbers once, and from then on the card shows REMAINING
+TODAY instead of asking again (✎ to change them later). Nothing here
+is calculated for you — targets are whatever you set, same as every
+other number in this app.
+
+💡 WHAT SHOULD I EAT? looks at whichever target you're furthest behind
+on (as a percentage of that target, not raw grams, so being 50g short
+on a 100g target outranks being 80g short on a 500g one) and ranks your
+own favorites by how much of that specific gap each one would close —
+not a generic "eat more protein" tip, your actual go-to meals, pulled
+from whatever you've already built in the favorites/ingredients system
+above. Tapping LOG on a suggestion opens the same quantity-adjust review
+screen as tapping the favorite directly, so you can still tweak the
+serving before it's logged.
+
 ## Water logging
 Real amounts, not just a checkbox. The Food tab logs water the same way
 food favorites work: a blue "💧 Water Bottle" button sits right above
