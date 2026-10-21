@@ -115,11 +115,12 @@ function activeProgramInsanityEnabled(){const lib=state.programLibrary&&state.pr
 function missedInsanity(){const out=[];const today=new Date(isoDate(nowDate())+'T00:00:00');const d=new Date(INSANITY_START+'T00:00:00');while(d<today){const name=insanityDueFor(d);const iso=isoDate(d);if(name&&!(state.insanity||[]).some(x=>x.date===iso))out.push({date:iso,name});d.setDate(d.getDate()+1)}return out}
 
 const DAILY_TARGETS=[
-  ['Calories','4,200–4,600'],
-  ['Protein','170–200 g'],
-  ['Carbs','450–635 g'],
-  ['Fat','90–120 g'],
-  ['Water','7 bottles = 3.5 L baseline (+ extra for heavy sweating)']
+  ['Calories','3,400–3,800'],
+  ['Protein','210–250 g'],
+  ['Carbs','380–460 g'],
+  ['Fat','95–125 g'],
+  ['Water','7 bottles = 3.5 L baseline (+ extra for heavy sweating)'],
+  ['Bodyweight Goal','230 lb lean (currently ~207 lb on waking)']
 ];
 const DAILY_RULES=[
   'Meal calorie numbers are target ranges, not verified food calories',
