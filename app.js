@@ -881,14 +881,22 @@ async function lookupBarcode(code,overlay){
   }
 }
 function scanBarcodeModal(){
-  if(!('BarcodeDetector' in window)){toast('Barcode scanning isn\'t supported on this browser — enter it manually below.');return}
+  const supported='BarcodeDetector' in window;
   const overlay=document.createElement('div');overlay.className='modal';
-  overlay.innerHTML=`<div class="modal-card" style="padding:0;overflow:hidden"><div class="row between" style="padding:16px 18px 10px"><div class="modal-title" style="text-align:left">Scan Barcode</div><button class="btn small ghost" data-close>Close</button></div><video id="barcodeVideo" autoplay playsinline muted style="width:100%;display:block;background:#000;max-height:50vh;object-fit:cover"></video><div class="muted" id="barcodeStatus" style="padding:12px 18px">Point your camera at a barcode…</div></div>`;
+  overlay.innerHTML=`<div class="modal-card" style="padding:0;overflow:hidden"><div class="row between" style="padding:16px 18px 10px"><div class="modal-title" style="text-align:left">Scan Barcode</div><button class="btn small ghost" data-close>Close</button></div>${supported?`<video id="barcodeVideo" autoplay playsinline muted style="width:100%;display:block;background:#000;max-height:50vh;object-fit:cover"></video><div class="muted" id="barcodeStatus" style="padding:12px 18px 8px">Point your camera at a barcode…</div>`:`<div class="muted" style="padding:0 18px 8px">Camera scanning isn't supported on this browser — type the barcode below.</div>`}<div style="padding:0 18px 18px"><div class="muted" style="font-size:12px;margin-bottom:6px">Curved labels, glare, or a bad angle can make a barcode unreadable by camera — type the numbers printed under it instead:</div><div class="row gap"><input id="barcodeManual" class="field" inputmode="numeric" placeholder="Barcode number"><button class="btn ghost" data-barcode-lookup>LOOK UP</button></div></div></div>`;
   document.body.appendChild(overlay);
-  const video=overlay.querySelector('#barcodeVideo'),statusEl=overlay.querySelector('#barcodeStatus');
+  const manualInput=overlay.querySelector('#barcodeManual');
   let stream=null,stopped=false;
   const cleanup=()=>{stopped=true;if(stream)stream.getTracks().forEach(t=>t.stop())};
   overlay.querySelector('[data-close]').onclick=()=>{cleanup();overlay.remove()};
+  overlay.querySelector('[data-barcode-lookup]').onclick=()=>{
+    const code=manualInput.value.trim();
+    if(!code){toast('Enter the barcode number first.');return}
+    cleanup();
+    lookupBarcode(code,overlay);
+  };
+  if(!supported)return;
+  const video=overlay.querySelector('#barcodeVideo'),statusEl=overlay.querySelector('#barcodeStatus');
   navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}}).then(s=>{
     if(stopped){s.getTracks().forEach(t=>t.stop());return}
     stream=s;video.srcObject=s;
@@ -906,7 +914,7 @@ function scanBarcodeModal(){
       }).catch(()=>{if(!stopped)requestAnimationFrame(scan)});
     };
     scan();
-  }).catch(()=>{statusEl.textContent='Could not access the camera — check permissions, or enter it manually below.'});
+  }).catch(()=>{statusEl.textContent='Could not access the camera — type the barcode below instead.'});
 }
 function foodPage(){const today=isoDate(nowDate()),items=state.food.filter(x=>x.date===today).sort((a,b)=>a.time.localeCompare(b.time));const c=items.reduce((a,b)=>a+(+b.calories||0),0),p=items.reduce((a,b)=>a+(+b.protein||0),0),cb=items.reduce((a,b)=>a+(+b.carbs||0),0),ft=items.reduce((a,b)=>a+(+b.fat||0),0);const waterItems=(state.water||[]).filter(x=>x.date===today).sort((a,b)=>a.time.localeCompare(b.time)),wTotal=waterItems.reduce((a,b)=>a+(+b.amountMl||0),0);const entries=[...items.map(x=>({...x,kind:'food'})),...waterItems.map(x=>({...x,kind:'water'}))].sort((a,b)=>a.time.localeCompare(b.time));return `<div class="page"><div class="card"><div class="section-title">FOOD LOG</div><div class="metric-grid"><div class="metric"><div class="subtle">🔥 TODAY</div><div class="val">${Math.round(c)} kcal</div></div><div class="metric"><div class="subtle">💪 PROTEIN</div><div class="val">${Math.round(p)} g</div></div><div class="metric"><div class="subtle">🌾 CARBS</div><div class="val">${Math.round(cb)} g</div></div><div class="metric"><div class="subtle">🧈 FAT</div><div class="val">${Math.round(ft)} g</div></div><div class="metric"><div class="subtle">💧 WATER</div><div class="val">${(wTotal/1000).toFixed(1)} / 3.5 L</div></div></div><div style="height:14px"></div><div class="row between"><div class="eyebrow">FAVORITES</div><button class="btn small ${ui.editingFavorites?'primary':'ghost'}" data-toggle-edit-favorites>${ui.editingFavorites?'DONE':'EDIT FAVORITES'}</button></div>${ui.editingFavorites?favoritesEditHTML():`<div class="row gap wrap" style="margin-top:6px"><button class="btn ghost" style="border-color:var(--blue);color:var(--blue)" data-add-water="500">💧 Water Bottle</button><button class="btn ghost" style="border-color:var(--amber);color:var(--amber)" data-add-gatorade>🧡 Gatorade (24 oz)</button></div>${favoritesViewHTML()}`}<div style="height:14px"></div><button class="btn ghost full" data-scan-barcode>📷 SCAN BARCODE</button><div style="height:10px"></div><input id="foodName" class="field" placeholder="Food / meal"/><div class="form-row" style="margin-top:10px"><input id="foodCal" type="number" class="field" placeholder="Calories"/><input id="foodPro" type="number" class="field" placeholder="Protein g"/></div><div class="form-row" style="margin-top:10px"><input id="foodCarb" type="number" class="field" placeholder="Carbs g"/><input id="foodFat" type="number" class="field" placeholder="Fat g"/></div><button class="btn primary full" style="margin-top:10px" data-add-food>🍽️ LOG CONSUMED FOOD</button></div>${targetsCardHTML()}<div class="card"><div class="section-title">TODAY'S ENTRIES</div><div class="log-list">${entries.length?entries.map(x=>x.kind==='water'?`<div class="log-row row between"><div><b>💧 ${x.amountMl} mL</b><div class="muted">${x.time}</div></div><button class="mini-toggle danger" data-water-del="${x.id}">✕</button></div>`:`<div class="log-row row between"><div><b>${esc(x.name)}</b><div class="muted">${x.time}</div></div><div class="row gap"><div style="text-align:right"><b>${x.calories||0} kcal</b><div class="muted">${x.protein||0}g P · ${x.carbs||0}g C · ${x.fat||0}g F</div></div><button class="mini-toggle danger" data-food-del="${x.id}">✕</button></div></div>`).join(''):'<div class="history-empty">Nothing logged yet today.</div>'}</div></div>${foodHistorySection()}</div>`}
 function epley1RM(weight,reps){return weight*(1+reps/30)}

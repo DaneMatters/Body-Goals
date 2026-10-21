@@ -186,11 +186,16 @@ before logging, since that's not your actual portion) — into the
 manual-entry fields so you can check and adjust before tapping LOG
 CONSUMED FOOD, same as typing it in by hand. Nothing auto-logs.
 
-Two honest limits: it only works for barcoded packaged goods (protein
-bars, drinks, cereal — not Don Pablo's or anything homemade), and the
-browser API it depends on isn't available everywhere — Android Chrome
-has it, some other browsers don't, and when it's missing the button
-just says so and nothing opens, rather than failing silently.
+A camera read a real barcode printed on a curved, glossy bottle cap —
+a genuinely hard case for any scanner — so there's always a manual
+fallback: a "Barcode number" field sits right below the camera view
+(or in place of it, if the browser lacks camera-barcode support at
+all), and typing the digits by hand runs the exact same Open Food
+Facts lookup. Camera failing is never a dead end — it's always "type
+it instead," not "type all four macros yourself."
+
+One honest limit: it only works for barcoded packaged goods (protein
+bars, drinks, cereal — not Don Pablo's or anything homemade).
 
 ## Water logging
 Real amounts, not just a checkbox. The Food tab logs water the same way
