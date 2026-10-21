@@ -173,6 +173,25 @@ above. Tapping LOG on a suggestion opens the same quantity-adjust review
 screen as tapping the favorite directly, so you can still tweak the
 serving before it's logged.
 
+## Barcode scanning
+A "📷 SCAN BARCODE" button sits right above the manual Food / meal
+entry fields. It opens the phone's camera, reads a standard barcode
+(EAN-13/8, UPC-A/E — what's on virtually all packaged food) using the
+browser's built-in barcode detector, no library or server needed, then
+looks the product up against [Open Food Facts](https://world.openfoodfacts.org/),
+a free, keyless, community-run food database. A match fills in the
+name, calories, protein, carbs and fat — from the product's own label
+serving size when it has one, per 100 g otherwise (worth a glance
+before logging, since that's not your actual portion) — into the
+manual-entry fields so you can check and adjust before tapping LOG
+CONSUMED FOOD, same as typing it in by hand. Nothing auto-logs.
+
+Two honest limits: it only works for barcoded packaged goods (protein
+bars, drinks, cereal — not Don Pablo's or anything homemade), and the
+browser API it depends on isn't available everywhere — Android Chrome
+has it, some other browsers don't, and when it's missing the button
+just says so and nothing opens, rather than failing silently.
+
 ## Water logging
 Real amounts, not just a checkbox. The Food tab logs water the same way
 food favorites work: a blue "💧 Water Bottle" button sits right above
