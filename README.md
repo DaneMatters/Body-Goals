@@ -184,6 +184,12 @@ food in Today's Entries — sorted together by time — and every entry,
 water or food, has a delete (✕) button there and in History if one gets
 logged by mistake (e.g. a duplicate).
 
+Right next to it sits an amber "🧡 Gatorade (24 oz)" button, same
+one-tap pattern — logs 160 cal / 0g protein / 43g carb / 0g fat, taken
+straight off the actual bottle label (a 24 oz bottle is 2 servings).
+It's a plain food-log entry, not a special case, so it counts toward
+CARBS/FAT same as anything else.
+
 ## Icon accents across the app
 Every stat tile app-wide carries a small icon next to its label now,
 matching the 💧 on the Water Bottle button: 🔥 Calories, 💪 Protein, 💧
