@@ -31,13 +31,19 @@ CALORIES/PROTEIN/WATER snapshot for today still sits at the bottom,
 unchanged (carbs and fat are tracked too now, but only shown in full on
 the Food tab itself — Home stays a quick glance, not a macro dashboard).
 
-Right under the level bar sits a TODAY'S QUEST card — one simple daily
-nudge instead of a full quest system: log today's weigh-in, log a
-workout, hit the 3.5 L water target, or hit the 170 g protein target.
-Which one shows is picked deterministically by the date, so it's the
-same quest all day and changes at midnight rather than reshuffling on
-every reload. It just flips to a ✅ and "Done for today" once whatever
-it's asking for is logged — there's nothing to tap or dismiss.
+The level/XP bar that used to sit at the top of Home is gone from
+there — it's still visible on Progress → Trophies, just not duplicated
+on Home anymore. In its old spot sits a CONSISTENCY card (the same
+contribution-grid heatmap described below), so the first thing Home
+shows is actual logged activity instead of an XP number.
+
+Right under that sits a TODAY'S QUEST card — one simple daily nudge
+instead of a full quest system: log today's weigh-in, log a workout,
+hit the 3.5 L water target, or hit the 170 g protein target. Which one
+shows is picked deterministically by the date, so it's the same quest
+all day and changes at midnight rather than reshuffling on every
+reload. It just flips to a ✅ and "Done for today" once whatever it's
+asking for is logged — there's nothing to tap or dismiss.
 
 Tap any CURRENT PR tile and a pop-up shows exactly which set produced
 that estimate (weight × reps, and the date), with a VIEW FULL WORKOUT
@@ -53,8 +59,13 @@ whatever the best already was 30+ days ago. No PR in the last month
 rather than showing a flat "+0".
 
 ## Training charts and history
-Four cards on the Progress tab, inspired by FitNotes' analysis view but
-scoped down to what's actually useful day to day:
+Four cards originally on Progress → Charts/History, inspired by
+FitNotes' analysis view but scoped down to what's actually useful day
+to day. **Training Volume, Exercise Progress, and History are
+currently hidden from the Progress tab bar** (only Overview and
+Trophies are reachable there now) — the code and the descriptions
+below are unchanged and accurate, there's just no tab to reach them
+from at the moment:
 - **Training Volume** — a line chart of total lb×reps volume per day,
   combining your own logged workouts with the bundled historical data, with
   1m/3m/6m/1y/all range toggles.
@@ -88,7 +99,8 @@ scoped down to what's actually useful day to day:
   If your logged sets outrun the 1RM your program is using for that lift,
   the card says so and offers a one-tap update, since a stale 1RM means
   every %1RM-prescribed weight is running light.
-- **Consistency** (Progress → Charts) — a GitHub-style contribution grid,
+- **Consistency** (moved to Home, in the level bar's old spot — not
+  affected by Charts being hidden) — a GitHub-style contribution grid,
   18 weeks of workout days as a 7-row grid, darker-to-brighter green by how
   much volume that day moved relative to the rest of the visible window
   (not your all-time max, so a recent light stretch doesn't read as empty
@@ -109,7 +121,10 @@ scoped down to what's actually useful day to day:
   for a typo.
 
 ## Patterns
-A card on the Progress tab breaks your logged water and calories into six
+Also currently hidden from the Progress tab bar, same as Training
+Volume/Exercise Progress/History above — code and description
+unchanged, just not reachable from a tab right now. A card breaks your
+logged water and calories into six
 time-of-day buckets (Early AM through Night), averaged across every day
 you've logged anything, with a bar per bucket so a dip — say, an afternoon
 you consistently undereat or underdrink — is visible at a glance instead of
@@ -260,9 +275,9 @@ date number, and any day a trophy was earned shows a small trophy icon in
 its corner — tap that day and everything logged shows up in a pop-up:
 the workout(s) themselves, plus food, water, and bodyweight if any were
 logged that day, and any trophy earned that day up top with its name. ‹
-and › step between months. It's the same day-detail view used by
-Progress → History, just reached by tapping a calendar day instead of
-picking a date.
+and › step between months. It's the same day-detail view Progress →
+History uses (currently hidden from that tab bar, but this calendar
+popup reaches the same underlying view directly either way).
 
 The other tabs — Chest, Legs, Shoulders, Arms, Back — switch away from
 the calendar to a plain chronological list of just that bodypart's
@@ -486,7 +501,9 @@ Saturday, Sunday is the only rest day) — including every Fit Test day.
 Nothing in the calendar is skipped or substituted: each of the 54
 workout days maps to its own real day, Fit Test included. The LOG
 button is blue/primary so it's easy to spot. Tapping it records that
-day's specific workout name, visible later in Progress → History — an
+day's specific workout name, visible later in History (Progress →
+History is currently hidden from the tab bar, but the same underlying
+day view is still reachable from the Workouts/Food calendars) — an
 accidental tap is fixable via the Undo button that replaces LOG once
 logged (Workouts tab), or a delete (✕) button on any Insanity entry in
 History or the Workouts tab's Workout History list.
@@ -522,7 +539,7 @@ UP runs, same as any other missed day.
 ## Tapped FINISH too early
 Any finished workout can be reopened and completed — nothing is locked once
 it's saved. The summary that pops up the moment you finish (and the same
-summary reached later from Workout History, or Progress → History) has a
+summary reached later from Workout History) has a
 "+ REOPEN & ADD SETS" button that drops the workout straight back into the
 live session screen with everything you already logged still checked off.
 Finish the sets you missed and hit FINISH again. It files back as the same
