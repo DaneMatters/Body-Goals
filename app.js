@@ -863,13 +863,22 @@ async function lookupBarcode(code,overlay){
     if(data.status!==1||!data.product){overlay.remove();toast('No match for that barcode — enter it manually.');return}
     const p=data.product,n=p.nutriments||{};
     const perUnit=k=>n[k+'_serving']!=null?n[k+'_serving']:n[k+'_100g'];
+    const hasData=['energy-kcal','proteins','carbohydrates','fat'].some(k=>n[k+'_serving']!=null||n[k+'_100g']!=null);
     const name=(p.product_name||p.generic_name||'Scanned item').trim();
+    overlay.remove();
+    document.getElementById('foodName').value=name;
+    if(!hasData){
+      document.getElementById('foodCal').value='';
+      document.getElementById('foodPro').value='';
+      document.getElementById('foodCarb').value='';
+      document.getElementById('foodFat').value='';
+      toast(`Found "${name}" but it has no nutrition data on file — fill in the macros yourself below.`);
+      return;
+    }
     const calories=Math.round(perUnit('energy-kcal')||0);
     const protein=Math.round(perUnit('proteins')||0);
     const carbs=Math.round(perUnit('carbohydrates')||0);
     const fat=Math.round(perUnit('fat')||0);
-    overlay.remove();
-    document.getElementById('foodName').value=name;
     document.getElementById('foodCal').value=calories;
     document.getElementById('foodPro').value=protein;
     document.getElementById('foodCarb').value=carbs;

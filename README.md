@@ -194,6 +194,13 @@ all), and typing the digits by hand runs the exact same Open Food
 Facts lookup. Camera failing is never a dead end — it's always "type
 it instead," not "type all four macros yourself."
 
+Open Food Facts also sometimes finds the product but has no nutrition
+numbers on file for it at all (small/low-volume items like gum and
+mints are the usual case) — the app checks for that specifically and
+leaves the calorie/protein/carb/fat fields blank with a clear "found
+it, but no data" message, rather than silently filling in 0s that look
+like a real (and wrong) answer.
+
 One honest limit: it only works for barcoded packaged goods (protein
 bars, drinks, cereal — not Don Pablo's or anything homemade).
 
