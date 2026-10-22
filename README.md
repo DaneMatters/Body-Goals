@@ -21,9 +21,10 @@ to-do list with its own EDIT SCHEDULE mode). That's gone — in practice,
 water and food get logged from the Food tab and workouts from the
 Workouts tab, so the schedule queue was one more click without a real
 use. Home is now a quick trophy case instead: a CURRENT PRs card shows
-your best-ever estimated 1RM on each of the three main lifts (Incline
-Barbell Bench Press, Barbell Back Squat, Barbell Deadlift) with the date
-it was set, and a TROPHIES card shows your most recently earned trophies
+your best-ever estimated 1RM on each of four lifts (Incline Barbell Bench
+Press, Barbell Back Squat, Barbell Deadlift, Standing Barbell Military
+Press/Overhead Press) with the date it was set, and a TROPHIES card
+shows your most recently earned trophies
 in full color (up to 6), with an "N of 28" pill that jumps straight to
 Progress → Trophies for the complete list. Log nothing yet and TROPHIES
 shows a plain empty-state message instead of a blank card. The
