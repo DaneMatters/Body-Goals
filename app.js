@@ -516,7 +516,7 @@ function mainLiftTrendLb(series,best){
   return delta>0?delta:null;
 }
 function mainLiftCurrentPRs(){
-  const lifts=[['Incline Barbell Bench Press','Bench'],['Barbell Back Squat','Squat'],['Barbell Deadlift','Deadlift']];
+  const lifts=[['Incline Barbell Bench Press','Bench'],['Barbell Back Squat','Squat'],['Barbell Deadlift','Deadlift'],['Standing Barbell Military Press','OHP']];
   return lifts.map(([name,short])=>{
     const series=exercise1RMSeries(name);
     const best=series.length?series.reduce((b,p)=>p.y>b.y?p:b,series[0]):null;
