@@ -170,6 +170,16 @@ contents whenever you want. Manual entry below the grid still works for
 anything that isn't a go-to, now with Carbs/Fat fields alongside
 Calories/Protein.
 
+## Tap a metric to see what's behind it
+TODAY, PROTEIN, CARBS, FAT and WATER on the Food tab aren't just
+numbers — tap any of them and a popup lists today's entries sorted
+most-to-least by that specific metric (so tapping FAT shows your
+fattiest food first, tapping CARBS re-sorts the same entries by carbs
+instead), each with its full cal/protein/carb/fat breakdown for
+context. Tapping WATER lists today's water entries by amount instead.
+It's a different view of the same day, not new data — nothing here
+needs setup beyond logging normally.
+
 ## Daily targets and "what should I eat?"
 A card below LOG CONSUMED FOOD tracks daily calorie/protein/carb/fat
 targets against what's actually logged so far — SET DAILY TARGETS asks
