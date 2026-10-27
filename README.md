@@ -199,6 +199,21 @@ above. Tapping LOG on a suggestion opens the same quantity-adjust review
 screen as tapping the favorite directly, so you can still tweak the
 serving before it's logged.
 
+📅 PLAN LUNCH + DINNER goes a step further: instead of one suggestion
+at a time, it pairs up two of your favorites — one from your Lunch
+favorites, one from your Dinner favorites (falling back to any
+non-breakfast favorite, then any favorite, if you don't have enough in
+a category) — and picks whichever pairing's combined totals land
+closest to everything you still need today (calories, protein, carbs,
+fat all at once, with protein weighted higher and small overshoots
+tolerated more than falling short, since the targets in this app are
+usually set up for a lean bulk). It shows the Lunch pick, the Dinner
+pick, their combined totals, and how that combo compares to what's
+left today, with up to 5 ranked pairings to flip through via TRY
+ANOTHER COMBO if the top one isn't what you're in the mood for.
+Tapping LOG on either pick opens the same quantity-adjust review
+screen as everywhere else.
+
 ## Barcode scanning
 A "📷 SCAN BARCODE" button sits right above the manual Food / meal
 entry fields. It opens the phone's camera, reads a standard barcode
