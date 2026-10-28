@@ -841,7 +841,7 @@ function suggestFoodModal(){
   if(macros.every(m=>rem[m]<=0)){toast('You\'ve already hit all your targets today.');return}
   const tg=macroTargets();
   const priority=macros.reduce((best,m)=>(tg[m]?rem[m]/tg[m]:0)>(tg[best]?rem[best]/tg[best]:0)?m:best,macros[0]);
-  const scored=(state.favorites||[]).map(f=>({f,t:favoriteTotals(f)})).filter(x=>x.t[priority]>0).sort((a,b)=>b.t[priority]-a.t[priority]).slice(0,5);
+  const scored=(state.favorites||[]).map(f=>({f,t:favoriteTotals(f)})).filter(x=>x.t[priority]>0).sort((a,b)=>Math.abs(a.t[priority]-rem[priority])-Math.abs(b.t[priority]-rem[priority])).slice(0,5);
   const unitLabel=priority==='calories'?' kcal':'g';
   const rows=scored.length?scored.map(({f,t})=>`<div style="padding:10px 0;border-top:1px solid #242424"><div class="row between"><b>${f.emoji} ${esc(f.name)}</b><button class="btn small ghost" data-suggest-log="${esc(f.id)}">LOG</button></div><div class="muted" style="margin-top:4px">${macroLine(t)}</div></div>`).join(''):'<div class="muted" style="margin-top:10px">None of your favorites help much here — might be worth adding one.</div>';
   const overlay=document.createElement('div');overlay.className='modal';
