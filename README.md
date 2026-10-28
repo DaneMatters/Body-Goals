@@ -192,12 +192,14 @@ other number in this app.
 💡 WHAT SHOULD I EAT? looks at whichever target you're furthest behind
 on (as a percentage of that target, not raw grams, so being 50g short
 on a 100g target outranks being 80g short on a 500g one) and ranks your
-own favorites by how much of that specific gap each one would close —
-not a generic "eat more protein" tip, your actual go-to meals, pulled
-from whatever you've already built in the favorites/ingredients system
-above. Tapping LOG on a suggestion opens the same quantity-adjust review
-screen as tapping the favorite directly, so you can still tweak the
-serving before it's logged.
+own favorites by how closely each one's amount of that specific macro
+matches the actual gap — not just whichever favorite has the most of
+it, so if you're only 36g short on carbs it won't lead with a
+170g-carb entree. Not a generic "eat more protein" tip, your actual
+go-to meals, pulled from whatever you've already built in the
+favorites/ingredients system above. Tapping LOG on a suggestion opens
+the same quantity-adjust review screen as tapping the favorite
+directly, so you can still tweak the serving before it's logged.
 
 📅 PLAN LUNCH + DINNER goes a step further: instead of one suggestion
 at a time, it pairs up two of your favorites — one from your Lunch
