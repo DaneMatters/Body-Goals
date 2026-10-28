@@ -70,6 +70,12 @@ from at the moment:
 - **Training Volume** — a line chart of total lb×reps volume per day,
   combining your own logged workouts with the bundled historical data, with
   1m/3m/6m/1y/all range toggles.
+- **LOG WEIGHT** (Progress → Overview, top card) — the scale dropdown
+  defaults to whichever scale you'd actually be using that day: Gym
+  scale is pre-selected Monday–Friday, Home scale Saturday–Sunday
+  (based on the device's local date), so the common case needs no
+  extra tap. Both options stay in the dropdown either way — it's just
+  which one comes pre-selected.
 - **Bodyweight Trend** (Progress → Overview, right below LATEST) — every
   logged weigh-in plotted as a line, same 1m/3m/6m/1y/all toggles and
   scrub-to-read interaction as the other two charts, y-axis zoomed to the
