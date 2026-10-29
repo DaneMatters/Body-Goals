@@ -575,14 +575,15 @@ const DAILY_QUESTS=[
   {id:'weighin',label:"Log today's weigh-in",check:iso=>(state.weights||[]).some(w=>w.date===iso)},
   {id:'workout',label:'Log a workout today',check:iso=>state.workouts.some(w=>w.date===iso)||(state.insanity||[]).some(x=>x.date===iso)},
   {id:'water',label:'Hit your 3.5 L water target',check:iso=>(state.water||[]).filter(w=>w.date===iso).reduce((a,b)=>a+(+b.amountMl||0),0)>=3500},
-  {id:'protein',label:'Hit your 170 g protein target',check:iso=>(state.food||[]).filter(f=>f.date===iso).reduce((a,b)=>a+(+b.protein||0),0)>=170},
+  {id:'protein',label:()=>`Hit your ${macroTargets()?.protein||170} g protein target`,check:iso=>(state.food||[]).filter(f=>f.date===iso).reduce((a,b)=>a+(+b.protein||0),0)>=(macroTargets()?.protein||170)},
 ];
 function todaysQuestHTML(d){
   const iso=isoDate(d);
   const dayIndex=Math.floor(d.getTime()/86400000);
   const quest=DAILY_QUESTS[((dayIndex%DAILY_QUESTS.length)+DAILY_QUESTS.length)%DAILY_QUESTS.length];
   const done=quest.check(iso);
-  return `<div class="card"><div class="row between" style="align-items:center"><div class="section-title" style="margin:0">TODAY'S QUEST</div><span style="font-size:24px">${done?'✅':'⭕'}</span></div><div style="margin-top:8px;font-size:16px;font-weight:700">${esc(quest.label)}</div><div class="muted" style="margin-top:4px">${done?'Done for today.':'Still open today.'}</div></div>`;
+  const label=typeof quest.label==='function'?quest.label():quest.label;
+  return `<div class="card"><div class="row between" style="align-items:center"><div class="section-title" style="margin:0">TODAY'S QUEST</div><span style="font-size:24px">${done?'✅':'⭕'}</span></div><div style="margin-top:8px;font-size:16px;font-weight:700">${esc(label)}</div><div class="muted" style="margin-top:4px">${done?'Done for today.':'Still open today.'}</div></div>`;
 }
 function homePage(){
   const d=nowDate();
