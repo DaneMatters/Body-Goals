@@ -38,15 +38,8 @@ on Home anymore. In its old spot sits a CONSISTENCY card (the same
 contribution-grid heatmap described below), so the first thing Home
 shows is actual logged activity instead of an XP number.
 
-Right under that sits a TODAY'S QUEST card — one simple daily nudge
-instead of a full quest system: log today's weigh-in, log a workout,
-hit the 3.5 L water target, or hit your protein target (reads whatever
-you've actually set under daily targets, falling back to 170g only if
-you haven't set one). Which one shows is picked deterministically by
-the date, so it's the same quest all day and changes at midnight
-rather than reshuffling on every reload. It just flips to a ✅ and
-"Done for today" once whatever it's
-asking for is logged — there's nothing to tap or dismiss.
+(The TODAY'S QUEST card that used to sit here — a rotating daily nudge
+to log a weigh-in, a workout, water, or protein — has been removed.)
 
 Tap any CURRENT PR tile and a pop-up shows exactly which set produced
 that estimate (weight × reps, and the date), with a VIEW FULL WORKOUT
