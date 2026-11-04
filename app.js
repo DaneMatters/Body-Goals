@@ -821,13 +821,19 @@ function setMacroTargetsModal(){
   state.settings.macroTargets={calories,protein,carbs,fat};
   save();render();
 }
+function macroFitScore(totals,rem,tg){
+  return ['calories','protein','carbs','fat'].reduce((s,m)=>{
+    const d=totals[m]-rem[m],w=(m==='protein'?2:1)/Math.pow(tg[m]||1,2);
+    return s-(d>0?0.5:1)*d*d*w;
+  },0);
+}
 function suggestFoodModal(){
   const rem=remainingMacros();if(!rem)return;
   const macros=['carbs','protein','fat'];
   if(macros.every(m=>rem[m]<=0)){toast('You\'ve already hit all your targets today.');return}
   const tg=macroTargets();
   const priority=macros.reduce((best,m)=>(tg[m]?rem[m]/tg[m]:0)>(tg[best]?rem[best]/tg[best]:0)?m:best,macros[0]);
-  const scored=(state.favorites||[]).map(f=>({f,t:favoriteTotals(f)})).filter(x=>x.t[priority]>0).sort((a,b)=>Math.abs(a.t[priority]-rem[priority])-Math.abs(b.t[priority]-rem[priority])).slice(0,5);
+  const scored=(state.favorites||[]).map(f=>({f,t:favoriteTotals(f)})).filter(x=>x.t[priority]>0).sort((a,b)=>macroFitScore(b.t,rem,tg)-macroFitScore(a.t,rem,tg)).slice(0,5);
   const unitLabel=priority==='calories'?' kcal':'g';
   const rows=scored.length?scored.map(({f,t})=>`<div style="padding:10px 0;border-top:1px solid #242424"><div class="row between"><b>${f.emoji} ${esc(f.name)}</b><button class="btn small ghost" data-suggest-log="${esc(f.id)}">LOG</button></div><div class="muted" style="margin-top:4px">${macroLine(t)}</div></div>`).join(''):'<div class="muted" style="margin-top:10px">None of your favorites help much here — might be worth adding one.</div>';
   const overlay=document.createElement('div');overlay.className='modal';
@@ -851,14 +857,10 @@ function favoritePairCombos(){
     return p.length?p:favs;
   };
   const L=poolFor('Lunch'),D=poolFor('Dinner');
-  const score=combo=>['calories','protein','carbs','fat'].reduce((s,m)=>{
-    const d=combo[m]-rem[m],w=(m==='protein'?2:1)/Math.pow(tg[m]||1,2);
-    return s-(d>0?0.5:1)*d*d*w;
-  },0);
   const combos=[];
   L.forEach(a=>D.forEach(b=>{
     const combo={calories:a.t.calories+b.t.calories,protein:a.t.protein+b.t.protein,carbs:a.t.carbs+b.t.carbs,fat:a.t.fat+b.t.fat};
-    combos.push({a,b,combo,s:score(combo)});
+    combos.push({a,b,combo,s:macroFitScore(combo,rem,tg)});
   }));
   combos.sort((x,y)=>y.s-x.s);
   return combos.slice(0,5);
