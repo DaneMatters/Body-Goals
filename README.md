@@ -190,16 +190,21 @@ TODAY instead of asking again (✎ to change them later). Nothing here
 is calculated for you — targets are whatever you set, same as every
 other number in this app.
 
-💡 WHAT SHOULD I EAT? looks at whichever target you're furthest behind
-on (as a percentage of that target, not raw grams, so being 50g short
-on a 100g target outranks being 80g short on a 500g one) and ranks your
-own favorites by how closely each one's amount of that specific macro
-matches the actual gap — not just whichever favorite has the most of
-it, so if you're only 36g short on carbs it won't lead with a
-170g-carb entree. Not a generic "eat more protein" tip, your actual
-go-to meals, pulled from whatever you've already built in the
-favorites/ingredients system above. Tapping LOG on a suggestion opens
-the same quantity-adjust review screen as tapping the favorite
+💡 WHAT SHOULD I EAT? identifies whichever target you're furthest
+behind on (as a percentage of that target, not raw grams, so being
+50g short on a 100g target outranks being 80g short on a 500g one)
+and uses that to filter candidates — but ranks them by how well each
+favorite's *full* set of totals (calories, protein, carbs, and fat
+together, protein weighted higher, overshoot tolerated more than
+falling short) fits everything you still have left today, not just
+the one macro named in the headline. That's the same scoring
+PLAN LUNCH + DINNER uses for its pairings, applied to single
+favorites here, so a favorite that happens to match the named macro
+closely but would blow way past your remaining calories doesn't
+jump to the top just for that. Not a generic "eat more protein" tip,
+your actual go-to meals, pulled from whatever you've already built in
+the favorites/ingredients system above. Tapping LOG on a suggestion
+opens the same quantity-adjust review screen as tapping the favorite
 directly, so you can still tweak the serving before it's logged.
 
 📅 PLAN LUNCH + DINNER goes a step further: instead of one suggestion
