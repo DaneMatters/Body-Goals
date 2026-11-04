@@ -245,6 +245,35 @@ leaves the calorie/protein/carb/fat fields blank with a clear "found
 it, but no data" message, rather than silently filling in 0s that look
 like a real (and wrong) answer.
 
+## Nutrition label scanning
+Barcode scanning only works when there's a barcode to read and Open
+Food Facts actually has that exact product on file — plenty of things
+(fresh food, restaurant items, anything without a UPC) have neither. A
+"🏷️ SCAN NUTRITION LABEL" button sits right under SCAN BARCODE for
+those cases: it opens the camera, you point it at a Nutrition Facts
+panel and tap CAPTURE, and on-device text recognition
+([Tesseract.js](https://github.com/naptha/tesseract.js), loaded from a
+CDN the first time you use this feature) reads the printed numbers
+directly off the label — no AI image-recognition API, no server, no
+API key, nothing sent anywhere. It's genuinely reading text, not
+identifying what the product is, so it works equally well on a cereal
+box, a restaurant's printed nutrition card, or a supplement tub.
+
+It looks for "Calories", "Protein", "Total Fat" (specifically the
+total line, not Saturated/Trans Fat), and "Total Carbohydrate" and
+fills in whatever it can read into the same manual-entry fields the
+other two input methods use. A field it couldn't confidently read is
+left blank rather than guessed — same philosophy as the barcode
+scanner's "no data on file" case — and the confirmation message names
+exactly which field(s) still need a manual look. A photo with no
+readable nutrition numbers at all (blurry, wrong angle, not a label)
+leaves every field untouched instead of filling in zeros.
+
+The OCR engine itself (~a few MB) downloads from a CDN the first time
+you use this feature in a session, so it needs a network connection
+on first use; the browser caches it afterward. Reading always happens
+on your phone — the photo itself is never uploaded anywhere.
+
 One honest limit: it only works for barcoded packaged goods (protein
 bars, drinks, cereal — not Don Pablo's or anything homemade).
 
