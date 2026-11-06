@@ -1297,7 +1297,26 @@ function showHistory(id){const w=state.workouts.find(x=>x.id===id);if(!w)return;
 function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`body-goals-data-${isoDate(nowDate())}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);Object.keys(state).forEach(k=>delete state[k]);Object.assign(state,defaults(),d);save();toast('Data imported.');render()}catch{toast('That file is not valid app data.')}};r.readAsText(f)}
 document.addEventListener('click',e=>{if(e.target.classList&&e.target.classList.contains('modal'))e.target.remove()});
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').then(reg=>{reg.update();document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')reg.update()})}).catch(()=>{}));let swRefreshed=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(swRefreshed)return;swRefreshed=true;location.reload()})}
+function showUpdateBanner(){
+  if(document.querySelector('.update-banner'))return;
+  const b=document.createElement('div');b.className='update-banner';
+  b.innerHTML=`<span>🔄 New version ready</span><button class="btn small primary" data-update-reload>REFRESH</button>`;
+  document.body.appendChild(b);
+  b.querySelector('[data-update-reload]').onclick=()=>location.reload();
+}
+if('serviceWorker' in navigator){
+  const hadController=!!navigator.serviceWorker.controller;
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').then(reg=>{
+    reg.update();
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')reg.update()});
+  }).catch(()=>{}));
+  let bannerShown=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(bannerShown||!hadController)return;
+    bannerShown=true;
+    showUpdateBanner();
+  });
+}
 (function initSwipe(){
   const app=document.getElementById('app');
   let startX=null,startY=null,blocked=false;

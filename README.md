@@ -698,6 +698,21 @@ numbers in later.
 - No post-workout review form
 - No fake current-app workout history seeded
 
+## App updates
+As a PWA, the app serves itself from the service worker's cache by
+default, so a new deploy doesn't necessarily reach an already-open or
+installed app right away. The app checks for a newer service worker
+on load and whenever it comes back into the foreground
+(`visibilitychange`). When a genuinely newer version takes over — not
+on first-ever install, just real updates — a small banner appears at
+the top ("🔄 New version ready") with a REFRESH button that reloads
+to pick it up. It's a visible tap, not a silent auto-reload, so you
+always know when it happened instead of the app quietly changing
+underneath you. If an update still doesn't show up after fully
+closing and reopening the app, that points to something deeper than
+normal cache staleness (e.g. the service worker itself failing to
+re-fetch) rather than this banner just not having fired yet.
+
 ## Deployment
 Upload the contents of this folder as static assets to Cloudflare Pages/Workers Static Assets or any static host. `index.html` is the entry point.
 
