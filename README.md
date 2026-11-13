@@ -402,6 +402,15 @@ from recent bundled FitNotes history rather than a fresh max-effort test —
 adjust them via Edit Current Program once real Week 1 sets show whether
 they're on.
 
+The progress line above the week strip ("DAY 53 of 60 · 53 workouts
+done · 5 days left") counts scheduled workout days (Mon–Fri by
+default) across the 12-week/84-day window from the program's start
+date — not calendar days. If a scheduled day in the past was never
+logged and never made up, it shows up as a third number, "N missed",
+so the three figures always add up to the total (53 done + 2 missed +
+5 left = 60); the missed count simply doesn't appear at all when
+there's nothing to report.
+
 ## Multiple programs
 More than one full program can be saved at once, and only one is ever
 "loaded" and active — the one the Workouts tab actually shows and starts
