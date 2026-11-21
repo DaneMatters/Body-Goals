@@ -610,16 +610,30 @@ function programProgressHTML(){
   return `<div class="level-line" style="margin-bottom:14px">${switcher}<div class="row between"><span>DAY ${done} of ${total}${phaseLabel}</span><span class="subtle">${pct}%</span></div><div class="xp-track"><div class="xp-fill" style="width:${pct}%"></div></div><div class="muted" style="margin-top:6px">${done} workout${done===1?'':'s'} done${missedLabel} · ${left} day${left===1?'':'s'} left</div></div>`;
 }
 // Counts the 12-week program in workout days: total = scheduled days in the 84 days from start,
-// done = distinct days with a logged workout in that window, left = scheduled days still ahead
-// (today included if not yet logged), missed = scheduled days already in the past with no
-// logged workout at all (never made up). total === done + left + missed always.
+// left = scheduled days still ahead (today included if not yet logged), missed = scheduled days
+// already in the past with no logged workout on that exact date. A workout logged on a
+// non-scheduled day (a catch-up session done on the "wrong" day) forgives one missed day per
+// bonus session, up to however many are actually missed, and counts toward done instead —
+// so catching up late still resolves the miss instead of leaving an impossible "done exceeds
+// total" result. total === done + left + missed always.
 function programDayCounts(start){
   const s=new Date(start+'T00:00:00'),today=isoDate(nowDate()),dates=new Set();
   const end=new Date(s);end.setDate(end.getDate()+83);const endIso=isoDate(end);
   (state.workouts||[]).forEach(w=>{if(w.date>=start&&w.date<=endIso)dates.add(w.date)});
-  let total=0,left=0,missed=0;
-  for(let i=0;i<84;i++){const d=new Date(s);d.setDate(d.getDate()+i);if(!state.program[d.getDay()])continue;total++;const iso=isoDate(d);if(iso>today||(iso===today&&!dates.has(iso)))left++;else if(iso<today&&!dates.has(iso))missed++}
-  return {total,done:dates.size,left,missed};
+  let total=0,left=0,missed=0,scheduledMatches=0;
+  const scheduledDates=new Set();
+  for(let i=0;i<84;i++){
+    const d=new Date(s);d.setDate(d.getDate()+i);
+    if(!state.program[d.getDay()])continue;
+    total++;
+    const iso=isoDate(d);scheduledDates.add(iso);
+    if(iso>today||(iso===today&&!dates.has(iso)))left++;
+    else if(iso<today&&!dates.has(iso))missed++;
+    else if(dates.has(iso))scheduledMatches++;
+  }
+  const bonusSessions=[...dates].filter(d=>!scheduledDates.has(d)).length;
+  const forgiven=Math.min(bonusSessions,missed);
+  return {total,done:scheduledMatches+forgiven,left,missed:missed-forgiven};
 }
 function programSwitchSelectHTML(){
   const lib=state.programLibrary||{};
