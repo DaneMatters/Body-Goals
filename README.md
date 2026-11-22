@@ -437,14 +437,34 @@ reflects whatever you've edited it to since it was last switched to.
 No separate card, menu, or EDIT button cluttering the page — one small
 dropdown covers switching, viewing, editing, and managing, and an EDIT
 PROGRAM card only appears when you're actually using it. Two programs come bundled: Mike O'Hearn's 12-Week Power Bodybuilding (the original %1RM
-default) and a second Upper/Lower Powerbuilding split — Upper A/Lower A
-Tuesday through Monday-Thursday-Friday, incline bench and standing
-overhead press as the main upper lifts, back squat/Zercher squat and a
-straight 5×5 conventional deadlift on the lower days. + NEW creates a
-blank program and drops you straight into EDIT mode to build it out
-with the same Add Day/Add Exercise tools used everywhere else — there's
-no separate "custom program" flow, building your own program from
-scratch already looked like this.
+default) and a second Upper/Lower Powerbuilding split, trained Monday,
+Tuesday, Thursday, Friday (Wednesday/Saturday/Sunday are rest). All 4
+main lifts — incline bench, back squat, standing overhead press,
+deadlift — are now %1RM-phased on this program too, same 3-month/75%
+→80%→85% structure as the other program, just with its own 1RMs and
+rep scheme (6/5/4 reps for the first three, a flat 5/5/5 for deadlift).
++ NEW creates a blank program and drops you straight into EDIT mode to
+build it out with the same Add Day/Add Exercise tools used everywhere
+else — there's no separate "custom program" flow, building your own
+program from scratch already looked like this.
+
+A program can carry its own PROGRESSION NOTES — free text at the top
+of EDIT PROGRAM, above the day list, for whatever general guidance
+doesn't belong on one specific exercise (when to bump a lift's 1RM,
+how pull-up/chin-up progression works, etc.). It's saved per program,
+same as everything else in EDIT PROGRAM, and starts blank for a
+program that doesn't set one.
+
+Most exercises have one rest time, used between every set including
+the last. Some genuinely need two different numbers — a longer pause
+after an exercise's final set than between its own sets, to recover
+before moving on to something else entirely (or, in a superset, to
+line up the two exercises' own rest so the whole paired block rests
+once per round instead of twice). That second number is `restAfter`:
+whichever exercise's rest the timer reaches for depends only on
+whether the set you just finished is the exercise's last one, and
+everything else about the timer (the −15/+15/Skip controls) works
+exactly the same either way.
 
 Switching programs is a swap, not a merge: whichever program is active
 owns "the program" everywhere in the app (Edit Current Program, the Home
