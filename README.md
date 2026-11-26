@@ -54,14 +54,48 @@ whatever the best already was 30+ days ago. No PR in the last month
 (or no data from before then to compare against) just omits the line
 rather than showing a flat "+0".
 
+## Exercise Progress (1RM tab)
+Progress has its own **1RM** tab — pick any exercise you've ever logged
+(from either the app or the bundled historical data) and see its
+estimated 1RM (Epley formula) plotted over time, for literally any
+movement, not just the program's main lifts (e.g. Barbell Curl works
+fine). A lift is one entry in the picker even when the bundled data and
+the program call it different things: every exercise's `history` aliases
+are folded into one canonical name, so "Barbell Squat" and "Barbell Back
+Squat" are a single continuous line rather than two half-histories.
+
+Two stats sit above the chart, because they answer different questions:
+**est. 1RM** is your best estimate from the last eight weeks, so one
+light or deload session no longer reads as losing strength, and
+**all-time best** is your highest estimate ever, with the date it
+happened. Right below those, the same green "▲ +N lb this month" trend
+line as the Home page's main-lift tiles now shows up here too, for
+whichever exercise is selected — comparing today's best estimate against
+whatever the best already was 30+ days ago, omitted when there's nothing
+to compare against yet.
+
+Same 1m/3m/6m/1y/all range toggles as the other charts, and the y-axis
+zooms to the data instead of always starting at zero, so a trend is
+actually visible rather than squashed into the top third. The picker
+itself is sorted by how much you actually use each lift — most logged
+sessions first, ties broken by total volume — instead of alphabetically,
+so the exercises you actually check sit at the top instead of requiring
+a scroll through 60+ options to find. Drag a finger anywhere across the
+chart to scrub it: a crosshair follows your finger, the nearest session
+highlights, and its date and weight read out above. Vertical scrolling
+still works normally while you do it. If your logged sets outrun the
+1RM your program is using for that lift, the card says so and offers a
+one-tap update, since a stale 1RM means every %1RM-prescribed weight is
+running light.
+
 ## Training charts and history
-Four cards originally on Progress → Charts/History, inspired by
-FitNotes' analysis view but scoped down to what's actually useful day
-to day. **Training Volume, Exercise Progress, and History are
-currently hidden from the Progress tab bar** (only Overview and
-Trophies are reachable there now) — the code and the descriptions
-below are unchanged and accurate, there's just no tab to reach them
-from at the moment:
+Cards originally on Progress → Charts/History, inspired by FitNotes'
+analysis view but scoped down to what's actually useful day to day.
+**Training Volume and History are currently hidden from the Progress
+tab bar** (Overview, 1RM, and Trophies are the reachable tabs now) —
+the code and descriptions below are unchanged and accurate, there's
+just no tab to reach them from at the moment. Exercise Progress is the
+exception: it has its own **1RM** tab, described separately below.
 - **Training Volume** — a line chart of total lb×reps volume per day,
   combining your own logged workouts with the bundled historical data, with
   1m/3m/6m/1y/all range toggles.
@@ -78,29 +112,6 @@ from at the moment:
   flattened against a 0–lb axis. Reads straight from the same entries
   RECENT WEIGHTS lists below it — delete one there and the chart updates
   too.
-- **Exercise Progress** — pick any exercise you've ever logged (from either
-  source) and see its estimated 1RM (Epley formula) plotted over time.
-  A lift is one entry in the picker even when the bundled data and the
-  program call it different things: every exercise's `history` aliases are
-  folded into one canonical name, so "Barbell Squat" and "Barbell Back
-  Squat" are a single continuous line rather than two half-histories.
-  Two separate stats sit above the chart, because they answer different
-  questions: **est. 1RM** is your best estimate from the last eight weeks,
-  so one light or deload session no longer reads as losing strength, and
-  **all-time best** is your highest estimate ever, with the date it
-  happened. Same 1m/3m/6m/1y/all range toggles as the volume chart, and
-  the y-axis zooms to the data instead of always starting at zero, so a
-  trend is actually visible rather than squashed into the top third.
-  The picker itself is sorted by how much you actually use each lift —
-  most logged sessions first, ties broken by total volume — instead of
-  alphabetically, so the exercises you actually check sit at the top
-  instead of requiring a scroll through 60+ options to find.
-  Drag a finger anywhere across the chart to scrub it: a crosshair follows
-  your finger, the nearest session highlights, and its date and weight read
-  out above. Vertical scrolling still works normally while you do it.
-  If your logged sets outrun the 1RM your program is using for that lift,
-  the card says so and offers a one-tap update, since a stale 1RM means
-  every %1RM-prescribed weight is running light.
 - **Consistency** (moved to Home, in the level bar's old spot — not
   affected by Charts being hidden) — a GitHub-style contribution grid,
   18 weeks of workout days as a 7-row grid, darker-to-brighter green by how
@@ -124,8 +135,8 @@ from at the moment:
 
 ## Patterns
 Also currently hidden from the Progress tab bar, same as Training
-Volume/Exercise Progress/History above — code and description
-unchanged, just not reachable from a tab right now. A card breaks your
+Volume/History above — code and description unchanged, just not
+reachable from a tab right now. A card breaks your
 logged water and calories into six
 time-of-day buckets (Early AM through Night), averaged across every day
 you've logged anything, with a bar per bucket so a dip — say, an afternoon
@@ -303,7 +314,7 @@ CARBS/FAT same as anything else.
 Every stat tile app-wide carries a small icon next to its label now,
 matching the 💧 on the Water Bottle button: 🔥 Calories, 💪 Protein, 💧
 Water (Home and Food), 🏋️ Est. 1RM / 🏆 All-Time Best (Progress →
-Charts → Exercise Progress), and 📊 Volume / ✅ Sets (tapping into a
+1RM), and 📊 Volume / ✅ Sets (tapping into a
 logged workout from Workout History). Purely cosmetic — no data or
 behavior changes, just a consistent visual language across tiles that
 already existed.
