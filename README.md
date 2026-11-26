@@ -42,11 +42,12 @@ shows is actual logged activity instead of an XP number.
 to log a weigh-in, a workout, water, or protein — has been removed.)
 
 Tap any CURRENT PR tile and a pop-up shows exactly which set produced
-that estimate (weight × reps, and the date), with a VIEW FULL WORKOUT
-button when it came from a workout still in the app — no more digging
-through History to find where a number came from. A PR sourced from the
-bundled historical data (no live workout behind it) just skips that
-button.
+that estimate (weight × reps, and the date), the Epley formula math that
+turned it into a 1RM number (e.g. "100 × (1 + 12 ÷ 30) = 140 lb"), and a
+VIEW FULL WORKOUT button when it came from a workout still in the app —
+no more digging through History to find where a number came from. A PR
+sourced from the bundled historical data (no live workout behind it)
+just skips that button.
 
 A tile also shows a green "▲ +N lb this month" line when that lift's
 all-time best grew in the last 30 days — comparing today's best against
@@ -73,6 +74,14 @@ line as the Home page's main-lift tiles now shows up here too, for
 whichever exercise is selected — comparing today's best estimate against
 whatever the best already was 30+ days ago, omitted when there's nothing
 to compare against yet.
+
+Tap either the est. 1RM or all-time best tile and the same detail pop-up
+used for the Home page's PR tiles opens: the exact set behind that
+number (weight × reps, and the date), the Epley formula math that turned
+it into a 1RM estimate, and a VIEW FULL WORKOUT button when it came from
+a workout still in the app. Keeps the card itself uncluttered while
+still answering "how was this actually calculated, and from which
+session" on demand.
 
 Same 1m/3m/6m/1y/all range toggles as the other charts, and the y-axis
 zooms to the data instead of always starting at zero, so a trend is
